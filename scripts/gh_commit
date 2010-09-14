@@ -1,0 +1,9 @@
+#!/bin/bash
+cd ..
+rm -rf gh-pages_bkp/
+cp -r gh-pages gh-pages_bkp
+cd gh-pages
+git add .
+git commit -m 'website update'
+#git push origin :gh-pages
+git push origin gh-pages

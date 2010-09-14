@@ -1,0 +1,63 @@
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}OpenTrader Trading Platform
+${licensePrefix}The solution for online trading, technical analysis and automated trading.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}Copyright (C) ${date?date?string("yyyy")}  Andrey Pudov
+${licensePrefix}Andrey Pudov     <syscreat@gmail.com>
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}http://opentrader.github.com/OpenTrader/
+<#if licenseLast??>
+${licenseLast}
+</#if>
+
+<#if licenseFirst??>
+${licenseFirst}
+</#if>
+${licensePrefix}CDDL HEADER START
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}Copyright ${date?date?string("yyyy")} Andrey Pudov. All rights reserved.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}The contents of this file are subject to the terms of the
+${licensePrefix}Common Development and Distribution License (the "License").
+${licensePrefix}You may not use this file except in compliance with the License.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+${licensePrefix}or http://www.opensolaris.org/os/licensing.
+${licensePrefix}See the License for the specific language governing permissions
+${licensePrefix}and limitations under the License.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}When distributing Covered Code, include this CDDL HEADER in each
+${licensePrefix}file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+${licensePrefix}If applicable, add the following below this CDDL HEADER, with the
+${licensePrefix}fields enclosed by brackets "[]" replaced with your own identifying
+${licensePrefix}information: Portions Copyright [yyyy] [name of copyright owner]
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}CDDL HEADER END
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}Copyright ${date?date?string("yyyy")} Andrey Pudov.  All rights reserved.
+${licensePrefix}Use is subject to license terms.
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}Contributor(s):
+${licensePrefix?replace(" +$", "", "r")}
+${licensePrefix}Portions Copyrighted ${date?date?string("yyyy")} Andrey Pudov.
+${licensePrefix?replace(" +$", "", "r")}
+<#if licenseLast??>
+${licenseLast}
+</#if>
+
+<#if licenseFirst??>
+${licenseFirst}*
+</#if>
+${licensePrefix} @author    Andrey Pudov        <syscreat@gmail.com>
+${licensePrefix} @version   0.00.00
+${licensePrefix} %name      ${nameAndExt}
+${licensePrefix} %pkg       ${package}
+${licensePrefix} %date      ${time}, ${date}
+<#if licenseLast??>
+${licenseLast}
+</#if>
