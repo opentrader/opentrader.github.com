@@ -1,0 +1,113 @@
+/*
+ * OpenTrader Trading Platform
+ * The solution for online trading, technical analysis and automated trading.
+ *
+ * Copyright (C) 2010  Andrey Pudov
+ * Andrey Pudov     <syscreat@gmail.com>
+ *
+ * http://opentrader.github.com/OpenTrader/
+ */
+
+/*
+ * CDDL HEADER START
+ *
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ *
+ * Copyright 2010 Andrey Pudov. All rights reserved.
+ *
+ * The contents of this file are subject to the terms of the
+ * Common Development and Distribution License (the "License").
+ * You may not use this file except in compliance with the License.
+ *
+ * You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE
+ * or http://www.opensolaris.org/os/licensing.
+ * See the License for the specific language governing permissions
+ * and limitations under the License.
+ *
+ * When distributing Covered Code, include this CDDL HEADER in each
+ * file and include the License file at usr/src/OPENSOLARIS.LICENSE.
+ * If applicable, add the following below this CDDL HEADER, with the
+ * fields enclosed by brackets "[]" replaced with your own identifying
+ * information: Portions Copyright [yyyy] [name of copyright owner]
+ *
+ * CDDL HEADER END
+ *
+ *
+ * Copyright 2010 Andrey Pudov.  All rights reserved.
+ * Use is subject to license terms.
+ *
+ * Contributor(s):
+ *
+ * Portions Copyrighted 2010 Andrey Pudov.
+ *
+ */
+
+1.  License
+
+    Common Development and Distribution License
+    http://www.sun.com/cddl/cddl.html
+
+2.  Authors
+
+    Andrey Pudov (syscreat@gmail.com) 
+
+3.  Contact
+
+    OpenTrader Development Team
+    opentrader@live.com
+
+4.  Requirements
+
+    SeaGlass Java Cross-Platform Look and Feel library 
+    http://code.google.com/p/seaglass/
+
+5.  Download
+
+    You can download this project in either zip or tar formats:
+
+    http://github.com/OpenTrader/OpenTrader/zipball/master
+    http://github.com/OpenTrader/OpenTrader/tarball/master
+
+    You can also clone the project with Git by running:
+
+    $ git clone git://github.com/OpenTrader/OpenTrader
+
+6.  Extract
+
+    Extracting the source from the OpenTrader tarball is a simple matter of 
+    uncompressing, and then untarring:
+
+    $ tar xvzf OpenTrader-OpenTrader-*.tar.gz
+
+    This will create a new directory under the current directory containing 
+    the source code for the distribution. You should cd into that directory 
+    before proceeding with compiling the package.
+
+7.  Compile
+
+    Navigate to the directory with the source code and execute command compile 
+    all source files, then remove them to reduce the size of the package.
+
+    $ cd OpenTrader-OpenTrader-*
+    $ find . -name '*.java' | xargs javac
+    $ find . -name '*.java' | xargs rm
+
+8.  Create a manifest file
+
+    $ echo -e 'Main-Class: org.opentrader.OpenTrader
+      Class-Path: lib/seaglasslookandfeel-0.1.7.3.jar' >> manifest.mf
+
+9.  Create a package
+
+    $ jar cvfm OpenTrader.jar manifest.mf *
+
+10. Inclusion of necessary libraries
+
+    Create a directory '/lib' and put the necessary library files 
+    (see system requirements in this file):
+
+    /lib/seaglasslookandfeel-0.1.7.3.jar
+
+11. Run OpenTrader
+   
+    $ java -jar OpenTrader.jar
