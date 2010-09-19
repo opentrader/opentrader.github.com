@@ -7,7 +7,7 @@ ${licensePrefix?replace(" +$", "", "r")}
 ${licensePrefix}Copyright (C) ${date?date?string("yyyy")}  Andrey Pudov
 ${licensePrefix}Andrey Pudov     <syscreat@gmail.com>
 ${licensePrefix?replace(" +$", "", "r")}
-${licensePrefix}http://opentrader.github.com/OpenTrader/
+${licensePrefix}http://opentrader.github.com/
 <#if licenseLast??>
 ${licenseLast}
 </#if>

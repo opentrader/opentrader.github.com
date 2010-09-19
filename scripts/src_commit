@@ -1,8 +1,9 @@
 #!/bin/bash
 cd ..
-rm -rf src_bkp/
-cp -r src src_bkp
-cd src
+cd ..
+rm -rf opentrader_bkp/
+cp -r OpenTrader opentrader_bkp
+cd OpenTrader
 git add .
 git commit -m 'weekly commit'
 git push origin master
