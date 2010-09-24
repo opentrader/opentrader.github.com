@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<!--
+    <!ELEMENT properties ( comment?, entry* ) >
+        <!ATTLIST properties version CDATA #FIXED "1.0">
+    <!ELEMENT comment (#PCDATA) >
+    <!ELEMENT entry (#PCDATA) >
+        <!ATTLIST entry key CDATA #REQUIRED>
+-->
+
+<!--
+    Document   : opentrader.xml
+    Created on : February 22, 2010, 7:48 AM
+    Author     : Andrey Pudov
+    Description:
+        Configuration application. The file contains a table of property names
+        and their meanings. The names are divided into the system names.
+-->
+
+<properties>
+    <comment>OpenTrader configuration file</comment>
+    <entry key="ui.window.main.width">800</entry>
+    <entry key="ui.window.main.height">600</entry>
+    <entry key="ui.window.main.location.x">112</entry>
+    <entry key="ui.window.main.location.y">84</entry>
+    <entry key="ui.common.laf">seaglass</entry>
+</properties>

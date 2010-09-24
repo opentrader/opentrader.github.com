@@ -1,0 +1,5 @@
+#!/bin/bash
+java \
+-server \
+-Xss1024K -Xms1G -Xmx2G -XX:MaxPermSize=128M -XX:NewSize=512m \
+-jar ../prjcts/opentrader/dist/OpenTrader.jar

@@ -44,9 +44,10 @@
 
 package com.opentrader;
 
-import com.initializer.Initializer;
-import com.resources.Resources;
+import com.internal.initializer.Application;
+import com.opentrader.ui.OpenTraderJFrame;
 import java.util.logging.Logger;
+import javax.swing.UIManager;
 
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>
@@ -58,7 +59,6 @@ import java.util.logging.Logger;
 public class OpenTrader {
     
     private static final Logger LOG = Logger.getLogger("opentrader");
-    private static final String appName = "OpenTrader";
 
     static {
         //
@@ -76,23 +76,31 @@ public class OpenTrader {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Resources   resources;
-        Initializer init;
-
         try {
             /* Do not sent the message to parent handlers.  */
             LOG.setUseParentHandlers(false);
-            LOG.addHandler(init.getConsoleHandler());
+            LOG.addHandler(Application.getConsoleHandler());
 
             LOG.info("OpenTrader Trading Platform");
             LOG.info("Copyright 2010 Andrey Pudov. All rights reserved.");
             LOG.info("Use is subject to license terms.\n");
 
-            if(!init.verifyUserHome()) {
+            if(!Application.installed()) {
                 LOG.info("Creating user configuration...");
-                init.removeUserHome();
-                init.createUserHome();
+                Application.remove();
+                Application.install();
             }
+
+            LOG.addHandler(Application.getFileHandler());
+
+            // Load user configuration.s
+            LOG.info("Load user configuration...");
+
+            // Set Look And Feel
+            Application.setLookAndFeel(Application.LookAndFeel.SYSTEM);
+
+            OpenTraderJFrame mainForm = new OpenTraderJFrame();
+            mainForm.setVisible(true);
         } catch (Exception e) {
             LOG.info("Core Initialization Failed.");
             LOG.severe(e.getMessage());

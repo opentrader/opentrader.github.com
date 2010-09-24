@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE opentrader [
+    <!ELEMENT opentrader ( menubar ) >
+    <!ELEMENT menubar ( menu*, menuitem*, checkbox*, radiobutton*, separator* ) >
+        <!ATTLIST menubar tooltip CDATA #IMPLIED>
+        <!ATTLIST menubar enabled ( false | true ) #IMPLIED>
+        <!ATTLIST menubar visible ( false | true ) #IMPLIED>
+    <!ELEMENT menu ( menu*, menuitem*, checkbox*, radiobutton*, separator* ) >
+        <!ATTLIST menu action CDATA #IMPLIED>
+        <!ATTLIST menu icon CDATA #IMPLIED>
+        <!ATTLIST menu text CDATA #IMPLIED>
+        <!ATTLIST menu tooltip CDATA #IMPLIED>
+        <!ATTLIST menu enabled ( false | true ) #IMPLIED>
+        <!ATTLIST menu visible ( false | true ) #IMPLIED>
+    <!ELEMENT menuitem (#PCDATA) >
+        <!ATTLIST menuitem action CDATA #IMPLIED>
+        <!ATTLIST menuitem accelerator CDATA #IMPLIED>
+        <!ATTLIST menuitem icon CDATA #IMPLIED>
+        <!ATTLIST menuitem text CDATA #IMPLIED>
+        <!ATTLIST menuitem tooltip CDATA #IMPLIED>
+        <!ATTLIST menuitem enabled ( false | true ) #IMPLIED>
+        <!ATTLIST menuitem visible ( false | true ) #IMPLIED>
+    <!ELEMENT checkbox (#PCDATA) >
+        <!ATTLIST checkbox action CDATA #IMPLIED>
+        <!ATTLIST checkbox accelerator CDATA #IMPLIED>
+        <!ATTLIST checkbox buttongroup CDATA #IMPLIED>
+        <!ATTLIST checkbox icon CDATA #IMPLIED>
+        <!ATTLIST checkbox text CDATA #IMPLIED>
+        <!ATTLIST checkbox tooltip CDATA #IMPLIED>
+        <!ATTLIST checkbox enabled ( false | true ) #IMPLIED>
+        <!ATTLIST checkbox visible ( false | true ) #IMPLIED>
+    <!ELEMENT radiobutton (#PCDATA) >
+        <!ATTLIST radiobutton action CDATA #IMPLIED>
+        <!ATTLIST radiobutton accelerator CDATA #IMPLIED>
+        <!ATTLIST radiobutton buttongroup CDATA #IMPLIED>
+        <!ATTLIST radiobutton icon CDATA #IMPLIED>
+        <!ATTLIST radiobutton text CDATA #IMPLIED>
+        <!ATTLIST radiobutton tooltip CDATA #IMPLIED>
+        <!ATTLIST radiobutton enabled ( false | true ) #IMPLIED>
+        <!ATTLIST radiobutton visible ( false | true ) #IMPLIED>
+    <!ELEMENT separator (#PCDATA) >
+        <!ATTLIST separator tooltip CDATA #IMPLIED>
+        <!ATTLIST separator enabled ( false | true ) #IMPLIED>
+        <!ATTLIST separator visible ( false | true ) #IMPLIED>
+]>
+
+<!--
+    Document   : menubar.xml
+    Created on : February 17, 2010, 11:34 AM
+    Author     : Andrey Pudov
+    Description:
+        Configuration file of the main bar.
+-->
+
+<!--
+<openbrush>
+    <menubar> : tooltip, enabled, visible
+        <menu> : action, icon, mnemonic, text, tooltip, enabled, visible
+            <menuitem> : action, accelerator, icon, mnemonic, text, tooltip,
+                         enabled, visible
+            <checkbox> : action, accelerator, buttongroup, mnemonic, selected,
+                         text, tooltip, enabled, visible
+            <radiobutton> : action, accelerator, buttongroup, mnemonic,
+                         selected, text, tooltip, enabled, visible
+            <separator> : tooltip, enabled, visible
+-->
+
+<opentrader>
+    <menubar>
+        <menu text="File" mnemonic="F">
+            <menuitem text="New..." accelerator="ctrl N" mnemonic="N"/>
+            <menuitem text="Open..." accelerator="ctrl O"/>
+            <menuitem text="Browse..." accelerator="shift ctrl O"/>
+            <menuitem text="Open As..." accelerator="alt ctrl O"/>
+            <menu text="Open Resent..."/>
+            <separator/>
+            <menuitem text="Close" accelerator="ctrl W"/>
+            <menuitem text="Save" accelerator="ctrl S"/>
+            <menuitem text="Save As..." accelerator="shift ctrl S"/>
+            <menuitem text="Save for Web..." accelerator="alt shift ctrl S"/>
+            <menuitem text="Revert"/>
+            <separator/>
+            <menuitem text="Place..."/>
+            <separator/>
+            <menu text="Import">
+                <menuitem text="PDF Image..."/>
+                <menuitem text="Annotations..."/>
+            </menu>
+            <menu text="Export">
+                <menuitem text="PDF Image..."/>
+                <menuitem text="Annotations..."/>
+            </menu>
+            <separator/>
+            <menu text="Automate">
+                <menuitem text="Batch..."/>
+                <menuitem text="Create Droplet..."/>
+                <separator/>
+                <menuitem text="Conditional Mode Change..."/>
+                <menuitem text="Fit Image..."/>
+                <menuitem text="Multi-Page PDF to PSD..."/>
+            </menu>
+            <menuitem text="File Info..." action="Evostep hello"/>
+            <separator/>
+            <menuitem text="Page Setup..." accelerator="shift ctrl P"/>
+            <menuitem text="Print with Preview..." accelerator="ctrl P"/>
+            <menuitem text="Print..." accelerator="alt ctrl P"/>
+            <menuitem text="Print One Copy" accelerator="alt shift ctrl P"/>
+            <separator/>
+            <menuitem text="Exit" action="Evostep exit" accelerator="ctrl Q"/>
+        </menu>
+        <menu text="Edit">
+            <menuitem text="Undo" accelerator="ctrl Z"/>
+            <menuitem text="Step Forward" accelerator="shift ctrl Z"/>
+            <menuitem text="Step Backward" accelerator="alt ctrl Z"/>
+            <separator/>
+            <menuitem text="Fade..." accelerator="shift ctrl F"/>
+            <separator/>
+            <menuitem text="Cut" accelerator="ctrl X"/>
+            <menuitem text="Copy" accelerator="ctrl C"/>
+            <menuitem text="Copy Merged" accelerator="shift ctrl C"/>
+            <menuitem text="Paste" accelerator="ctrl V"/>
+            <menuitem text="Paste Into" accelerator="shift ctrl V"/>
+            <menuitem text="Clear"/>
+            <separator/>
+            <menuitem text="Check Spelling..."/>
+            <menuitem text="Find and Replace Text..."/>
+            <separator/>
+            <menuitem text="Fill..."/>
+            <menuitem text="Stroke..."/>
+            <separator/>
+            <menuitem text="Free Transform" accelerator="ctrl T"/>
+            <menu text="Transform">
+                <menuitem text="Again" accelerator="shift ctrl T"/>
+                <separator/>
+                <menuitem text="Scale"/>
+                <menuitem text="Rotate"/>
+                <menuitem text="Skew"/>
+                <menuitem text="Distort"/>
+                <menuitem text="Perspective"/>
+                <separator/>
+                <menuitem text="Rotate 180"/>
+                <menuitem text="Rorate 90 CW"/>
+                <menuitem text="Rotate 90 CCW"/>
+                <separator/>
+                <menuitem text="Flip Horizontal"/>
+                <menuitem text="Flip Vertical"/>
+            </menu>
+            <separator/>
+            <menuitem text="Define Brush..."/>
+            <menuitem text="Define Pattern..."/>
+            <menuitem text="Define Custom Shape..."/>
+            <separator/>
+            <menu text="Purge">
+                <menuitem text="Undo"/>
+                <menuitem text="Clipboard"/>
+                <menuitem text="Histories"/>
+                <menuitem text="All"/>
+            </menu>
+            <menuitem text="Color Settings" accelerator="shift ctrl K"/>
+            <menuitem text="Preset Manager..."/>
+            <menu text="Preferences">
+                <menuitem text="General..." accelerator="ctrl K"/>
+                <menuitem text="File Handling..."/>
+                <menuitem text="Display &amp; Cursor"/>
+                <menuitem text="Transparency &amp; Gamut..."/>
+                <menuitem text="Units &amp; Rules..."/>
+                <menuitem text="Guides, Grid &amp; Slices..."/>
+                <menuitem text="Plug-Ins &amp; Scratch Disks..."/>
+                <menuitem text="Memory &amp; Image Cache..."/>
+                <separator/>
+                <menuitem text="OpenBrush Online..."/>
+            </menu>
+        </menu>
+        <menu text="Image">
+            <menu text="Mode">
+                <menuitem text="Bitmap"/>
+                <menuitem text="Grayscale"/>
+                <menuitem text="Duotone"/>
+                <menuitem text="Indexed Color..."/>
+                <menuitem text="RGB Color"/>
+                <menuitem text="CMYK Color"/>
+                <menuitem text="Lab Color"/>
+                <menuitem text="Multichannel"/>
+                <separator/>
+                <menuitem text="8 Bits/Channel"/>
+                <menuitem text="16 Bits/Channel"/>
+                <separator/>
+                <menuitem text="Color Table..."/>
+                <separator/>
+                <menuitem text="Assign Profile..."/>
+                <menuitem text="Convert to Profile..."/>
+            </menu>
+            <menu text="Adjustments">
+                <menuitem text="Levels..." accelerator="ctrl L"/>
+                <menuitem text="Auto Levels" accelerator="shift ctrl L"/>
+                <menuitem text="Auto Contrast" accelerator="alt shift ctrl L"/>
+                <menuitem text="Auto Color" accelerator="shift ctrl B"/>
+                <menuitem text="Curves..." accelerator="ctrl M"/>
+                <menuitem text="Color Balance..." accelerator="ctrl B"/>
+                <menuitem text="Brightness/Contrasts..."/>
+                <separator/>
+                <menuitem text="Hue/Saturation..." accelerator="Ctrl+U"/>
+                <menuitem text="Desaturate" accelerator="shift ctrl U"/>
+                <menuitem text="Replace Color..."/>
+                <menuitem text="Selective Color..."/>
+                <menuitem text="Channel Mixer..."/>
+                <menuitem text="Gradient Map..."/>
+                <separator/>
+                <menuitem text="Invert" accelerator="ctrl I"/>
+                <menuitem text="Equalize"/>d
+                <menuitem text="Threshold"/>
+                <menuitem text="Posterize..."/>
+                <separator/>
+                <menuitem text="Variations..."/>
+            </menu>
+            <separator/>
+            <menuitem text="Duplicate..."/>
+            <menuitem text="Apply Image..."/>
+            <menuitem text="Calculations..."/>
+            <separator/>
+            <menuitem text="Image Size..."/>
+            <menuitem text="Canvas Size..."/>
+            <menu text="Rotate Canvas">
+                <menuitem text="180"/>
+                <menuitem text="90 CW"/>
+                <menuitem text="90 CCW"/>
+                <menuitem text="Arbitrary..."/>
+                <separator/>
+                <menuitem text="Flip Canvas Horizontal"/>
+                <menuitem text="Flip Canvas Vertical"/>
+            </menu>
+            <menuitem text="Crop"/>
+            <menuitem text="Trim..."/>
+            <menuitem text="Reveal All"/>
+            <separator/>
+            <menuitem text="Histogram..."/>
+            <separator/>
+            <menuitem text="Trap..."/>
+        </menu>
+        <menu text="Layer">
+            <menu text="New">
+                <menuitem text="Layer" accelerator="shift ctrl N"/>
+                <menuitem text="Layer From Background"/>
+                <menuitem text="Layer Set..."/>
+                <menuitem text="Layer Set From Linked..."/>
+                <separator/>
+                <menuitem text="Layer via Copy" accelerator="ctrl J"/>
+                <menuitem text="Layer via Cut" accelerator="shift ctrl J"/>
+            </menu>
+            <menuitem text="Duplicate Leyer..."/>
+            <menu text="Delete">
+                <menuitem text="Layer"/>
+                <menuitem text="Linked Layers"/>
+                <menuitem text="Hidden Layers"/>
+            </menu>
+            <separator/>
+            <menuitem text="Layer Properties..."/>
+            <menu text="Layer Style">
+                <menuitem text="Blending Options..."/>
+                <separator/>
+                <menuitem text="Drop Shadow..."/>
+                <menuitem text="Inner Shadow..."/>
+                <menuitem text="Outer Glow..."/>
+                <menuitem text="Inner Glow..."/>
+                <menuitem text="Bevel and Emboss..."/>
+                <menuitem text="Satin..."/>
+                <menuitem text="Color Overlay..."/>
+                <menuitem text="Gradient Overlay..."/>
+                <menuitem text="Pattern Overlay..."/>
+                <menuitem text="Stroke..."/>
+                <separator/>
+                <menuitem text="Copy Layer Style"/>
+                <menuitem text="Paste Layer Style"/>
+                <menuitem text="Paste Layer Style to Linked"/>
+                <menuitem text="Clear Layer Style"/>
+                <separator/>
+                <menuitem text="Global Light..."/>
+                <menuitem text="Create Layer"/>
+                <menuitem text="Hide All Effects"/>
+                <menuitem text="Scale Effects..."/>
+            </menu>
+            <separator/>
+            <menu text="New Fill Layer">
+                <menuitem text="Solid Color..."/>
+                <menuitem text="Gradiient"/>
+                <menuitem text="Pattern"/>
+            </menu>
+            <menu text="New Adjustment Layer">
+                <menuitem text="Levels..."/>
+                <menuitem text="Curves..."/>
+                <menuitem text="Color Balance..."/>
+                <menuitem text="Brightness/Contrast..."/>
+                <separator/>
+                <menuitem text="Hue/Saturation..."/>
+                <menuitem text="Selective Color..."/>
+                <menuitem text="Channel Mixer..."/>
+                <menuitem text="Gradient Map..."/>
+                <separator/>
+                <menuitem text="Invert..."/>
+                <menuitem text="Threshold..."/>
+                <menuitem text="Posterize..."/>
+            </menu>
+            <menu text="Change Layer Content">
+                <checkbox text="Solid Color..."/>
+                <checkbox text="Gradient..."/>
+                <checkbox text="Patter..."/>
+                <separator/>
+                <checkbox text="Levels..."/>
+                <checkbox text="Curves..."/>
+                <checkbox text="Color Balance..."/>
+                <checkbox text="Brightness/Contrast..."/>
+                <separator/>
+                <checkbox text="Hue/Saturation..."/>
+                <checkbox text="Selective Color..."/>
+                <checkbox text="Channel Mixer..."/>
+                <checkbox text="Gradient Map..."/>
+                <separator/>
+                <checkbox text="Invert..."/>
+                <checkbox text="Threshold..."/>
+                <checkbox text="Posterize..."/>
+            </menu>
+            <menuitem text="Layer Content Options"/>
+            <menu text="Type">
+            </menu>
+            <menu text="Rasterize">
+                <menuitem text="Type"/>
+                <menuitem text="Shape"/>
+                <menuitem text="Fill Content"/>
+                <menuitem text="Vector Mask"/>
+                <separator/>
+                <menuitem text="Layer"/>
+                <menuitem text="Linked Layers"/>
+                <menuitem text="All Layers"/>
+            </menu>
+            <separator/>
+            <menuitem text="New Layer Based Slice"/>
+            <separator/>
+            <menuitem text="Add Layer Mask"/>
+            <menuitem text="Enable Layer Mask"/>
+            <separator/>
+            <menuitem text="Add Vector Mask"/>
+            <menuitem text="Enabe Vector Mask"/>
+            <separator/>
+            <menuitem text="Group with Previous" accelerator="ctrl G"/>
+            <menuitem text="Ungroup" accelerator="shift ctrl G"/>
+            <separator/>
+            <menu text="Arrange">
+            </menu>
+            <menu text="Align Linked">
+            </menu>
+            <menu text="Distribute Linked">
+            </menu>
+            <separator/>
+            <menuitem text="Merge Layers" accelerator="ctrl E"/>
+            <menuitem text="Merge Visible" accelerator="shift ctrl E"/>
+            <menuitem text="Flatten Image"/>
+            <separator/>
+            <menu text="Matting">
+            </menu>
+        </menu>
+        <menu text="Select">
+            <menuitem text="All" accelerator="ctrl A"/>
+            <menuitem text="Deselect" accelerator="ctrl D"/>
+            <menuitem text="Reselect" accelerator="shift ctrl D"/>
+            <menuitem text="Invers" accelerator="shift ctrl I"/>
+            <separator/>
+            <menuitem text="Color Range..."/>
+            <separator/>
+            <menuitem text="Feather..." accelerator="alt ctrl D"/>
+            <menu text="Modify">
+                <menuitem text="Border..."/>
+                <menuitem text="Smooth..."/>
+                <menuitem text="Expand..."/>
+                <menuitem text="Contract..."/>
+            </menu>
+            <separator/>
+            <menuitem text="Grow"/>
+            <menuitem text="Similar"/>
+            <separator/>
+            <menuitem text="Transform Selection"/>
+            <separator/>
+            <menuitem text="Load Selection..."/>
+            <menuitem text="Save Selection..."/>
+        </menu>
+        <menu text="Filter">
+            <menuitem text="Last" accelerator="ctrl F"/>
+            <separator/>
+            <menuitem text="Convert for Smart Filters"/>
+            <separator/>
+            <menuitem text="Filter Gallery..."/>
+            <menuitem text="Liquify..." accelerator="shift ctrl X"/>
+            <menuitem text="Vanishing Point..." accelerator="alt ctrl V"/>
+            <separator/>
+            <menu text="Artistic">
+                <menuitem text="Colored Pencil..."/>
+                <menuitem text="Cutout..."/>
+                <menuitem text="Dry Brush..."/>
+                <menuitem text="Film Grain..."/>
+                <menuitem text="Fresco..."/>
+                <menuitem text="Neon Glow..."/>
+                <menuitem text="Paint Daubs..."/>
+                <menuitem text="Palette Knife..."/>
+                <menuitem text="Plastic Wrap..."/>
+                <menuitem text="Poster Edges..."/>
+                <menuitem text="Rough Pastels..."/>
+                <menuitem text="Smudge Stick..."/>
+                <menuitem text="Sponge..."/>
+                <menuitem text="Underpainting..."/>
+                <menuitem text="Watercolor..."/>
+            </menu>
+            <menu text="Blur">
+                <menuitem text="Average"/>
+                <menuitem text="Blur"/>
+                <menuitem text="Blur More"/>
+                <menuitem text="Box Blur..."/>
+                <menuitem text="Gaussian Blur..."/>
+                <menuitem text="Lens Blur..."/>
+                <menuitem text="Motion Blur..."/>
+                <menuitem text="Radial Blur..."/>
+                <menuitem text="Shape Blur..."/>
+                <menuitem text="Smart Blur..."/>
+                <menuitem text="Surface Blur..."/>
+            </menu>
+            <menu text="Brush Strokes">
+                <menuitem text="Accented Edges..."/>
+                <menuitem text="Angled Strokes..."/>
+                <menuitem text="Crosshatch..."/>
+                <menuitem text="Dark Strokes..."/>
+                <menuitem text="Ink Outlines..."/>
+                <menuitem text="Spatter..."/>
+                <menuitem text="Sprayed Strokes..."/>
+                <menuitem text="Sumi-e..."/>
+            </menu>
+            <menu text="Distort">
+                <menuitem text="Diffuse Glow..."/>
+                <menuitem text="Displace..."/>
+                <menuitem text="Glass..."/>
+                <menuitem text="Lens Correction..."/>
+                <menuitem text="Ocean Ripple..."/>
+                <menuitem text="Pinch..."/>
+                <menuitem text="Polar Coordinates..."/>
+                <menuitem text="Ripple..."/>
+                <menuitem text="Shear..."/>
+                <menuitem text="Spherize..."/>
+                <menuitem text="Twirl..."/>
+                <menuitem text="Wave..."/>
+                <menuitem text="ZigZag..."/>
+            </menu>
+            <menu text="Noise">
+                <menuitem text="Add Noise..."/>
+                <menuitem text="Despeckle"/>
+                <menuitem text="Dust &amp; Scratchess..."/>
+                <menuitem text="Median..."/>
+                <menuitem text="Reduce Noise..."/>
+            </menu>
+            <menu text="Pixelate">
+                <menuitem text="Color Halftone..."/>
+                <menuitem text="Crystallize..."/>
+                <menuitem text="Facet"/>
+                <menuitem text="Fragment"/>
+                <menuitem text="Mezzotint..."/>
+                <menuitem text="Mosaic..."/>
+                <menuitem text="Pointillize..."/>
+            </menu>
+            <menu text="Render">
+                <menuitem text="Clouds"/>
+                <menuitem text="Difference Clouds"/>
+                <menuitem text="Fibers..."/>
+                <menuitem text="Lens Flare..."/>
+                <menuitem text="Lighting Effects..."/>
+            </menu>
+            <menu text="Sharpen">
+                <menuitem text="Sharpen"/>
+                <menuitem text="Sharpen Edges"/>
+                <menuitem text="Sharpen More"/>
+                <menuitem text="Smart Sharpen..."/>
+                <menuitem text="Unsharp Mask..."/>
+            </menu>
+            <menu text="Sketch">
+                <menuitem text="Bas Relief..."/>
+                <menuitem text="Chalk &amp; Charcoal..."/>
+                <menuitem text="Charcoal..."/>
+                <menuitem text="Chrome..."/>
+                <menuitem text="Conté Crayon..."/>
+                <menuitem text="Graphic Pen..."/>
+                <menuitem text="Halftone Pattern..."/>
+                <menuitem text="Note Paper..."/>
+                <menuitem text="Photocopy..."/>
+                <menuitem text="Plaster..."/>
+                <menuitem text="Reticulation..."/>
+                <menuitem text="Stamp..."/>
+                <menuitem text="Torn Edges..."/>
+                <menuitem text="Water Paper..."/>
+            </menu>
+            <menu text="Stylize">
+                <menuitem text="Diffuse..."/>
+                <menuitem text="Embose..."/>
+                <menuitem text="Extrude..."/>
+                <menuitem text="Find Edges"/>
+                <menuitem text="Glowing Edges..."/>
+                <menuitem text="Solarize"/>
+                <menuitem text="Tiles..."/>
+                <menuitem text="Trace Contour..."/>
+                <menuitem text="Wind..."/>
+            </menu>
+            <menu text="Texture">
+            </menu>
+            <menu text="Video">
+            </menu>
+            <menu text="Other">
+                <menuitem text="Custom..."/>
+                <menuitem text="High Pass..."/>
+                <menuitem text="Maximum..."/>
+                <menuitem text="Minimum..."/>
+                <menuitem text="Offset..."/>
+            </menu>
+            <separator/>
+            <menu text="Digimarc">
+            </menu>
+            <separator/>
+            <menuitem text="Browse Filters Online..."/>
+        </menu>
+        <menu text="View">
+        </menu>
+        <menu text="Window">
+            <menu text="Arrange">
+                <menuitem text="Cascade"/>
+                <menuitem text="Tile"/>
+                <menuitem text="Float in Window"/>
+                <menuitem text="Float All in Windows"/>
+                <menuitem text="Consolidate All to Tabs"/>
+                <separator/>
+                <menuitem text="Match Zoom"/>
+                <menuitem text="Match Location"/>
+                <menuitem text="Match Rotation"/>
+                <menuitem text="Match All"/>
+                <separator/>
+                <menuitem text="New Window for NAME"/>
+            </menu>
+            <menu text="Workspace">
+                <menuitem text=""/>
+            </menu>
+            <separator/>
+            <menu text="Extenssions">
+            </menu>
+            <separator/>
+            <checkbox text="3D"/>
+            <radiobutton text="Actions" accelerator="alt F9"/>
+            <radiobutton text="Adjustments" buttongroup="AdjustmentsMasks"/>
+            <checkbox text="Animation"/>
+            <checkbox text="Brushes" accelerator="F5"/>
+            <checkbox text="Channels"/>
+            <checkbox text="Character"/>
+            <checkbox text="Clone Sourse"/>
+            <radiobutton text="Color" accelerator="F6" buttongroup="ColorStyleSwatches"/>
+            <checkbox text="Histogram"/>
+            <checkbox text="History"/>
+            <checkbox text="Info" accelerator="F8"/>
+            <checkbox text="Layer Comps"/>
+            <checkbox text="Layers" accelerator="F7"/>
+            <radiobutton text="Masks" buttongroup="AdjustmentsMasks"/>
+            <checkbox text="Measurement Log"/>
+            <checkbox text="Navigator"/>
+            <checkbox text="Notes"/>
+            <checkbox text="Paragraph"/>
+            <checkbox text="Paths"/>
+            <radiobutton text="Styles" buttongroup="ColorStyleSwatches"/>
+            <radiobutton text="Swatches" buttongroup="ColorStyleSwatches"/>
+            <checkbox text="Tool Presets"/>
+            <separator/>
+            <checkbox text="Options"/>
+            <checkbox text="Tools"/>
+            <separator/>
+            <checkbox text=""/>
+        </menu>
+        <menu text="Help">
+        </menu>
+    </menubar>
+</opentrader>

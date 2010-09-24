@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE opentrader [
+    <!ELEMENT opentrader ( filesystem ) >
+    <!ELEMENT filesystem ( directory*, file* ) >
+        <!ATTLIST filesystem type ( config | bin | source ) #REQUIRED>
+    <!ELEMENT directory ( directory*, file* ) >
+        <!ATTLIST directory text CDATA #REQUIRED>
+        <!ATTLIST directory permission CDATA #IMPLIED>
+    <!ELEMENT file (#PCDATA) >
+        <!ATTLIST file text CDATA #REQUIRED>
+        <!ATTLIST file source CDATA #IMPLIED>
+        <!ATTLIST file permission CDATA #IMPLIED>
+]>
+
+<!--
+    Document   : filesystem.xml
+    Created on : February 18, 2010, 9:22 AM
+    Author     : Andrey Pudov
+    Description:
+        Structural diagram of the user configuration. Used for installing
+        applications in a specific user profiles and checking this profile at
+        the start of the application.
+-->
+
+<!--
+<evostep>
+    <filesystem> : type = {userhome, bin, source}
+        <directory> : text, permission
+        <file> : text, source, permission,
+-->
+
+<opentrader>
+    <filesystem type="userhome">
+        <directory text=".opentrader">
+            <directory text="config">
+		<directory text="accounts"/>
+                <file text="properties.xml" source="scheme/properties.xml"/>
+                <file text="menubar.xml" source="scheme/menubar.xml"/>
+            </directory>
+            <directory text="logs"/>
+        </directory>
+    </filesystem>
+</opentrader>
