@@ -1,0 +1,13 @@
+Rate Service API
+-----------------
+
+The Rate Service API project provide a clean API to the GAIN capital Rates Servers.
+
+The Rates Service API is provided in the following languages
+
+	/java
+	/net
+
+
+Each langauge contains a /dist directory which has the files/documentation which should
+be distribution to clients.

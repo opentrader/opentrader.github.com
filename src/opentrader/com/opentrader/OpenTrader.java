@@ -47,7 +47,6 @@ package com.opentrader;
 import com.internal.initializer.Application;
 import com.opentrader.ui.OpenTraderJFrame;
 import java.util.logging.Logger;
-import javax.swing.UIManager;
 
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>

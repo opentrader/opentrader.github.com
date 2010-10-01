@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RateServiceAPI", "RateServiceAPI\RateServiceAPI.vbproj", "{4E00515B-4230-4CA4-AC11-2045E0E58B01}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "RateServiceExampleVB", "RateServiceExampleVB\RateServiceExampleVB.vbproj", "{D82E010E-4BDE-49B8-BC8F-6466B5DC59A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateServiceExampleCSharp", "RateServiceExampleCSharp\RateServiceExampleCSharp.csproj", "{902EB878-6101-4B96-9CDF-EB471BEE991E}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{4E00515B-4230-4CA4-AC11-2045E0E58B01}.Debug.ActiveCfg = Debug|.NET
+		{4E00515B-4230-4CA4-AC11-2045E0E58B01}.Debug.Build.0 = Debug|.NET
+		{4E00515B-4230-4CA4-AC11-2045E0E58B01}.Release.ActiveCfg = Release|.NET
+		{4E00515B-4230-4CA4-AC11-2045E0E58B01}.Release.Build.0 = Release|.NET
+		{D82E010E-4BDE-49B8-BC8F-6466B5DC59A7}.Debug.ActiveCfg = Debug|.NET
+		{D82E010E-4BDE-49B8-BC8F-6466B5DC59A7}.Debug.Build.0 = Debug|.NET
+		{D82E010E-4BDE-49B8-BC8F-6466B5DC59A7}.Release.ActiveCfg = Release|.NET
+		{D82E010E-4BDE-49B8-BC8F-6466B5DC59A7}.Release.Build.0 = Release|.NET
+		{902EB878-6101-4B96-9CDF-EB471BEE991E}.Debug.ActiveCfg = Debug|.NET
+		{902EB878-6101-4B96-9CDF-EB471BEE991E}.Debug.Build.0 = Debug|.NET
+		{902EB878-6101-4B96-9CDF-EB471BEE991E}.Release.ActiveCfg = Release|.NET
+		{902EB878-6101-4B96-9CDF-EB471BEE991E}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

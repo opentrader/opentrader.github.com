@@ -1,0 +1,58 @@
+[FILES]
+RateServiceAPI.Gain.RateService.html
+RateServiceAPI.Gain.RateService.Rate.html
+RateServiceAPI.Gain.RateService.RateMembers.html
+RateServiceAPI.Gain.RateService.RateConstructor.html
+RateServiceAPI.Gain.RateService.RateProperties.html
+RateServiceAPI.Gain.RateService.Rate.Ask.html
+RateServiceAPI.Gain.RateService.Rate.Bid.html
+RateServiceAPI.Gain.RateService.Rate.CurrencyPair.html
+RateServiceAPI.Gain.RateService.Rate.Dealable.html
+RateServiceAPI.Gain.RateService.Rate.DecimalPlaces.html
+RateServiceAPI.Gain.RateService.Rate.Domain.html
+RateServiceAPI.Gain.RateService.Rate.High.html
+RateServiceAPI.Gain.RateService.Rate.Key.html
+RateServiceAPI.Gain.RateService.Rate.Low.html
+RateServiceAPI.Gain.RateService.RateMethods.html
+RateServiceAPI.Gain.RateService.Rate.ToString.html
+RateServiceAPI.Gain.RateService.RateService.html
+RateServiceAPI.Gain.RateService.RateServiceMembers.html
+RateServiceAPI.Gain.RateService.RateServiceConstructor.html
+RateServiceAPI.Gain.RateService.RateServiceProperties.html
+RateServiceAPI.Gain.RateService.RateService.FailedConnectionCount.html
+RateServiceAPI.Gain.RateService.RateService.FailedConsecutiveConnectionCount.html
+RateServiceAPI.Gain.RateService.RateService.SuccessfullConnectionCount.html
+RateServiceAPI.Gain.RateService.RateService.Version.html
+RateServiceAPI.Gain.RateService.RateServiceMethods.html
+RateServiceAPI.Gain.RateService.RateService.Connect.html
+RateServiceAPI.Gain.RateService.RateService.Disconnect.html
+RateServiceAPI.Gain.RateService.RateService.IsConnected.html
+RateServiceAPI.Gain.RateService.RateServiceEvents.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceConnected.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceConnectionFailed.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceConnectionLost.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceDisconnected.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceRate.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceConnectedEventHandler.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceConnectionFailedEventHandler.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceConnectionLostEventHandler.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceDisconnectedEventHandler.html
+RateServiceAPI.Gain.RateService.RateService.OnRateServiceRateEventHandler.html
+
+[OPTIONS]
+Auto Index=Yes
+Compatibility=1.1 or later
+Compiled file=Rate Service API.chm
+Default Window=MsdnHelp
+Default topic=RateServiceAPI.Gain.RateService.html
+Display compile progress=No
+Error log file=Rate Service API.log
+Full-text search=Yes
+Index file=Rate Service API.hhk
+Language=0x409 English (United States)
+Contents file=Rate Service API.hhc
+
+[WINDOWS]
+MsdnHelp="Rate Service API Help","Rate Service API.hhc","Rate Service API.hhk",,,,,,,0x62520,220,0x383e,[86,51,872,558],,,,,,,0
+
+[INFOTYPES]

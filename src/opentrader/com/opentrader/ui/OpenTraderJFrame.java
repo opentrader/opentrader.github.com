@@ -45,6 +45,9 @@
 package com.opentrader.ui;
 
 import com.opentrader.ui.controls.SymbolList;
+import com.services.webservices.TradeAccount;
+import com.services.webservices.TradeServer;
+import com.services.webservices.WebServices;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
@@ -139,7 +142,13 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
         rootPane.putClientProperty("JRootPane.MenuInTitle", Boolean.TRUE);
         jTextFieldSearch.putClientProperty("JTextField.variant", "search");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        /*
+         * Do not do anything when the user requests that the window close.
+         * Instead, the program should probably use a window listener that
+         * performs some other action in its windowClosing method.
+         */
+        setDefaultCloseOperation(
+                javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("OpenTrader Trading Platform");
 //        setIconImage(
 //            new ImageIcon(
@@ -147,6 +156,25 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
 //                    "/org/opentrader/resource/icons/shield_64.png")
 //            ).getImage());
         setMinimumSize(new java.awt.Dimension(800, 600));
+
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            //
+            // Invoked when a window has been opened.
+            //
+            @Override
+            public void windowOpened(java.awt.event.WindowEvent e) {
+                windowOpenedHandler(e);
+            }
+
+            //
+            // Invoked when a window is in the process of being closed.
+            // The close operation can be overridden at this point.
+            //
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                windowClosingHandler(e);
+            }
+        });
         
 
         jToolBarMain.setFloatable(false);
@@ -355,15 +383,21 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new OpenTraderJFrame().setVisible(true);
-            }
-        });
+    private void windowOpenedHandler(java.awt.event.WindowEvent e) {
+        TradeServer server = new TradeServer(
+                "http://api.efxnow.com/DEMOWebServices2.8/Service.asmx",
+                "demorates.efxnow.com:443",
+                "demoprimary.efxnow.com:3020",
+                "GAPI",
+                "En",
+                "");
+        TradeAccount account = new TradeAccount("xxxxx@xxxx.com", "xxxxx");
+        WebServices webServices = new WebServices(server, account);
+        System.out.println(webServices.getRatesServerAuth());
+    }
+
+    private void windowClosingHandler(java.awt.event.WindowEvent e) {
+        this.dispose();
     }
 
 }

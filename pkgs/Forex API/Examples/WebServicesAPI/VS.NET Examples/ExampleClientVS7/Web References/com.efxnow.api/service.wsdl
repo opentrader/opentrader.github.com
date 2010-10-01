@@ -1,0 +1,1445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s0="https://api.efxnow.com/webservices2.1" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" targetNamespace="https://api.efxnow.com/webservices2.1" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://api.efxnow.com/webservices2.1">
+      <s:import namespace="http://www.w3.org/2001/XMLSchema" />
+      <s:element name="GetHistoricRatesDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Quote" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StartDateTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndDateTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHistoricRatesDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHistoricRatesDataSetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PWD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccountResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDealBlotter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDealBlotterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDealBlotterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMarginBlotter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMarginBlotterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMarginBlotterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderBlotter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOrderBlotterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOrderBlotterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPositionBlotter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPositionBlotterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPositionBlotterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSymbolBlotter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSymbolBlotterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSymbolBlotterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaceSingleOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PWD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pair" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Expiry" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BuySell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Rate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderBasis" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaceSingleOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaceSingleOrderResult" type="s0:objPlaceOrderResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="objPlaceOrderResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerOrderReference" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderConfirmation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PlaceOCOOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PWD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pair" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Expiry" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BuySell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Rate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderBasis" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BuySell1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amount1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Rate1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderBasis1" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaceOCOOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaceOCOOrderResult" type="s0:objPlaceOrderResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PWD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderConfirmation" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CancelOrderResult" type="s0:objPlaceOrderResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DealRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PWD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pair" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BuySell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Rate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DealRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DealRequestResult" type="s0:objDealResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="objDealResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Confirmation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Echo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EchoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EchoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRatesServerAuth">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PWD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRatesServerAuthResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRatesServerAuthResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetComment">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCommentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCommentResult" type="s0:objMarketText" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="objMarketText">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item0" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Item2" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetNews">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsResult" type="s0:objMarketText" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountObject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PWD" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAccountObjectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccountObjectResult" type="s0:objAccount" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="objAccount">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GUID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Features" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="BaseCCY" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastOrderSeq" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastDealSeq" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrderLotSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxOrderPips" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CancelOrderPips" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TradeLotSize" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxTradeLots" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TierCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tier1MinLots" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tier1MaxLots" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tier1PipDifference" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tier2MinLots" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tier2MaxLots" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tier2PipDifference" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tier3MinLots" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tier3MaxLots" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Tier3PipDifference" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="objPlaceOrderResponse" nillable="true" type="s0:objPlaceOrderResponse" />
+      <s:element name="objDealResponse" nillable="true" type="s0:objDealResponse" />
+      <s:element name="objMarketText" nillable="true" type="s0:objMarketText" />
+      <s:element name="objAccount" nillable="true" type="s0:objAccount" />
+    </s:schema>
+  </types>
+  <message name="GetHistoricRatesDataSetSoapIn">
+    <part name="parameters" element="s0:GetHistoricRatesDataSet" />
+  </message>
+  <message name="GetHistoricRatesDataSetSoapOut">
+    <part name="parameters" element="s0:GetHistoricRatesDataSetResponse" />
+  </message>
+  <message name="GetAccountSoapIn">
+    <part name="parameters" element="s0:GetAccount" />
+  </message>
+  <message name="GetAccountSoapOut">
+    <part name="parameters" element="s0:GetAccountResponse" />
+  </message>
+  <message name="GetDealBlotterSoapIn">
+    <part name="parameters" element="s0:GetDealBlotter" />
+  </message>
+  <message name="GetDealBlotterSoapOut">
+    <part name="parameters" element="s0:GetDealBlotterResponse" />
+  </message>
+  <message name="GetMarginBlotterSoapIn">
+    <part name="parameters" element="s0:GetMarginBlotter" />
+  </message>
+  <message name="GetMarginBlotterSoapOut">
+    <part name="parameters" element="s0:GetMarginBlotterResponse" />
+  </message>
+  <message name="GetOrderBlotterSoapIn">
+    <part name="parameters" element="s0:GetOrderBlotter" />
+  </message>
+  <message name="GetOrderBlotterSoapOut">
+    <part name="parameters" element="s0:GetOrderBlotterResponse" />
+  </message>
+  <message name="GetPositionBlotterSoapIn">
+    <part name="parameters" element="s0:GetPositionBlotter" />
+  </message>
+  <message name="GetPositionBlotterSoapOut">
+    <part name="parameters" element="s0:GetPositionBlotterResponse" />
+  </message>
+  <message name="GetSymbolBlotterSoapIn">
+    <part name="parameters" element="s0:GetSymbolBlotter" />
+  </message>
+  <message name="GetSymbolBlotterSoapOut">
+    <part name="parameters" element="s0:GetSymbolBlotterResponse" />
+  </message>
+  <message name="PlaceSingleOrderSoapIn">
+    <part name="parameters" element="s0:PlaceSingleOrder" />
+  </message>
+  <message name="PlaceSingleOrderSoapOut">
+    <part name="parameters" element="s0:PlaceSingleOrderResponse" />
+  </message>
+  <message name="PlaceOCOOrderSoapIn">
+    <part name="parameters" element="s0:PlaceOCOOrder" />
+  </message>
+  <message name="PlaceOCOOrderSoapOut">
+    <part name="parameters" element="s0:PlaceOCOOrderResponse" />
+  </message>
+  <message name="CancelOrderSoapIn">
+    <part name="parameters" element="s0:CancelOrder" />
+  </message>
+  <message name="CancelOrderSoapOut">
+    <part name="parameters" element="s0:CancelOrderResponse" />
+  </message>
+  <message name="DealRequestSoapIn">
+    <part name="parameters" element="s0:DealRequest" />
+  </message>
+  <message name="DealRequestSoapOut">
+    <part name="parameters" element="s0:DealRequestResponse" />
+  </message>
+  <message name="EchoSoapIn">
+    <part name="parameters" element="s0:Echo" />
+  </message>
+  <message name="EchoSoapOut">
+    <part name="parameters" element="s0:EchoResponse" />
+  </message>
+  <message name="GetTimeSoapIn">
+    <part name="parameters" element="s0:GetTime" />
+  </message>
+  <message name="GetTimeSoapOut">
+    <part name="parameters" element="s0:GetTimeResponse" />
+  </message>
+  <message name="GetRatesServerAuthSoapIn">
+    <part name="parameters" element="s0:GetRatesServerAuth" />
+  </message>
+  <message name="GetRatesServerAuthSoapOut">
+    <part name="parameters" element="s0:GetRatesServerAuthResponse" />
+  </message>
+  <message name="GetCommentSoapIn">
+    <part name="parameters" element="s0:GetComment" />
+  </message>
+  <message name="GetCommentSoapOut">
+    <part name="parameters" element="s0:GetCommentResponse" />
+  </message>
+  <message name="GetNewsSoapIn">
+    <part name="parameters" element="s0:GetNews" />
+  </message>
+  <message name="GetNewsSoapOut">
+    <part name="parameters" element="s0:GetNewsResponse" />
+  </message>
+  <message name="GetAccountObjectSoapIn">
+    <part name="parameters" element="s0:GetAccountObject" />
+  </message>
+  <message name="GetAccountObjectSoapOut">
+    <part name="parameters" element="s0:GetAccountObjectResponse" />
+  </message>
+  <message name="GetHistoricRatesDataSetHttpGetIn">
+    <part name="Key" type="s:string" />
+    <part name="Quote" type="s:string" />
+    <part name="StartDateTime" type="s:string" />
+    <part name="EndDateTime" type="s:string" />
+  </message>
+  <message name="GetHistoricRatesDataSetHttpGetOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAccountHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Brand" type="s:string" />
+  </message>
+  <message name="GetAccountHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetDealBlotterHttpGetIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetDealBlotterHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetMarginBlotterHttpGetIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetMarginBlotterHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetOrderBlotterHttpGetIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetOrderBlotterHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPositionBlotterHttpGetIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetPositionBlotterHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSymbolBlotterHttpGetIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetSymbolBlotterHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PlaceSingleOrderHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Pair" type="s:string" />
+    <part name="Expiry" type="s:string" />
+    <part name="BuySell" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="Rate" type="s:string" />
+    <part name="OrderBasis" type="s:string" />
+  </message>
+  <message name="PlaceSingleOrderHttpGetOut">
+    <part name="Body" element="s0:objPlaceOrderResponse" />
+  </message>
+  <message name="PlaceOCOOrderHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Pair" type="s:string" />
+    <part name="Expiry" type="s:string" />
+    <part name="BuySell" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="Rate" type="s:string" />
+    <part name="OrderBasis" type="s:string" />
+    <part name="BuySell1" type="s:string" />
+    <part name="Amount1" type="s:string" />
+    <part name="Rate1" type="s:string" />
+    <part name="OrderBasis1" type="s:string" />
+  </message>
+  <message name="PlaceOCOOrderHttpGetOut">
+    <part name="Body" element="s0:objPlaceOrderResponse" />
+  </message>
+  <message name="CancelOrderHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="OrderConfirmation" type="s:string" />
+  </message>
+  <message name="CancelOrderHttpGetOut">
+    <part name="Body" element="s0:objPlaceOrderResponse" />
+  </message>
+  <message name="DealRequestHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Pair" type="s:string" />
+    <part name="BuySell" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="Rate" type="s:string" />
+  </message>
+  <message name="DealRequestHttpGetOut">
+    <part name="Body" element="s0:objDealResponse" />
+  </message>
+  <message name="EchoHttpGetIn">
+    <part name="Message" type="s:string" />
+  </message>
+  <message name="EchoHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetTimeHttpGetIn" />
+  <message name="GetTimeHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetRatesServerAuthHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Brand" type="s:string" />
+  </message>
+  <message name="GetRatesServerAuthHttpGetOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetCommentHttpGetIn" />
+  <message name="GetCommentHttpGetOut">
+    <part name="Body" element="s0:objMarketText" />
+  </message>
+  <message name="GetNewsHttpGetIn" />
+  <message name="GetNewsHttpGetOut">
+    <part name="Body" element="s0:objMarketText" />
+  </message>
+  <message name="GetAccountObjectHttpGetIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Brand" type="s:string" />
+    <part name="Notes" type="s:string" />
+  </message>
+  <message name="GetAccountObjectHttpGetOut">
+    <part name="Body" element="s0:objAccount" />
+  </message>
+  <message name="GetHistoricRatesDataSetHttpPostIn">
+    <part name="Key" type="s:string" />
+    <part name="Quote" type="s:string" />
+    <part name="StartDateTime" type="s:string" />
+    <part name="EndDateTime" type="s:string" />
+  </message>
+  <message name="GetHistoricRatesDataSetHttpPostOut">
+    <part name="Body" element="s0:DataSet" />
+  </message>
+  <message name="GetAccountHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Brand" type="s:string" />
+  </message>
+  <message name="GetAccountHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetDealBlotterHttpPostIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetDealBlotterHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetMarginBlotterHttpPostIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetMarginBlotterHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetOrderBlotterHttpPostIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetOrderBlotterHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetPositionBlotterHttpPostIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetPositionBlotterHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetSymbolBlotterHttpPostIn">
+    <part name="Key" type="s:string" />
+  </message>
+  <message name="GetSymbolBlotterHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="PlaceSingleOrderHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Pair" type="s:string" />
+    <part name="Expiry" type="s:string" />
+    <part name="BuySell" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="Rate" type="s:string" />
+    <part name="OrderBasis" type="s:string" />
+  </message>
+  <message name="PlaceSingleOrderHttpPostOut">
+    <part name="Body" element="s0:objPlaceOrderResponse" />
+  </message>
+  <message name="PlaceOCOOrderHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Pair" type="s:string" />
+    <part name="Expiry" type="s:string" />
+    <part name="BuySell" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="Rate" type="s:string" />
+    <part name="OrderBasis" type="s:string" />
+    <part name="BuySell1" type="s:string" />
+    <part name="Amount1" type="s:string" />
+    <part name="Rate1" type="s:string" />
+    <part name="OrderBasis1" type="s:string" />
+  </message>
+  <message name="PlaceOCOOrderHttpPostOut">
+    <part name="Body" element="s0:objPlaceOrderResponse" />
+  </message>
+  <message name="CancelOrderHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="OrderConfirmation" type="s:string" />
+  </message>
+  <message name="CancelOrderHttpPostOut">
+    <part name="Body" element="s0:objPlaceOrderResponse" />
+  </message>
+  <message name="DealRequestHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Pair" type="s:string" />
+    <part name="BuySell" type="s:string" />
+    <part name="Amount" type="s:string" />
+    <part name="Rate" type="s:string" />
+  </message>
+  <message name="DealRequestHttpPostOut">
+    <part name="Body" element="s0:objDealResponse" />
+  </message>
+  <message name="EchoHttpPostIn">
+    <part name="Message" type="s:string" />
+  </message>
+  <message name="EchoHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetTimeHttpPostIn" />
+  <message name="GetTimeHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetRatesServerAuthHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Brand" type="s:string" />
+  </message>
+  <message name="GetRatesServerAuthHttpPostOut">
+    <part name="Body" element="s0:string" />
+  </message>
+  <message name="GetCommentHttpPostIn" />
+  <message name="GetCommentHttpPostOut">
+    <part name="Body" element="s0:objMarketText" />
+  </message>
+  <message name="GetNewsHttpPostIn" />
+  <message name="GetNewsHttpPostOut">
+    <part name="Body" element="s0:objMarketText" />
+  </message>
+  <message name="GetAccountObjectHttpPostIn">
+    <part name="UserID" type="s:string" />
+    <part name="PWD" type="s:string" />
+    <part name="Brand" type="s:string" />
+    <part name="Notes" type="s:string" />
+  </message>
+  <message name="GetAccountObjectHttpPostOut">
+    <part name="Body" element="s0:objAccount" />
+  </message>
+  <portType name="ServiceSoap">
+    <operation name="GetHistoricRatesDataSet">
+      <documentation>DataSet of historic market rates up to 24 hours maximum. Quote is in the form CCY/CCY i.e. GBP/USD.</documentation>
+      <input message="s0:GetHistoricRatesDataSetSoapIn" />
+      <output message="s0:GetHistoricRatesDataSetSoapOut" />
+    </operation>
+    <operation name="GetAccount">
+      <documentation>{Deprecated} Account parameters</documentation>
+      <input message="s0:GetAccountSoapIn" />
+      <output message="s0:GetAccountSoapOut" />
+    </operation>
+    <operation name="GetDealBlotter">
+      <documentation>{Deprecated} User Deal blotter</documentation>
+      <input message="s0:GetDealBlotterSoapIn" />
+      <output message="s0:GetDealBlotterSoapOut" />
+    </operation>
+    <operation name="GetMarginBlotter">
+      <documentation>{Deprecated} User Margin blotter</documentation>
+      <input message="s0:GetMarginBlotterSoapIn" />
+      <output message="s0:GetMarginBlotterSoapOut" />
+    </operation>
+    <operation name="GetOrderBlotter">
+      <documentation>{Deprecated} User Order blotter</documentation>
+      <input message="s0:GetOrderBlotterSoapIn" />
+      <output message="s0:GetOrderBlotterSoapOut" />
+    </operation>
+    <operation name="GetPositionBlotter">
+      <documentation>{Deprecated} User Position blotter</documentation>
+      <input message="s0:GetPositionBlotterSoapIn" />
+      <output message="s0:GetPositionBlotterSoapOut" />
+    </operation>
+    <operation name="GetSymbolBlotter">
+      <documentation>{Deprecated} List of traded symbols</documentation>
+      <input message="s0:GetSymbolBlotterSoapIn" />
+      <output message="s0:GetSymbolBlotterSoapOut" />
+    </operation>
+    <operation name="PlaceSingleOrder">
+      <documentation>Place single trade order. Pair as GBP/USD, Expiry as EOD or GTC, BuySell as B or S, Amount as multiple of 10,000 or 100,000 depending upon account, Order Basis as S or T for Stop loss or LimiT.</documentation>
+      <input message="s0:PlaceSingleOrderSoapIn" />
+      <output message="s0:PlaceSingleOrderSoapOut" />
+    </operation>
+    <operation name="PlaceOCOOrder">
+      <documentation>Place OCO trade order. Pair as GBP/USD, Expiry as EOD or GTC, BuySell as B or S, Amount as multiple of 10,000 or 100,000 depending upon account, Order Basis as S or T for Stop loss or LimiT.</documentation>
+      <input message="s0:PlaceOCOOrderSoapIn" />
+      <output message="s0:PlaceOCOOrderSoapOut" />
+    </operation>
+    <operation name="CancelOrder">
+      <documentation>Cancel trade order. OrderConfirmation as reference number provided for original order; note: in the case of an OCO, both legs should be cancelled.</documentation>
+      <input message="s0:CancelOrderSoapIn" />
+      <output message="s0:CancelOrderSoapOut" />
+    </operation>
+    <operation name="DealRequest">
+      <documentation>Place trade deal request. Pair as GBP/USD, BuySell as B or S, Amount as multiple of 10,000 or 100,000 depending upon account.</documentation>
+      <input message="s0:DealRequestSoapIn" />
+      <output message="s0:DealRequestSoapOut" />
+    </operation>
+    <operation name="Echo">
+      <documentation>Returns string that you sent as a literal and as a list of ASCII char codes. Use this routine if you wish to test the WebService process or check connectivity.</documentation>
+      <input message="s0:EchoSoapIn" />
+      <output message="s0:EchoSoapOut" />
+    </operation>
+    <operation name="GetTime">
+      <documentation>Returns the server time (UTC), can be used as a connection keep-alive if you so wish.</documentation>
+      <input message="s0:GetTimeSoapIn" />
+      <output message="s0:GetTimeSoapOut" />
+    </operation>
+    <operation name="GetRatesServerAuth">
+      <documentation>Returns the string used to authenticate with the Rates Server. This must be called prior to connecting with the rates server. Note: Use 'DEMO' as default value for Brand.</documentation>
+      <input message="s0:GetRatesServerAuthSoapIn" />
+      <output message="s0:GetRatesServerAuthSoapOut" />
+    </operation>
+    <operation name="GetComment">
+      <documentation>GAIN Commentary. Returns top three GAIN Commentry items.</documentation>
+      <input message="s0:GetCommentSoapIn" />
+      <output message="s0:GetCommentSoapOut" />
+    </operation>
+    <operation name="GetNews">
+      <documentation>Market News. Returns top three News items.</documentation>
+      <input message="s0:GetNewsSoapIn" />
+      <output message="s0:GetNewsSoapOut" />
+    </operation>
+    <operation name="GetAccountObject">
+      <documentation>Account parameters. Notes field may be used to describe the client. Use 'GAIN' as the default value for brand.</documentation>
+      <input message="s0:GetAccountObjectSoapIn" />
+      <output message="s0:GetAccountObjectSoapOut" />
+    </operation>
+  </portType>
+  <portType name="ServiceHttpGet">
+    <operation name="GetHistoricRatesDataSet">
+      <documentation>DataSet of historic market rates up to 24 hours maximum. Quote is in the form CCY/CCY i.e. GBP/USD.</documentation>
+      <input message="s0:GetHistoricRatesDataSetHttpGetIn" />
+      <output message="s0:GetHistoricRatesDataSetHttpGetOut" />
+    </operation>
+    <operation name="GetAccount">
+      <documentation>{Deprecated} Account parameters</documentation>
+      <input message="s0:GetAccountHttpGetIn" />
+      <output message="s0:GetAccountHttpGetOut" />
+    </operation>
+    <operation name="GetDealBlotter">
+      <documentation>{Deprecated} User Deal blotter</documentation>
+      <input message="s0:GetDealBlotterHttpGetIn" />
+      <output message="s0:GetDealBlotterHttpGetOut" />
+    </operation>
+    <operation name="GetMarginBlotter">
+      <documentation>{Deprecated} User Margin blotter</documentation>
+      <input message="s0:GetMarginBlotterHttpGetIn" />
+      <output message="s0:GetMarginBlotterHttpGetOut" />
+    </operation>
+    <operation name="GetOrderBlotter">
+      <documentation>{Deprecated} User Order blotter</documentation>
+      <input message="s0:GetOrderBlotterHttpGetIn" />
+      <output message="s0:GetOrderBlotterHttpGetOut" />
+    </operation>
+    <operation name="GetPositionBlotter">
+      <documentation>{Deprecated} User Position blotter</documentation>
+      <input message="s0:GetPositionBlotterHttpGetIn" />
+      <output message="s0:GetPositionBlotterHttpGetOut" />
+    </operation>
+    <operation name="GetSymbolBlotter">
+      <documentation>{Deprecated} List of traded symbols</documentation>
+      <input message="s0:GetSymbolBlotterHttpGetIn" />
+      <output message="s0:GetSymbolBlotterHttpGetOut" />
+    </operation>
+    <operation name="PlaceSingleOrder">
+      <documentation>Place single trade order. Pair as GBP/USD, Expiry as EOD or GTC, BuySell as B or S, Amount as multiple of 10,000 or 100,000 depending upon account, Order Basis as S or T for Stop loss or LimiT.</documentation>
+      <input message="s0:PlaceSingleOrderHttpGetIn" />
+      <output message="s0:PlaceSingleOrderHttpGetOut" />
+    </operation>
+    <operation name="PlaceOCOOrder">
+      <documentation>Place OCO trade order. Pair as GBP/USD, Expiry as EOD or GTC, BuySell as B or S, Amount as multiple of 10,000 or 100,000 depending upon account, Order Basis as S or T for Stop loss or LimiT.</documentation>
+      <input message="s0:PlaceOCOOrderHttpGetIn" />
+      <output message="s0:PlaceOCOOrderHttpGetOut" />
+    </operation>
+    <operation name="CancelOrder">
+      <documentation>Cancel trade order. OrderConfirmation as reference number provided for original order; note: in the case of an OCO, both legs should be cancelled.</documentation>
+      <input message="s0:CancelOrderHttpGetIn" />
+      <output message="s0:CancelOrderHttpGetOut" />
+    </operation>
+    <operation name="DealRequest">
+      <documentation>Place trade deal request. Pair as GBP/USD, BuySell as B or S, Amount as multiple of 10,000 or 100,000 depending upon account.</documentation>
+      <input message="s0:DealRequestHttpGetIn" />
+      <output message="s0:DealRequestHttpGetOut" />
+    </operation>
+    <operation name="Echo">
+      <documentation>Returns string that you sent as a literal and as a list of ASCII char codes. Use this routine if you wish to test the WebService process or check connectivity.</documentation>
+      <input message="s0:EchoHttpGetIn" />
+      <output message="s0:EchoHttpGetOut" />
+    </operation>
+    <operation name="GetTime">
+      <documentation>Returns the server time (UTC), can be used as a connection keep-alive if you so wish.</documentation>
+      <input message="s0:GetTimeHttpGetIn" />
+      <output message="s0:GetTimeHttpGetOut" />
+    </operation>
+    <operation name="GetRatesServerAuth">
+      <documentation>Returns the string used to authenticate with the Rates Server. This must be called prior to connecting with the rates server. Note: Use 'DEMO' as default value for Brand.</documentation>
+      <input message="s0:GetRatesServerAuthHttpGetIn" />
+      <output message="s0:GetRatesServerAuthHttpGetOut" />
+    </operation>
+    <operation name="GetComment">
+      <documentation>GAIN Commentary. Returns top three GAIN Commentry items.</documentation>
+      <input message="s0:GetCommentHttpGetIn" />
+      <output message="s0:GetCommentHttpGetOut" />
+    </operation>
+    <operation name="GetNews">
+      <documentation>Market News. Returns top three News items.</documentation>
+      <input message="s0:GetNewsHttpGetIn" />
+      <output message="s0:GetNewsHttpGetOut" />
+    </operation>
+    <operation name="GetAccountObject">
+      <documentation>Account parameters. Notes field may be used to describe the client. Use 'GAIN' as the default value for brand.</documentation>
+      <input message="s0:GetAccountObjectHttpGetIn" />
+      <output message="s0:GetAccountObjectHttpGetOut" />
+    </operation>
+  </portType>
+  <portType name="ServiceHttpPost">
+    <operation name="GetHistoricRatesDataSet">
+      <documentation>DataSet of historic market rates up to 24 hours maximum. Quote is in the form CCY/CCY i.e. GBP/USD.</documentation>
+      <input message="s0:GetHistoricRatesDataSetHttpPostIn" />
+      <output message="s0:GetHistoricRatesDataSetHttpPostOut" />
+    </operation>
+    <operation name="GetAccount">
+      <documentation>{Deprecated} Account parameters</documentation>
+      <input message="s0:GetAccountHttpPostIn" />
+      <output message="s0:GetAccountHttpPostOut" />
+    </operation>
+    <operation name="GetDealBlotter">
+      <documentation>{Deprecated} User Deal blotter</documentation>
+      <input message="s0:GetDealBlotterHttpPostIn" />
+      <output message="s0:GetDealBlotterHttpPostOut" />
+    </operation>
+    <operation name="GetMarginBlotter">
+      <documentation>{Deprecated} User Margin blotter</documentation>
+      <input message="s0:GetMarginBlotterHttpPostIn" />
+      <output message="s0:GetMarginBlotterHttpPostOut" />
+    </operation>
+    <operation name="GetOrderBlotter">
+      <documentation>{Deprecated} User Order blotter</documentation>
+      <input message="s0:GetOrderBlotterHttpPostIn" />
+      <output message="s0:GetOrderBlotterHttpPostOut" />
+    </operation>
+    <operation name="GetPositionBlotter">
+      <documentation>{Deprecated} User Position blotter</documentation>
+      <input message="s0:GetPositionBlotterHttpPostIn" />
+      <output message="s0:GetPositionBlotterHttpPostOut" />
+    </operation>
+    <operation name="GetSymbolBlotter">
+      <documentation>{Deprecated} List of traded symbols</documentation>
+      <input message="s0:GetSymbolBlotterHttpPostIn" />
+      <output message="s0:GetSymbolBlotterHttpPostOut" />
+    </operation>
+    <operation name="PlaceSingleOrder">
+      <documentation>Place single trade order. Pair as GBP/USD, Expiry as EOD or GTC, BuySell as B or S, Amount as multiple of 10,000 or 100,000 depending upon account, Order Basis as S or T for Stop loss or LimiT.</documentation>
+      <input message="s0:PlaceSingleOrderHttpPostIn" />
+      <output message="s0:PlaceSingleOrderHttpPostOut" />
+    </operation>
+    <operation name="PlaceOCOOrder">
+      <documentation>Place OCO trade order. Pair as GBP/USD, Expiry as EOD or GTC, BuySell as B or S, Amount as multiple of 10,000 or 100,000 depending upon account, Order Basis as S or T for Stop loss or LimiT.</documentation>
+      <input message="s0:PlaceOCOOrderHttpPostIn" />
+      <output message="s0:PlaceOCOOrderHttpPostOut" />
+    </operation>
+    <operation name="CancelOrder">
+      <documentation>Cancel trade order. OrderConfirmation as reference number provided for original order; note: in the case of an OCO, both legs should be cancelled.</documentation>
+      <input message="s0:CancelOrderHttpPostIn" />
+      <output message="s0:CancelOrderHttpPostOut" />
+    </operation>
+    <operation name="DealRequest">
+      <documentation>Place trade deal request. Pair as GBP/USD, BuySell as B or S, Amount as multiple of 10,000 or 100,000 depending upon account.</documentation>
+      <input message="s0:DealRequestHttpPostIn" />
+      <output message="s0:DealRequestHttpPostOut" />
+    </operation>
+    <operation name="Echo">
+      <documentation>Returns string that you sent as a literal and as a list of ASCII char codes. Use this routine if you wish to test the WebService process or check connectivity.</documentation>
+      <input message="s0:EchoHttpPostIn" />
+      <output message="s0:EchoHttpPostOut" />
+    </operation>
+    <operation name="GetTime">
+      <documentation>Returns the server time (UTC), can be used as a connection keep-alive if you so wish.</documentation>
+      <input message="s0:GetTimeHttpPostIn" />
+      <output message="s0:GetTimeHttpPostOut" />
+    </operation>
+    <operation name="GetRatesServerAuth">
+      <documentation>Returns the string used to authenticate with the Rates Server. This must be called prior to connecting with the rates server. Note: Use 'DEMO' as default value for Brand.</documentation>
+      <input message="s0:GetRatesServerAuthHttpPostIn" />
+      <output message="s0:GetRatesServerAuthHttpPostOut" />
+    </operation>
+    <operation name="GetComment">
+      <documentation>GAIN Commentary. Returns top three GAIN Commentry items.</documentation>
+      <input message="s0:GetCommentHttpPostIn" />
+      <output message="s0:GetCommentHttpPostOut" />
+    </operation>
+    <operation name="GetNews">
+      <documentation>Market News. Returns top three News items.</documentation>
+      <input message="s0:GetNewsHttpPostIn" />
+      <output message="s0:GetNewsHttpPostOut" />
+    </operation>
+    <operation name="GetAccountObject">
+      <documentation>Account parameters. Notes field may be used to describe the client. Use 'GAIN' as the default value for brand.</documentation>
+      <input message="s0:GetAccountObjectHttpPostIn" />
+      <output message="s0:GetAccountObjectHttpPostOut" />
+    </operation>
+  </portType>
+  <binding name="ServiceSoap" type="s0:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <operation name="GetHistoricRatesDataSet">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetHistoricRatesDataSet" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAccount">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetAccount" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetDealBlotter">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetDealBlotter" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetMarginBlotter">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetMarginBlotter" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetOrderBlotter">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetOrderBlotter" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetPositionBlotter">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetPositionBlotter" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetSymbolBlotter">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetSymbolBlotter" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PlaceSingleOrder">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/PlaceSingleOrder" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="PlaceOCOOrder">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/PlaceOCOOrder" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="CancelOrder">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/CancelOrder" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="DealRequest">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/DealRequest" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="Echo">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/Echo" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetTime">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetTime" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetRatesServerAuth">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetRatesServerAuth" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetComment">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetComment" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetNews">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetNews" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="GetAccountObject">
+      <soap:operation soapAction="https://api.efxnow.com/webservices2.1/GetAccountObject" style="document" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ServiceHttpGet" type="s0:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <operation name="GetHistoricRatesDataSet">
+      <http:operation location="/GetHistoricRatesDataSet" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAccount">
+      <http:operation location="/GetAccount" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDealBlotter">
+      <http:operation location="/GetDealBlotter" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetMarginBlotter">
+      <http:operation location="/GetMarginBlotter" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetOrderBlotter">
+      <http:operation location="/GetOrderBlotter" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPositionBlotter">
+      <http:operation location="/GetPositionBlotter" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSymbolBlotter">
+      <http:operation location="/GetSymbolBlotter" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlaceSingleOrder">
+      <http:operation location="/PlaceSingleOrder" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlaceOCOOrder">
+      <http:operation location="/PlaceOCOOrder" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CancelOrder">
+      <http:operation location="/CancelOrder" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DealRequest">
+      <http:operation location="/DealRequest" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Echo">
+      <http:operation location="/Echo" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTime">
+      <http:operation location="/GetTime" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRatesServerAuth">
+      <http:operation location="/GetRatesServerAuth" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetComment">
+      <http:operation location="/GetComment" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetNews">
+      <http:operation location="/GetNews" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAccountObject">
+      <http:operation location="/GetAccountObject" />
+      <input>
+        <http:urlEncoded />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <binding name="ServiceHttpPost" type="s0:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <operation name="GetHistoricRatesDataSet">
+      <http:operation location="/GetHistoricRatesDataSet" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAccount">
+      <http:operation location="/GetAccount" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetDealBlotter">
+      <http:operation location="/GetDealBlotter" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetMarginBlotter">
+      <http:operation location="/GetMarginBlotter" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetOrderBlotter">
+      <http:operation location="/GetOrderBlotter" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetPositionBlotter">
+      <http:operation location="/GetPositionBlotter" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetSymbolBlotter">
+      <http:operation location="/GetSymbolBlotter" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlaceSingleOrder">
+      <http:operation location="/PlaceSingleOrder" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="PlaceOCOOrder">
+      <http:operation location="/PlaceOCOOrder" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="CancelOrder">
+      <http:operation location="/CancelOrder" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="DealRequest">
+      <http:operation location="/DealRequest" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="Echo">
+      <http:operation location="/Echo" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetTime">
+      <http:operation location="/GetTime" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetRatesServerAuth">
+      <http:operation location="/GetRatesServerAuth" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetComment">
+      <http:operation location="/GetComment" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetNews">
+      <http:operation location="/GetNews" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+    <operation name="GetAccountObject">
+      <http:operation location="/GetAccountObject" />
+      <input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </input>
+      <output>
+        <mime:mimeXml part="Body" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Service">
+    <documentation>Core Web services offered by GAIN Capital. These services are offered to customers of GAIN Capital for the purposes of carrying out business with GAIN Capital. All data supplied remains copyright GAIN Capital inc and may not be reproduced without the prior written permission of GAIN Capital inc.</documentation>
+    <port name="ServiceSoap" binding="s0:ServiceSoap">
+      <soap:address location="http://api.efxnow.com/DemoWebservices2.1/service.asmx" />
+    </port>
+    <port name="ServiceHttpGet" binding="s0:ServiceHttpGet">
+      <http:address location="http://api.efxnow.com/DemoWebservices2.1/service.asmx" />
+    </port>
+    <port name="ServiceHttpPost" binding="s0:ServiceHttpPost">
+      <http:address location="http://api.efxnow.com/DemoWebservices2.1/service.asmx" />
+    </port>
+  </service>
+</definitions>

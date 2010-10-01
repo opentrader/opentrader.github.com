@@ -1,0 +1,21 @@
+The trading platform itself is available from Sunday 18:00EST to Friday 16:30EST with a daily outage between 17:00EST and 17:15EST for the daily roll.
+
+Web Services:
+
+Demo API:
+http://api.efxnow.com/DEMOWebServices2.8/Service.asmx
+
+Live API:
+https://api.efxnow.com/WebServices2.8/Service.asmx
+
+
+
+Rate server connection:
+
+Demo API:
+Demorates.efxnow.com:443 Primary
+demoprimary.efxnow.com:3020 Secondary
+
+Live API:
+Liverates.efxnow.com:443 Primary
+liveprimary.efxnow.com:3020 Secondary

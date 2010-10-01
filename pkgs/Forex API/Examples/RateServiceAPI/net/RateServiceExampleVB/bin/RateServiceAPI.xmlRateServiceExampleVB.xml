@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>RateServiceExampleVB</name>
+  </assembly>
+  <members>
+    <member name="T:RateServiceExampleVB.RateServiceExampleModule" />
+    <member name="F:RateServiceExampleVB.RateServiceExampleModule.MyRateService" />
+    <member name="F:RateServiceExampleVB.RateServiceExampleModule.Host" />
+    <member name="F:RateServiceExampleVB.RateServiceExampleModule.Port" />
+    <member name="F:RateServiceExampleVB.RateServiceExampleModule.Key" />
+    <member name="M:RateServiceExampleVB.RateServiceExampleModule.Main(System.String[])" />
+    <member name="M:RateServiceExampleVB.RateServiceExampleModule.Reconnect" />
+    <member name="M:RateServiceExampleVB.RateServiceExampleModule.MyRateService_OnRateServiceConnected" />
+    <member name="M:RateServiceExampleVB.RateServiceExampleModule.MyRateService_OnRateServiceDisconnected" />
+    <member name="M:RateServiceExampleVB.RateServiceExampleModule.MyRateService_OnRateServiceConnectionFailed(System.Exception)" />
+    <member name="M:RateServiceExampleVB.RateServiceExampleModule.MyRateService_OnRateServiceConnectionLost(System.Exception)" />
+    <member name="M:RateServiceExampleVB.RateServiceExampleModule.MyRateService_OnRateServiceRate(RateServiceAPI.Gain.RateService.Rate)" />
+  </members>
+</doc>

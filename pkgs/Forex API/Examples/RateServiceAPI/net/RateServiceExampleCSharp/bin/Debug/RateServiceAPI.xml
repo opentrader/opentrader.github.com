@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>RateServiceAPI</name>
+  </assembly>
+  <members>
+    <member name="T:RateServiceAPI.Gain.RateService.Rate">    <summary>
+    Rate class hold all the data information associated with rates
+    </summary></member>
+    <member name="F:RateServiceAPI.Gain.RateService.Rate._Key" />
+    <member name="F:RateServiceAPI.Gain.RateService.Rate._CurrencyPair" />
+    <member name="F:RateServiceAPI.Gain.RateService.Rate._Ask" />
+    <member name="F:RateServiceAPI.Gain.RateService.Rate._Bid" />
+    <member name="F:RateServiceAPI.Gain.RateService.Rate._High" />
+    <member name="F:RateServiceAPI.Gain.RateService.Rate._Low" />
+    <member name="F:RateServiceAPI.Gain.RateService.Rate._DecimalPlaces" />
+    <member name="F:RateServiceAPI.Gain.RateService.Rate._Dealable" />
+    <member name="F:RateServiceAPI.Gain.RateService.Rate._Domain" />
+    <member name="P:RateServiceAPI.Gain.RateService.Rate.Key">        <summary>
+        The unique key associated with the currency pair
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.Rate.CurrencyPair">        <summary>
+        The currency pair of the rate
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.Rate.Ask">        <summary>
+        The ask value of the rate
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.Rate.Bid">        <summary>
+        The bid value of the rate
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.Rate.High">        <summary>
+        The high value of the rate
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.Rate.Low">        <summary>
+        The low value of the rate
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.Rate.DecimalPlaces">        <summary>
+        The decimal places of the rate
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.Rate.Dealable">        <summary>
+        The dealable status of the rate. D is dealable, R is Refered
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.Rate.Domain">        <summary>
+        The domain of the rate. A is America, E is Europe
+        </summary></member>
+    <member name="M:RateServiceAPI.Gain.RateService.Rate.ToString">        <summary>Creates a string representation of the rate</summary>
+        <returns>String representation of the current Rate</returns></member>
+    <member name="T:RateServiceAPI.Gain.RateService.RateService">    <summary>
+    RateService class is the primary interface for connecting to the Rates Server
+    </summary></member>
+    <member name="F:RateServiceAPI.Gain.RateService.RateService.SOCKET_TIMEOUT_MS" />
+    <member name="F:RateServiceAPI.Gain.RateService.RateService._IsConnected" />
+    <member name="F:RateServiceAPI.Gain.RateService.RateService._Disconnect" />
+    <member name="F:RateServiceAPI.Gain.RateService.RateService._Host" />
+    <member name="F:RateServiceAPI.Gain.RateService.RateService._Port" />
+    <member name="F:RateServiceAPI.Gain.RateService.RateService._Key" />
+    <member name="F:RateServiceAPI.Gain.RateService.RateService._FailedCount" />
+    <member name="F:RateServiceAPI.Gain.RateService.RateService._FailedConsecutiveCount" />
+    <member name="F:RateServiceAPI.Gain.RateService.RateService._SuccessCount" />
+    <member name="F:RateServiceAPI.Gain.RateService.RateService._Rates" />
+    <member name="">        <summary>
+        Raised when connected and authenticated with the Rate Service
+        </summary></member>
+    <member name="">        <summary>
+        Raised when disconnected from the Rate Service after a disconnect request
+        </summary></member>
+    <member name="" />
+    <member name="">        <summary>
+        Raised when the connection request to Rate Service has failed
+        </summary></member>
+    <member name="">        <summary>
+        Raised when a Rate is updated
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.RateService.Version">        <summary>
+        The version of the rates service library
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.RateService.SuccessfullConnectionCount">        <summary>
+        The number of successfull connections to the Rate Service
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.RateService.FailedConnectionCount">        <summary>
+        The number of failed connections to the Rate Service
+        </summary></member>
+    <member name="P:RateServiceAPI.Gain.RateService.RateService.FailedConsecutiveConnectionCount">        <summary>
+        The number of consecutive failed connections to the Rate Service
+        </summary></member>
+    <member name="M:RateServiceAPI.Gain.RateService.RateService.New" />
+    <member name="M:RateServiceAPI.Gain.RateService.RateService.Connect(System.String,System.Int32,System.String)">        <summary>Connects to the Rate Service with the specified parameters</summary>
+        <param name="Host">Rate Service Host to connect</param>
+        <param name="Port">Rate Service Port to connect</param>
+        <param name="Key">Key to authenticate with the Rate Service</param>
+        <returns>True if connection attempted or false if not attempted, i.e already connection</returns></member>
+    <member name="M:RateServiceAPI.Gain.RateService.RateService.Disconnect">        <summary>Disconnects from the Rate Service</summary>
+        <returns>True if disconnection attempted or false if not attempted, i.e not connection</returns></member>
+    <member name="M:RateServiceAPI.Gain.RateService.RateService.IsConnected">        <summary>Checks if the RateService object is connected</summary>
+        <returns>True if connected or false if not connected</returns></member>
+    <member name="M:RateServiceAPI.Gain.RateService.RateService.ProcessRatesFeed" />
+    <member name="M:RateServiceAPI.Gain.RateService.RateService.ProcessMessage(System.String)" />
+    <member name="M:RateServiceAPI.Gain.RateService.RateService.ProcessSMessage(System.String)" />
+    <member name="M:RateServiceAPI.Gain.RateService.RateService.ProcessRMessage(System.String)" />
+    <member name="M:RateServiceAPI.Gain.RateService.RateService.ReadMessage(System.Net.Sockets.Socket@)" />
+  </members>
+</doc>

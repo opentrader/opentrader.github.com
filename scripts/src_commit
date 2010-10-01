@@ -7,3 +7,5 @@ cd OpenTrader
 git add .
 git commit -m 'weekly commit'
 git push origin master
+cd ..
+rm -rf opentrader_bkp/

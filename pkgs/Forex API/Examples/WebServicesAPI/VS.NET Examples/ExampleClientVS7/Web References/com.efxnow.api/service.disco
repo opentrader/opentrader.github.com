@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://api.efxnow.com/DemoWebservices2.1/service.asmx?wsdl" docRef="http://api.efxnow.com/DemoWebservices2.1/service.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://api.efxnow.com/DemoWebservices2.1/service.asmx" xmlns:q1="https://api.efxnow.com/webservices2.1" binding="q1:ServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

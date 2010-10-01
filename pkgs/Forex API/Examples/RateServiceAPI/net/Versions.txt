@@ -1,0 +1,14 @@
+
+Rate Service 
+------------
+
+17-04-03 Rate Service 1.0.0   [pc]  First Release of the RateServiceAPI. Includes examples in VB and C#
+
+
+
+
+
+
+
+
+
