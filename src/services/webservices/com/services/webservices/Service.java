@@ -143,7 +143,7 @@ public class Service {
                 return( response );
             } catch (Exception e) {
                 LOG.severe("Error executing Webservice URL: " + webServiceURL);
-                LOG.severe(e.toString());
+                LOG.severe(e.getMessage());
                 try {
                     Thread.sleep(DELAY_SLEEP_MS);
                 } catch (Exception ex) {}

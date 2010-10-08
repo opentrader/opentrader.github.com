@@ -44,11 +44,21 @@
 
 package com.opentrader.ui;
 
-import com.opentrader.ui.controls.SymbolList;
+import com.internal.initializer.Application;
+
+import com.opentrader.ui.controls.CommonTree;
+import com.opentrader.ui.controls.SymbolTable;
+
 import com.services.webservices.TradeAccount;
 import com.services.webservices.TradeServer;
 import com.services.webservices.WebServices;
+
+import com.ximpleware.NavException;
+
+import java.io.File;
+
 import java.util.logging.Logger;
+
 import javax.swing.ImageIcon;
 
 /**
@@ -74,7 +84,6 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel          jPanelAlerts;
     private javax.swing.JPanel          jPanelMailbox;
     private javax.swing.JPanel          jPanelJournal;
-    private javax.swing.JPanel          jPanelCommon;
     private javax.swing.JPanel          jPanel3;
     private javax.swing.JPanel          jPanelChart;
     
@@ -90,8 +99,10 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
     private javax.swing.JToolBar        jToolBarMain;
 
     private javax.swing.JScrollPane     scrollPaneSymbol;
+    private javax.swing.JScrollPane     scrollPaneCommon;
 
-    private SymbolList                  symbolList;
+    private SymbolTable                 symbolTable;
+    private CommonTree                  commonTree;
 
     /** Creates new form OpenTraderJFrame */
     public OpenTraderJFrame() {
@@ -117,7 +128,6 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
         jPanelAlerts = new javax.swing.JPanel();
         jPanelMailbox = new javax.swing.JPanel();
         jPanelJournal = new javax.swing.JPanel();
-        jPanelCommon = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanelChart = new javax.swing.JPanel();
 
@@ -133,8 +143,10 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
         jToolBarMain = new javax.swing.JToolBar();
 
         scrollPaneSymbol = new javax.swing.JScrollPane();
+        scrollPaneCommon = new javax.swing.JScrollPane();
 
-        symbolList = new SymbolList();
+        symbolTable = new SymbolTable();
+        commonTree = new CommonTree();
 
 
         /** UI properties */
@@ -185,20 +197,6 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
         jTextFieldSearch.setMinimumSize(new java.awt.Dimension(200,28));
         jTextFieldSearch.setPreferredSize(new java.awt.Dimension(200,28));
         jToolBarMain.add(jTextFieldSearch);
-
-        javax.swing.GroupLayout jPanelCommonLayout =
-                new javax.swing.GroupLayout(jPanelCommon);
-        jPanelCommon.setLayout(jPanelCommonLayout);
-        jPanelCommonLayout.setHorizontalGroup(
-            jPanelCommonLayout.createParallelGroup(
-                javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 147, Short.MAX_VALUE)
-        );
-        jPanelCommonLayout.setVerticalGroup(
-            jPanelCommonLayout.createParallelGroup(
-                javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 104, Short.MAX_VALUE)
-        );
 
         javax.swing.GroupLayout jPanel3Layout = 
                 new javax.swing.GroupLayout(jPanel3);
@@ -311,12 +309,40 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
                 javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 78, Short.MAX_VALUE)
         );
+
+        /*
+         * Internal components init
+         */
+
+        //symbolTable
+
+        //commonTree
+        for (File server : new File(Application.getServersDir()).listFiles()) {
+            try {
+                commonTree.addServer(new TradeServer(server));
+            } catch (NavException e) {
+                LOG.warning(e.getMessage());
+            } catch (Exception e) {
+                LOG.warning(e.getMessage());
+            }
+        }
+
+        for (File account : new File(Application.getAccountsDir()).listFiles()) {
+            try {
+                commonTree.addAccount(new TradeAccount(account));
+            } catch (NavException e) {
+                LOG.warning(e.getMessage());
+            } catch (Exception e) {
+                LOG.warning(e.getMessage());
+            }
+        }
  
-        scrollPaneSymbol.setViewportView(symbolList);
+        scrollPaneSymbol.setViewportView(symbolTable);
+        scrollPaneCommon.setViewportView(commonTree);
 
         jTabbedPaneCommon.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         jTabbedPaneCommon.addTab("Symbols", scrollPaneSymbol);
-        jTabbedPaneCommon.addTab("Common", jPanelCommon);
+        jTabbedPaneCommon.addTab("Common", scrollPaneCommon);
 
         jTabbedPaneMain.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         jTabbedPaneMain.addTab("Chart", jPanelChart);
@@ -384,16 +410,8 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void windowOpenedHandler(java.awt.event.WindowEvent e) {
-        TradeServer server = new TradeServer(
-                "http://api.efxnow.com/DEMOWebServices2.8/Service.asmx",
-                "demorates.efxnow.com:443",
-                "demoprimary.efxnow.com:3020",
-                "GAPI",
-                "En",
-                "");
-        TradeAccount account = new TradeAccount("xxxxx@xxxx.com", "xxxxx");
-        WebServices webServices = new WebServices(server, account);
-        System.out.println(webServices.getRatesServerAuth());
+        //WebServices webServices = new WebServices(server, account);
+        //System.out.println(webServices.getRatesServerAuth());
     }
 
     private void windowClosingHandler(java.awt.event.WindowEvent e) {

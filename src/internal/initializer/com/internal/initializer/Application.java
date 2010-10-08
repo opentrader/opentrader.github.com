@@ -90,6 +90,30 @@ public class Application {
         return Properties.APP_NAME;
     }
 
+    public static String getUserDir() {
+        return Properties.USER_DIR;
+    }
+
+    public static String getAppDir() {
+        return Properties.APP_DIR;
+    }
+
+    public static String getConfigDir() {
+        return Properties.CONFIG_DIR;
+    }
+
+    public static String getLogDir() {
+        return Properties.LOG_DIR;
+    }
+
+    public static String getAccountsDir() {
+        return Properties.ACCOUNTS_DIR;
+    }
+
+    public static String getServersDir() {
+        return Properties.SERVERS_DIR;
+    }
+
     /**
      * Checks if the configuration files in the user directory. Returns TRUE if
      * the file exists and FALSE otherwise.
@@ -150,7 +174,7 @@ public class Application {
         int count = 10;
 
         /** specifies append mode */
-        boolean append = false;
+        boolean append = true;
         
         FileHandler fHandler = new FileHandler(
                         Properties.LOG_DIR +

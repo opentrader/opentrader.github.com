@@ -183,7 +183,7 @@ class Packager {
             CheckOutHadler handler = new CheckOutHadler();
 
             saxParser.parse(
-                    Resources.getStream("scheme/filesystem.xml"),
+                    Resources.getStream("/scheme/filesystem.xml"),
                     handler);
 
             if (!handler.getState()) {
@@ -362,7 +362,7 @@ class Packager {
             };
 
             saxParser.parse(
-                    Resources.getStream("scheme/filesystem.xml"),
+                    Resources.getStream("/scheme/filesystem.xml"),
                     handler);
         } catch(org.xml.sax.SAXException e) {
             LOG.warning(e.getMessage());

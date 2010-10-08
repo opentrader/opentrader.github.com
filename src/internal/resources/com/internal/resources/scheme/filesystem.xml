@@ -23,7 +23,7 @@
 -->
 
 <!--
-<evostep>
+<opentrader>
     <filesystem> : type = {userhome, bin, source}
         <directory> : text, permission
         <file> : text, source, permission,
@@ -34,6 +34,9 @@
         <directory text=".opentrader">
             <directory text="config">
 		<directory text="accounts"/>
+		<directory text="servers">
+			<file text="EFXNowDEMO.xml" source="servers/EFXNowDEMO.xml"/>
+		</directory>
                 <file text="properties.xml" source="scheme/properties.xml"/>
                 <file text="menubar.xml" source="scheme/menubar.xml"/>
             </directory>

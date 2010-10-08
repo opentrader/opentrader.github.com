@@ -46,6 +46,7 @@ package com.opentrader.ui.controls;
 
 import java.awt.Point;
 import java.util.Hashtable;
+import java.util.logging.Logger;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -63,6 +64,8 @@ import javax.swing.table.AbstractTableModel;
 public class SymbolTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 327356327567177397L;
+
+    private static final Logger LOG = Logger.getLogger("opentrader");
 
     private Class[]     columnClasses = new Class[] {
         String.class, double.class, double.class};

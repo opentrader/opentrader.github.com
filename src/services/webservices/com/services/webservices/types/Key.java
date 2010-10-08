@@ -44,7 +44,6 @@
 
 package com.services.webservices.types;
 
-import com.services.webservices.SimpleXMLNodeParser;
 import java.util.logging.Logger;
 
 /**
@@ -61,7 +60,7 @@ public class Key {
     private final String key;
 
     public Key(String xml) {
-        key = new SimpleXMLNodeParser(xml).getNextNode("string");
+        key = "string";
     }
 
     /**

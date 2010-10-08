@@ -69,4 +69,9 @@ public class Resources {
             ).openStream();
     }
 
+    public static javax.swing.Icon getIcon(String iconName) {
+        return new javax.swing.ImageIcon(Resources.class.getResource(
+                "/com/internal/resources/icons" + iconName));
+    }
+
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE opentrader [
+    <!ELEMENT opentrader ( server ) >
+    <!ELEMENT server ( webService, ratePrimary, rateSecondary, brand, lang, notes ) >
+        <!ATTLIST server name CDATA #REQUIRED>
+    <!ELEMENT webService (#PCDATA) >
+    <!ELEMENT ratePrimary (#PCDATA) >
+    <!ELEMENT rateSecondary (#PCDATA) >
+    <!ELEMENT brand (#PCDATA) >
+    <!ELEMENT lang (#PCDATA) >
+    <!ELEMENT notes (#PCDATA) >
+]>
+
+<!--
+    Document   : EFXNowDEMO.xml
+    Created on : October 05, 2010, 10:28 AM
+    Author     : Andrey Pudov
+-->
+
+<opentrader>
+    <server name="EFXNowDEMO">
+        <webService>http://api.efxnow.com/DEMOWebServices2.8/Service.asmx</webService>
+        <ratePrimary>"demorates.efxnow.com:443"</ratePrimary>
+        <rateSecondary>"demoprimary.efxnow.com:3020"</rateSecondary>
+        <brand>GAPI</brand>
+        <lang>En</lang>
+        <notes/>
+    </server>
+</opentrader>

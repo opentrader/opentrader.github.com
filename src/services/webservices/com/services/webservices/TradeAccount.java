@@ -44,6 +44,12 @@
 
 package com.services.webservices;
 
+import com.ximpleware.NavException;
+import com.ximpleware.VTDGen;
+import com.ximpleware.VTDNav;
+
+import java.io.File;
+
 import java.util.logging.Logger;
 
 /**
@@ -57,12 +63,85 @@ public class TradeAccount {
 
     private static final Logger LOG = Logger.getLogger("opentrader");
 
+    private final String name;
     private final String login;
     private final String password;
+    private final String server;
 
-    public TradeAccount(String login, String password) {
+    private enum Properties {
+        login, password, server,
+        NOVALUE;
+
+        public static Properties toProperties(String str) {
+            try {
+                return valueOf(str);
+            } catch (Exception ex) {
+                return NOVALUE;
+            }
+        }
+    }
+
+    public TradeAccount(String name, String login, String password, String server) {
+        this.name = name;
         this.login = login;
         this.password = password;
+        this.server = server;
+    }
+
+    public TradeAccount(File xmlFile) throws NavException {
+        VTDGen vg = new VTDGen();
+
+        String nameLocal = null;
+        String loginLocal = null;
+        String passwordLocal = null;
+        String serverLocal = null;
+
+        if (vg.parseFile(xmlFile.getAbsolutePath(), true)) {
+            VTDNav vn = vg.getNav();
+            // move the cursor to first child named "opentrader"
+            if (vn.matchElement("opentrader")){
+                if (vn.toElement(VTDNav.FIRST_CHILD, "account")) {
+                    vn.toString(vn.getCurrentIndex());
+                    nameLocal =  vn.toString(vn.getAttrVal("name"));
+
+                    if (vn.toElement(VTDNav.FIRST_CHILD)){
+                        do {
+                            switch (
+                                    Properties.toProperties(vn.toString(
+                                        vn.getCurrentIndex()))) {
+                                case login:
+                                    loginLocal = (vn.getText() != -1) ?
+                                         vn.toString(vn.getText()) :
+                                         "";
+                                    break;
+                                case password:
+                                    passwordLocal = (vn.getText() != -1) ?
+                                         vn.toString(vn.getText()) :
+                                         "";
+                                    break;
+                                case server:
+                                    serverLocal = (vn.getText() != -1) ?
+                                         vn.toString(vn.getText()) :
+                                         "";
+                                    break;
+                                default:
+                                    LOG.info("Invalid attribute.");
+                                    break;
+                            }
+                        } while (vn.toElement(VTDNav.NEXT_SIBLING));
+                    }
+                }
+            }
+        }
+
+        this.name = nameLocal;
+        this.login = loginLocal;
+        this.password = passwordLocal;
+        this.server = serverLocal;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getLogin() {

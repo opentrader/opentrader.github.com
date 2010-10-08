@@ -96,7 +96,11 @@ public class OpenTrader {
             LOG.info("Load user configuration...");
 
             // Set Look And Feel
-            Application.setLookAndFeel(Application.LookAndFeel.SYSTEM);
+            try {
+                Application.setLookAndFeel(Application.LookAndFeel.SEAGLASS);
+            } catch (Exception e) {
+                LOG.warning(e.getMessage());
+            }
 
             OpenTraderJFrame mainForm = new OpenTraderJFrame();
             mainForm.setVisible(true);

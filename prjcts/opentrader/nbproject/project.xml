@@ -45,5 +45,10 @@
                 <id>jar</id>
             </reference>
         </references>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>opentrader</word>
+            <word>pkg</word>
+            <word>ui</word>
+        </spellchecker-wordlist>
     </configuration>
 </project>
