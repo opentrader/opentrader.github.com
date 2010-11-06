@@ -47,6 +47,8 @@ package com.opentrader.ui;
 import com.internal.initializer.Application;
 
 import com.opentrader.ui.controls.CommonTree;
+import com.opentrader.ui.controls.CommonTreeUserLoginEvent;
+import com.opentrader.ui.controls.CommonTreeUserLoginEventListener;
 import com.opentrader.ui.controls.SymbolTable;
 
 import com.services.webservices.TradeAccount;
@@ -73,6 +75,10 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
     private static final long serialVersionUID = 868169820364193080L;
 
     private static final Logger LOG = Logger.getLogger("opentrader");
+
+    private WebServices                 webServices;
+    private TradeServer                 server;
+    private TradeAccount                account;
    
     private javax.swing.JMenuBar        jMenuBar1;
     private javax.swing.JMenu           jMenu1;
@@ -107,6 +113,7 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
     /** Creates new form OpenTraderJFrame */
     public OpenTraderJFrame() {
         initComponents();
+        initUIComponents();
     }
 
     /** This method is called from within the constructor to
@@ -409,9 +416,22 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+    // <editor-fold defaultstate="collapsed" desc="UI Code">
+    private void initUIComponents() {
+        // Register for  CommonTreeUserLoginEvent from commonTree
+        commonTree.addUserLoginEvent(new CommonTreeUserLoginEventListener() {
+            @Override
+            public void loginEventOccurred(CommonTreeUserLoginEvent evt) {
+                //account = commonTree.getSelectedAccount();
+                
+                //webServices = new WebServices(server, account);
+            }
+        });
+    }
+    // </editor-fold>
+
     private void windowOpenedHandler(java.awt.event.WindowEvent e) {
-        //WebServices webServices = new WebServices(server, account);
-        //System.out.println(webServices.getRatesServerAuth());
+        //
     }
 
     private void windowClosingHandler(java.awt.event.WindowEvent e) {
