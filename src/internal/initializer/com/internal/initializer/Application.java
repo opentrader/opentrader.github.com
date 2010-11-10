@@ -174,7 +174,7 @@ public class Application {
         int count = 10;
 
         /** specifies append mode */
-        boolean append = true;
+        boolean append = false;
         
         FileHandler fHandler = new FileHandler(
                         Properties.LOG_DIR +

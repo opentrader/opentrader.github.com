@@ -46,7 +46,6 @@ package com.opentrader.ui.controls;
 
 import com.internal.resources.Resources;
 import com.services.webservices.TradeAccount;
-import com.services.webservices.TradeAccountList;
 import com.services.webservices.TradeServer;
 import java.awt.event.ActionEvent;
 
@@ -69,17 +68,16 @@ public class CommonTree extends javax.swing.JTree {
 
     private static final Logger LOG = Logger.getLogger("opentrader");
 
-    //private ArrayList<TradeAccount> accounts = new ArrayList<TradeAccount>(10);
     private ArrayList<TradeServer> servers = new ArrayList<TradeServer>(10);
-    private TradeAccountList accounts;
+    private ArrayList<TradeAccount> accounts = new ArrayList<TradeAccount>(10);
+
+    private TradeAccount selectedAccount;
 
     private String rootName;
 
-    //private TradeAccount selectedAccount;
-
     // Create the listener list
     protected javax.swing.event.EventListenerList listenerList =
-        new javax.swing.event.EventListenerList();
+            new javax.swing.event.EventListenerList();
 
     private enum Node {
         Accounts, AccountItem, Servers, ServerItem,
@@ -118,7 +116,7 @@ public class CommonTree extends javax.swing.JTree {
     // </editor-fold>
 
     // <editor-fold defaultstate="collapsed" desc="Popup Menu Code">
-    java.awt.event.MouseAdapter ma = new java.awt.event.MouseAdapter() {
+    private java.awt.event.MouseAdapter mouseAdapter = new java.awt.event.MouseAdapter() {
         private void PopupEvent(java.awt.event.MouseEvent e) {
             int x = e.getX();
             int y = e.getY();
@@ -148,12 +146,16 @@ public class CommonTree extends javax.swing.JTree {
                             ((TreeNode) obj.getPreviousNode().getUserObject()
                                 ).getName() )) {
                         case Accounts:
-                            popup = getPopupMenu(Node.AccountItem);
+                            popup = getPopupMenu(
+                                    Node.AccountItem,
+                                    ((TreeNode) obj.getUserObject())
+                            );
                             popup.show(tree, x, y);
 
-                            //selectedAccount = (TradeAccount) ((TreeNode)
-                                        //obj.getPreviousNode().getUserObject()
-                                    //).getUserObject();
+                            selectedAccount = (TradeAccount) 
+                                (
+                                    (TreeNode) obj.getUserObject()
+                                ).getUserObject();
                             break;
                         case Servers:
                             break;
@@ -179,7 +181,7 @@ public class CommonTree extends javax.swing.JTree {
         }
     };
 
-    private javax.swing.JPopupMenu getPopupMenu(Node node) {
+    private javax.swing.JPopupMenu getPopupMenu(Node node, final TreeNode item) {
         javax.swing.JPopupMenu popup = new javax.swing.JPopupMenu();
 
         switch (node) {
@@ -191,7 +193,8 @@ public class CommonTree extends javax.swing.JTree {
                         new java.awt.event.ActionListener() {
                             @Override
                             public void actionPerformed(ActionEvent e) {
-                                fireUserLoginEvent(new CommonTreeUserLoginEvent(this));
+                                fireUserLoginEvent(new CommonTreeUserLoginEvent(
+                                        item.getUserObject()));
                             }
                         }
                     );
@@ -216,18 +219,15 @@ public class CommonTree extends javax.swing.JTree {
     public CommonTree() {
         super();
 
-        /* display jtree without root node */
-        setRootVisible(false);
-
         rootName = "OpenTrader";
 
-        addMouseListener(ma);
+        addMouseListener(mouseAdapter);
 
         putClientProperty("JTree.lineStyle", "Horizontal");
     }
     
     public void addAccount(TradeAccount account) {
-        //accounts.add(account);
+        accounts.add(account);
 
         updateTree();
     }
@@ -238,11 +238,23 @@ public class CommonTree extends javax.swing.JTree {
         updateTree();
     }
 
-    //public TradeAccount getSelectedAccount() {
-        //return selectedAccount;
-    //}
+    public TradeAccount getSelectedAccount() {
+        return selectedAccount;
+    }
 
-    public void updateTree() {
+    public TradeServer getServierForAccount(TradeAccount account) 
+            throws CommonTreeServerNotFoundException {
+
+        for (TradeServer server : servers) {
+            if (server.getName().equals(account.getServer())) {
+                return server;
+            }
+        }
+
+        throw new CommonTreeServerNotFoundException();
+    }
+
+    public void updateTree() {        
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(rootName);
         DefaultTreeModel defaultTreeModel = new DefaultTreeModel(rootNode);
 
@@ -265,14 +277,14 @@ public class CommonTree extends javax.swing.JTree {
         setModel(defaultTreeModel);
         setCellRenderer(new NodeTreeCellRenderer());
 
-//        for (TradeAccount account : accounts) {
-//            accountTreeNode = new DefaultMutableTreeNode(
-//                    new TreeNode(
-//                        account.getName(),
-//                        Resources.getIcon("/16x16/user.png"),
-//                        account));
-//            accountRootTreeNode.add(accountTreeNode);
-//        }
+        for (TradeAccount account : accounts) {
+            accountTreeNode = new DefaultMutableTreeNode(
+                    new TreeNode(
+                        account.getName(),
+                        Resources.getIcon("/16x16/computer.png"),
+                        account));
+            accountRootTreeNode.add(accountTreeNode);
+        }
 
         rootNode.add(accountRootTreeNode);
 
@@ -288,9 +300,17 @@ public class CommonTree extends javax.swing.JTree {
         rootNode.add(serverRootTreeNode);
 
         this.updateUI();
+
+        /* display jtree without root node */
+        //this.setRootVisible(false);
+        
+        for (int i = 0; i < this.getRowCount(); i++) {
+            this.expandRow(i);
+        }
     }
 
-    class NodeTreeCellRenderer implements javax.swing.tree.TreeCellRenderer {
+    private class NodeTreeCellRenderer
+            implements javax.swing.tree.TreeCellRenderer {
 
         private javax.swing.JLabel label;
 
@@ -326,7 +346,7 @@ public class CommonTree extends javax.swing.JTree {
         }
     }
 
-    class TreeNode {
+    private class TreeNode {
 
         private String              name;
         private javax.swing.Icon    icon;

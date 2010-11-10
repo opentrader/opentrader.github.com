@@ -322,8 +322,7 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
          */
 
         //symbolTable
-
-        //commonTree
+        
         for (File server : new File(Application.getServersDir()).listFiles()) {
             try {
                 commonTree.addServer(new TradeServer(server));
@@ -334,9 +333,9 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
             }
         }
 
-        for (File account : new File(Application.getAccountsDir()).listFiles()) {
+        for (File accountFile : new File(Application.getAccountsDir()).listFiles()) {
             try {
-                commonTree.addAccount(new TradeAccount(account));
+                commonTree.addAccount(new TradeAccount(accountFile));
             } catch (NavException e) {
                 LOG.warning(e.getMessage());
             } catch (Exception e) {
@@ -418,13 +417,23 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
 
     // <editor-fold defaultstate="collapsed" desc="UI Code">
     private void initUIComponents() {
+        
         // Register for  CommonTreeUserLoginEvent from commonTree
         commonTree.addUserLoginEvent(new CommonTreeUserLoginEventListener() {
             @Override
             public void loginEventOccurred(CommonTreeUserLoginEvent evt) {
-                //account = commonTree.getSelectedAccount();
-                
-                //webServices = new WebServices(server, account);
+                try {
+                    TradeAccount account = commonTree.getSelectedAccount();
+                    server = commonTree.getServierForAccount(account);
+
+                    webServices = new WebServices(server, account);
+
+                    System.out.println(webServices.getRatesServerAuth());
+                } catch (com.opentrader.ui.controls.CommonTreeServerNotFoundException e) {
+                    LOG.info(e.getMessage());
+                } catch (Exception e) {
+                    LOG.warning(e.getMessage());
+                }
             }
         });
     }

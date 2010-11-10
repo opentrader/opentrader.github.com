@@ -181,7 +181,6 @@ class Packager {
             }
 
             CheckOutHadler handler = new CheckOutHadler();
-
             saxParser.parse(
                     Resources.getStream("/scheme/filesystem.xml"),
                     handler);

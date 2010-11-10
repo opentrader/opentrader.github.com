@@ -42,36 +42,56 @@
  *
  */
 
-package com.internal.resources;
+package com.opentrader.ui.controls;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.logging.Logger;
 
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>
  *  @version   0.00.00
- *  %name      Resources.java
- *  %pkg       com.resources
- *  %date      9:40:56 AM, Sep 15, 2010
+ *  %name      CommonTreeServerNotFoundException.java
+ *  %pkg       com.opentrader.ui.controls
+ *  %date      8:41:11 AM, Nov 10, 2010
  */
-public class Resources {
+public class CommonTreeServerNotFoundException extends Exception {
+    
+    private static final long serialVersionUID = 393434238879758904L;
 
-    private static final Logger LOG = Logger.getLogger("initializer");
+    private static final Logger LOG = Logger.getLogger("opentrader");
 
-    private Resources() {
+    private String mistake;
+
+    /**
+     * Default constructor - initializes instance variable to unknown
+     *
+     * @param msg
+     */
+    public CommonTreeServerNotFoundException() {
+        super();                // call superclass constructor
+
+        mistake = "unknown";
     }
 
-    public static InputStream getStream(String fileName)
-            throws IOException {
-        return Resources.class.getResource(
-                "/com/internal/resources" + fileName
-            ).openStream();
+    /**
+     * Constructor receives some kind of message that is saved in an
+     * instance variable.
+     *
+     * @param err
+     */
+    public CommonTreeServerNotFoundException(String err) {
+        super(err);             // call superclass constructor
+
+        mistake = err;          // save message
     }
 
-    public static javax.swing.Icon getIcon(String iconName) {
-        return new javax.swing.ImageIcon(Resources.class.getResource(
-                "/com/internal/resources/icons" + iconName));
+    /**
+     * Public method, callable by exception catcher.
+     * It returns the error message.
+     * 
+     * @return
+     */
+    public String getError() {
+        return mistake;
     }
 
 }

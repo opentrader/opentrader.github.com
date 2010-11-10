@@ -152,4 +152,8 @@ public class TradeAccount {
         return password;
     }
 
+    public String getServer() {
+        return server;
+    }
+
 }

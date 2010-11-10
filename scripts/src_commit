@@ -5,7 +5,7 @@ rm -rf opentrader_bkp/
 cp -r OpenTrader opentrader_bkp
 cd OpenTrader
 git add .
-git commit -m 'weekly commit'
+git commit -m 'Changing the priority of project development. Exclusion of Gain platform support and focus on developing tools for analysis and forecasting.'
 git push origin master
 cd ..
 rm -rf opentrader_bkp/
