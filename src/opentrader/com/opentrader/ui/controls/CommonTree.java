@@ -45,11 +45,8 @@
 package com.opentrader.ui.controls;
 
 import com.internal.resources.Resources;
-import com.services.webservices.TradeAccount;
-import com.services.webservices.TradeServer;
 import java.awt.event.ActionEvent;
 
-import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -67,11 +64,6 @@ public class CommonTree extends javax.swing.JTree {
     private static final long serialVersionUID = 992478959333420522L;
 
     private static final Logger LOG = Logger.getLogger("opentrader");
-
-    private ArrayList<TradeServer> servers = new ArrayList<TradeServer>(10);
-    private ArrayList<TradeAccount> accounts = new ArrayList<TradeAccount>(10);
-
-    private TradeAccount selectedAccount;
 
     private String rootName;
 
@@ -152,10 +144,10 @@ public class CommonTree extends javax.swing.JTree {
                             );
                             popup.show(tree, x, y);
 
-                            selectedAccount = (TradeAccount) 
-                                (
-                                    (TreeNode) obj.getUserObject()
-                                ).getUserObject();
+//                            selectedAccount = (TradeAccount)
+//                                (
+//                                    (TreeNode) obj.getUserObject()
+//                                ).getUserObject();
                             break;
                         case Servers:
                             break;
@@ -226,33 +218,33 @@ public class CommonTree extends javax.swing.JTree {
         putClientProperty("JTree.lineStyle", "Horizontal");
     }
     
-    public void addAccount(TradeAccount account) {
-        accounts.add(account);
-
-        updateTree();
-    }
-
-    public void addServer(TradeServer server) {
-        servers.add(server);
-
-        updateTree();
-    }
-
-    public TradeAccount getSelectedAccount() {
-        return selectedAccount;
-    }
-
-    public TradeServer getServierForAccount(TradeAccount account) 
-            throws CommonTreeServerNotFoundException {
-
-        for (TradeServer server : servers) {
-            if (server.getName().equals(account.getServer())) {
-                return server;
-            }
-        }
-
-        throw new CommonTreeServerNotFoundException();
-    }
+//    public void addAccount(TradeAccount account) {
+//        accounts.add(account);
+//
+//        updateTree();
+//    }
+//
+//    public void addServer(TradeServer server) {
+//        servers.add(server);
+//
+//        updateTree();
+//    }
+//
+//    public TradeAccount getSelectedAccount() {
+//        return selectedAccount;
+//    }
+//
+//    public TradeServer getServierForAccount(TradeAccount account)
+//            throws CommonTreeServerNotFoundException {
+//
+//        for (TradeServer server : servers) {
+//            if (server.getName().equals(account.getServer())) {
+//                return server;
+//            }
+//        }
+//
+//        throw new CommonTreeServerNotFoundException();
+//    }
 
     public void updateTree() {        
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode(rootName);
@@ -277,27 +269,27 @@ public class CommonTree extends javax.swing.JTree {
         setModel(defaultTreeModel);
         setCellRenderer(new NodeTreeCellRenderer());
 
-        for (TradeAccount account : accounts) {
-            accountTreeNode = new DefaultMutableTreeNode(
-                    new TreeNode(
-                        account.getName(),
-                        Resources.getIcon("/16x16/computer.png"),
-                        account));
-            accountRootTreeNode.add(accountTreeNode);
-        }
-
-        rootNode.add(accountRootTreeNode);
-
-        for (TradeServer server : servers) {
-            serverTreeNode = new DefaultMutableTreeNode(
-                    new TreeNode(
-                        server.getName(),
-                        Resources.getIcon("/16x16/computer.png"),
-                        server));
-            serverRootTreeNode.add(serverTreeNode);
-        }
-
-        rootNode.add(serverRootTreeNode);
+//        for (TradeAccount account : accounts) {
+//            accountTreeNode = new DefaultMutableTreeNode(
+//                    new TreeNode(
+//                        account.getName(),
+//                        Resources.getIcon("/16x16/computer.png"),
+//                        account));
+//            accountRootTreeNode.add(accountTreeNode);
+//        }
+//
+//        rootNode.add(accountRootTreeNode);
+//
+//        for (TradeServer server : servers) {
+//            serverTreeNode = new DefaultMutableTreeNode(
+//                    new TreeNode(
+//                        server.getName(),
+//                        Resources.getIcon("/16x16/computer.png"),
+//                        server));
+//            serverRootTreeNode.add(serverTreeNode);
+//        }
+//
+//        rootNode.add(serverRootTreeNode);
 
         this.updateUI();
 

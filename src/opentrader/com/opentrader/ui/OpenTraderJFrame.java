@@ -51,10 +51,6 @@ import com.opentrader.ui.controls.CommonTreeUserLoginEvent;
 import com.opentrader.ui.controls.CommonTreeUserLoginEventListener;
 import com.opentrader.ui.controls.SymbolTable;
 
-import com.services.webservices.TradeAccount;
-import com.services.webservices.TradeServer;
-import com.services.webservices.WebServices;
-
 import com.ximpleware.NavException;
 
 import java.io.File;
@@ -75,10 +71,6 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
     private static final long serialVersionUID = 868169820364193080L;
 
     private static final Logger LOG = Logger.getLogger("opentrader");
-
-    private WebServices                 webServices;
-    private TradeServer                 server;
-    private TradeAccount                account;
    
     private javax.swing.JMenuBar        jMenuBar1;
     private javax.swing.JMenu           jMenu1;
@@ -323,25 +315,25 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
 
         //symbolTable
         
-        for (File server : new File(Application.getServersDir()).listFiles()) {
-            try {
-                commonTree.addServer(new TradeServer(server));
-            } catch (NavException e) {
-                LOG.warning(e.getMessage());
-            } catch (Exception e) {
-                LOG.warning(e.getMessage());
-            }
-        }
-
-        for (File accountFile : new File(Application.getAccountsDir()).listFiles()) {
-            try {
-                commonTree.addAccount(new TradeAccount(accountFile));
-            } catch (NavException e) {
-                LOG.warning(e.getMessage());
-            } catch (Exception e) {
-                LOG.warning(e.getMessage());
-            }
-        }
+//        for (File server : new File(Application.getServersDir()).listFiles()) {
+//            try {
+//                commonTree.addServer(new TradeServer(server));
+//            } catch (NavException e) {
+//                LOG.warning(e.getMessage());
+//            } catch (Exception e) {
+//                LOG.warning(e.getMessage());
+//            }
+//        }
+//
+//        for (File accountFile : new File(Application.getAccountsDir()).listFiles()) {
+//            try {
+//                commonTree.addAccount(new TradeAccount(accountFile));
+//            } catch (NavException e) {
+//                LOG.warning(e.getMessage());
+//            } catch (Exception e) {
+//                LOG.warning(e.getMessage());
+//            }
+//        }
  
         scrollPaneSymbol.setViewportView(symbolTable);
         scrollPaneCommon.setViewportView(commonTree);
@@ -422,18 +414,18 @@ public class OpenTraderJFrame extends javax.swing.JFrame {
         commonTree.addUserLoginEvent(new CommonTreeUserLoginEventListener() {
             @Override
             public void loginEventOccurred(CommonTreeUserLoginEvent evt) {
-                try {
-                    TradeAccount account = commonTree.getSelectedAccount();
-                    server = commonTree.getServierForAccount(account);
-
-                    webServices = new WebServices(server, account);
-
-                    System.out.println(webServices.getRatesServerAuth());
-                } catch (com.opentrader.ui.controls.CommonTreeServerNotFoundException e) {
-                    LOG.info(e.getMessage());
-                } catch (Exception e) {
-                    LOG.warning(e.getMessage());
-                }
+//                try {
+//                    TradeAccount account = commonTree.getSelectedAccount();
+//                    server = commonTree.getServierForAccount(account);
+//
+//                    webServices = new WebServices(server, account);
+//
+//                    System.out.println(webServices.getRatesServerAuth());
+//                } catch (com.opentrader.ui.controls.CommonTreeServerNotFoundException e) {
+//                    LOG.info(e.getMessage());
+//                } catch (Exception e) {
+//                    LOG.warning(e.getMessage());
+//                }
             }
         });
     }

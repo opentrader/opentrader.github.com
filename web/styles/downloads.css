@@ -1,0 +1,165 @@
+section#featured-download {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    background: #322D2B url(../images/downloads/feature-bg.png) no-repeat;
+    margin-top: 50px;
+    padding: 35px 40px;
+}
+
+section#featured-download .info {
+    float: left;
+    width: 420px;
+}
+
+    section#featured-download .info h2 {
+        color: #FFF;
+        font: lighter 36px/36px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif;
+        letter-spacing: -1px;
+        margin-bottom: 15px;
+    }
+
+        section#featured-download .info h2 span {
+            color: #9C0;
+        }
+    
+    section#featured-download .info div {
+        color: #A49F9E;
+        margin-bottom: 15px;
+    }
+    
+        section#featured-download .info div p.version {
+            border-right: 1px solid #4F4A48;
+            float: left;
+            padding-right: 15px;
+            margin-right: 15px;
+        }
+        
+            section#featured-download .info div p.version span {
+                display: block;
+                font-size: 10px;
+            }
+        
+            section#featured-download .info div p.version strong {
+                display: block;
+                font: lighter 24px/22px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif;
+                letter-spacing: -2px;
+            }
+        
+        section#featured-download .info div p.release-date {
+            float: left;
+            font-size: 11px;
+            padding-top: 4px;
+        }
+
+            section#featured-download .info div p.release-date span {
+                display: block;
+                font-size: 10px;
+            }
+    
+            section#featured-download .info div p.release-date strong {
+                display: block;
+            }
+        
+    section#featured-download .info p.description {
+        clear: both;
+        color: #A49F9E;
+        font-size: 11px;
+        line-height: 15px;
+    }
+    
+section#featured-download .download {
+    border-left: 1px dotted #4F4A48;
+    float: right;
+    height: 160px;
+    padding-left: 40px;
+}
+
+    section#featured-download .download a.download-button {
+    	background: url(../images/downloads/download-button.png) no-repeat;
+    	display: block;
+    	height: 84px;
+    	margin: 35px 0 10px 0;
+    	overflow: hidden;
+    	text-indent: -9999px;
+    	width: 260px;
+    }
+
+    	section#featured-download .download a.download-button:hover {
+    	    background-position: center;
+    	}
+	
+    	section#featured-download .download a.download-button:active {
+    		background-position: bottom;
+    	}
+    	
+    section#featured-download .download p.older-versions {
+        color: #A49F9E;
+        font-size: 11px;
+        text-align: center;
+    }
+    
+        section#featured-download .download p.older-versions a {
+            color: #FFF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+            section#featured-download .download p.older-versions a:hover {
+                border-bottom: 1px solid #9C0;
+            }
+            
+section#download-content {
+    padding: 40px 0;
+}
+
+    section#download-content .column {
+        display: block;
+        float: left;
+    }
+    
+        section#download-content .column:first-child {
+            margin-right: 20px;
+            width: 580px;
+        }
+        
+        section#download-content .column:nth-child(2) {
+            width: 220px;
+        }
+
+        section#download-content .column h2 {
+            color: #99CC00;
+            font: lighter 26px/26px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+    
+        section#download-content .column p {
+            color: #CCCCCC;
+            font-size: 11px;
+            line-height: 18px;
+            margin-bottom: 20px;
+        }
+    
+        section#download-content .column ul {
+            margin-left: 12px;
+        }
+    
+            section#download-content .column ul li {
+                font-size: 11px;
+                list-style-image: url(../images/layout/bullet.gif);
+                margin-bottom: 8px;
+            }
+            
+section#download-content p.development-version {}
+
+    section#download-content p.development-version code {
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        background: #322D2B;
+        color: #FFF;
+        display: block;
+        font-size: 12px;
+        margin-top: 10px;
+        padding: 4px 0;
+        text-align: center;
+    }

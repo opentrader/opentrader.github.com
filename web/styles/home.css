@@ -1,0 +1,81 @@
+html {
+	background: #3A3431 url(../images/layout/bg-home-html.jpg) top center repeat-x !important;
+}
+
+body #body-wrapper {
+	background: #3D3734 url(../images/layout/bg-home-body.jpg) top center repeat-x !important;
+}
+
+section#mude {
+	clear: both;
+	padding-bottom: 34px;
+}
+
+	section#mude h2 {
+		background: url(../images/home/opentrader.png) no-repeat;
+		display: block;
+		height: 235px;
+		margin-left: -48px;
+		overflow: hidden;
+		text-indent: -9999px;
+		width: 748px;
+	}
+	
+	section#mude p.description {
+		float: right;
+		font: lighter 16px/19px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif;
+		margin-top: -220px;
+		width: 220px;
+	}
+	
+		section#mude p.description strong {
+			font: bold 16px Helvetica, Arial, sans-serif !important;
+		}
+		
+		section#mude p.description strong span {
+			color: #99CC00;
+		}
+	
+	section#mude a.download-button {
+		background: url(../images/home/download-button.png) no-repeat;
+		display: block;
+		height: 58px;
+		margin-top: 25px;
+		overflow: hidden;
+		text-indent: -9999px;
+		width: 181px;
+	}
+	
+		section#mude a.download-button:hover {
+		    background-position: center;
+		}
+		
+		section#mude a.download-button:active {
+			background-position: bottom;
+		}
+		
+section#features {
+	padding-top: 50px;
+}
+
+	section#features div {
+		float: left;
+		margin-right: 20px;
+		width: 190px;
+	}
+	
+		section#features div h2 {
+			color: #99CC00;
+			font-size: 15px;
+			letter-spacing: -1px;
+			margin-bottom: 20px;
+		}
+		
+		section#features div p {
+			font-size: 11px;
+			line-height: 18px;
+		}
+		
+		section#features div:nth-child(4){
+			margin-right: 0;
+		}

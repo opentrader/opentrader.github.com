@@ -1,0 +1,250 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	background: #3A3431 url(../images/layout/bg-internal-html.jpg) top center no-repeat;
+}
+
+body {
+	color: #FFFFFF;
+	font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+	font-size: 13px;
+}
+
+body #body-wrapper {
+    background: #3D3734 url(../images/layout/bg-internal-body.jpg) top center no-repeat;
+    margin: auto;
+    padding: 70px;
+    width: 820px;
+}
+
+a {
+	color: #99CC00;
+	outline: none;
+}
+
+.clear {
+	display: block;
+	clear:both;
+}
+
+section, header, footer {
+	display: block;
+}
+
+header {
+	margin-bottom: 60px;
+}
+
+	header #logo {
+		color: #FFFFFF;
+		font-size: 32px;
+		font-weight: bold;
+		letter-spacing: -2.5px;
+		text-decoration: none;
+	}
+	
+		header #logo span {
+			color: #99CC00;
+		}
+		
+		header #logo:hover {
+			text-shadow: 0px 2px 1px #1A1716;
+        }
+		
+	header nav {
+		float: right;
+		margin-top: 3px;
+	}
+	
+		header nav#menu ul {}
+		
+		header nav#menu ul li {
+			display: inline;
+			float: left;
+			margin-left: 20px;
+			width: 100px;
+		}
+		
+			header nav#menu ul li a {
+				border-bottom: 8px solid #2A2421;
+				color: #FFFFFF;
+				display: block;
+				font-size: 13px;
+				font-weight: bold;
+				padding-bottom: 6px;
+				text-decoration: none;
+				text-shadow: 0 1px 1px #2E2927;
+				text-transform: lowercase;
+			}
+			
+				header nav#menu ul li a:hover,
+				header nav#menu ul li.current a {
+					border-bottom-color: #99CC00;
+				}
+		
+		header nav#menu ul li:hover ul {
+			display: block;
+		}
+		
+		header nav#menu ul ul {
+			display: none;
+			position: absolute;
+			margin-left: -20px;
+			width: 100px;
+		}
+			
+			header nav#menu ul ul li:first-child {
+				border-top: 1px solid #2A2421;
+			}
+			
+			header nav#menu ul ul li:last-child {
+				border-radius: 5px 5px 5px 5px;
+				-webkit-border-radius: 5px 5px 5px 5px;
+			}
+			
+			header nav#menu ul ul:last-child {
+				-moz-border-radius: 2px 0 0 2px;
+				-webkit-border-radius: 2px 0 0 2px;
+			}
+		
+			header nav#menu ul ul li {
+				display: block;
+			}
+			
+			header nav#menu ul li ul li a {
+				background: #99CC00;
+				color: #2E2927;
+				border-bottom: 1px solid #3A3431;
+				font-size: 11px;
+				line-height: 11px;
+				text-shadow: none;
+				padding: 4px 6px;
+			}
+			
+			header nav#menu ul li ul li a:hover {
+				background: #2E2927;
+				border-bottom-color: #3A3431;
+				color: #99CC00;
+				text-shadow: none;
+			}
+			
+			header nav#menu ul li ul li a:active {
+				background: #2E2927;
+				color: #99CC00;
+				text-shadow: none;
+			}
+			
+footer {
+    background: #1A1716;
+}
+
+    #footer-wrapper {
+        background: #1B1817;
+        margin: auto;
+        padding: 40px 70px;
+        width: 820px;
+    }
+    
+    footer .logo {
+        float: left;
+        width: 100px;
+    }
+    
+        footer .logo a {
+            color: #FFF;
+            font: bold 18px "Helvetica Neue", Helvetica, arial, sans-serif;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            text-decoration: none;
+        }
+    
+            footer .logo a span {
+                color: #9C0;
+            }
+        
+        footer .logo span.desc,    
+        footer .logo span.version {
+            color: #564E48;
+            display: block;
+            font-size: 11px;
+            line-height: 11px;
+            margin-bottom: 8px;
+        }
+        
+        footer .logo span.version {
+            border-top: 1px solid #2A2524;
+            padding-top: 12px;
+        }
+        
+        footer .logo span.version strong {
+            display: block;
+            font: lighter 20px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif;
+            margin-top: -3px;
+        }
+    
+    footer .directory {
+        float: right;
+        width: 400px;
+    }
+    
+        footer .directory ul {
+            float: left;
+            margin-left: 20px;
+            width: 85px;
+        }
+        
+            footer .directory ul:first-child {
+                margin-left: 0;
+            }
+        
+        footer .directory ul li {
+            display: block;
+            font-size: 11px;
+            list-style: none;
+            line-height: 11px;
+            margin-bottom: 4px;
+            margin-right: 8px;
+        }
+        
+            footer .directory ul li:first-child,
+            footer .directory ul li:last-child {
+                border: 0;
+            }
+        
+            footer .directory ul li strong {
+                display: block;
+                color: #564E48;
+                font-size: 12px;
+                margin-bottom: 11px;
+            }
+        
+            footer .directory ul li a {
+                color: #564E48;
+                text-decoration: none;
+                text-shadow: 1px 1px 0px #111;
+            }
+
+                footer .directory ul li a:hover {
+                    border-bottom: 1px solid #9C0;
+                    color: #FFFFFF;
+                    text-shadow: 0;
+                }
+/*
+            footer:hover .directory strong,
+            footer:hover .directory a {
+                color: #FFF;
+            }*/
+
+#legal-notice {
+  background: #1A1716;
+  clear: both;
+  color: #564E48;
+  display: block;
+  font-size: 0.9em;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
