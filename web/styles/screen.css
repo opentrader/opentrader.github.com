@@ -1,0 +1,57 @@
+.leightbox {
+	color: #CCC;
+	font: lighter 20px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, arial, sans-serif;
+	font-size: 13px;
+	display: none;
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	width: 50%;
+	height: 300px;
+	padding: 1em;
+	margin: 0;
+	border: 6px solid #3A3431;
+	background: #3D3734 url(../images/layout/bg-internal-body.jpg) top center no-repeat;
+	text-align: left;
+	z-index:1001;
+	overflow: auto;	
+}
+
+.leightbox h1 {
+	color: #99CC00;
+	font: normal normal lighter 36px/36px HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, arial, sans-serif;
+        letter-spacing: -1px;
+	margin-bottom: 20px;
+}
+
+.leightbox p {
+	color: #CCC;
+	font-size: 11px;
+	line-height: 18px;
+	margin-bottom: 20px;
+}
+
+section#featured-download .download a.lbOn {
+    	background: url(../images/downloads/download-button.png) no-repeat;
+    	display: block;
+    	height: 84px;
+    	margin: 35px 0 10px 0;
+    	overflow: hidden;
+    	text-indent: -9999px;
+    	width: 260px;
+	clear: both;
+	color: #A49F9E;
+	font-size: 11px;
+	line-height: 15px
+    }
+
+    	section#featured-download .download a.lbOn:hover {
+    	    background-position: center;
+    	}
+	
+    	section#featured-download .download a.lbOn:active {
+    		background-position: bottom;
+    	}
+
+
+.lightbox[id]{ /* IE6 and below Can't See This */    position:fixed;    }#overlay[id]{ /* IE6 and below Can't See This */    position:fixed;    }
