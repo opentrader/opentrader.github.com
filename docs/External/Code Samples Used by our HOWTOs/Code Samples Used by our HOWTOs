@@ -1,0 +1,20 @@
+Code Samples Used by our HOWTOs
+http://developer.yahoo.com/java/
+
+We've got plenty of examples to keep you busy. These examples all come from our HOWTOs listed above.
+Unless otherwise noted, all of the folllowing code samples are provided under the terms of the Yahoo! SDK Software License Agreement.
+FlickrAuth.java - Use Flickr Authentication for web services
+FlickrRotate.java - Flickr Authentication with file rotation
+signpost-core-1.2.1.1.jar - Simple OAuth message signing library
+OAuthFireEagleExample.zip - Use OAuth to call the Fire Eagle API
+YahooCacheSearchResults.java - File caching example
+YahooWhirlyCacheSearchResults.java - In-memory caching example
+YahooWebServiceParseErrorCodes.java - Error handling for web services
+YahooWebServiceParseResults.java - Parse XML results of web service calls
+ParseYahooSearchResultsJSON.java - Parse JSON results
+YahooWebServiceGet.java - HTTP GET of web service
+YahooWebServicePost.java - HTTP POST of web service
+YahooWebServicePostSocket.java - HTTP POST using Sockets
+
+We also have some Java examples using our Mail API.
+Be sure to review our Best Practices for Speeding Up Your Web Site.

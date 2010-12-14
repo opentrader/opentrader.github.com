@@ -44,6 +44,9 @@
 
 package com.external.yahooprovider;
 
+import com.opentrader.market.feeds.DefaultExchangeProvider;
+import java.util.logging.Logger;
+
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>
  *  @version   0.00.00
@@ -51,7 +54,14 @@ package com.external.yahooprovider;
  *  %pkg       com.external.yahooprovider
  *  %date      12:00:15 PM, Nov 10, 2010
  */
-public class YahooProvider {
+public class YahooProvider implements DefaultExchangeProvider {
+
+    private static final long serialVersionUID = 1060606745559226566L;
+    private static final Logger LOG = Logger.getLogger("yahooprovider");
+
+    public YahooProvider() {
+        //
+    }
 
     /**
      * @param args the command line arguments

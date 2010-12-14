@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>de.hdtconsulting.yahoo.finance</groupId>
+	<artifactId>yahoofinanceapi</artifactId>
+	<packaging>jar</packaging>
+	<version>0.0.5-SNAPSHOT</version>
+	<name>YahooFinanceAPI</name>
+
+	<organization>
+		<name>Hans-Dieter Thiel Consulting limited</name>
+		<url>www.hans-dieter-thiel.de</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>hdt</id>
+			<name>Hans-Dieter Thiel</name>
+			<email>hdt(at)hans-dieter-thiel.de</email>
+			<url>http://www.hans-dieter-thiel.de</url>
+			<organization>Hans-Dieter Thiel Consulting limited</organization>
+			<organizationUrl>http://www.hans-dieter-thiel.de</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+
+	<issueManagement>
+		<system>sourceforge bug tracking system</system>
+		<url>http://yahoofinanceapi.sourceforge.net</url>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>GNU General Public License, Version 3.0 (GPLv3)</name>
+			<url>http://www.gnu.org/copyleft/gpl.html</url>
+			<distribution>repo</distribution>
+			<comments />
+		</license>
+		<license>
+			<name>GNU General Public License, Version 3.0 (GPLv3) + FLOSS Exception</name>
+			<url>http://www.gnu.org/copyleft/gpl.html</url>
+			<distribution>repo</distribution>
+			<comments>with FLOSS Exception for Application and Development</comments>
+		</license>
+		<license>
+			<name>yahoofinanceapi commercial</name>
+			<url />
+			<distribution>repo</distribution>
+			<comments>	commercial
+						(Yahoo! Finance Web Services Terms of Use)
+						http://finance.yahoo.com/badges/tos
+			</comments>
+		</license>
+	</licenses>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<compilerVersion>1.5</compilerVersion>
+					<source>1.5</source>
+					<target>1.5</target>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-plugin</artifactId>
+				<version>1.0</version>
+				<configuration>
+					<username>${sourceforge.username}</username>
+					<password>${sourceforge.password}</password>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.0</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.15</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<scm>
+		<developerConnection>scm:svn:https://yahoofinanceapi.svn.sourceforge.net/svnroot/yahoofinanceapi/tags</developerConnection>
+		<url>https://yahoofinanceapi.svn.sourceforge.net/svnroot/yahoofinanceapi/tags</url>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<url>file:///maven/repository</url>
+		</repository>
+		<snapshotRepository>
+			<url>file:///maven/repository</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
