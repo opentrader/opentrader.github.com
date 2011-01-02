@@ -43,15 +43,8 @@
  */
 package com.external.yahooprovider;
 
-import com.external.yahooprovider.csv.format.YTag;
-
-import com.opentrader.market.feeds.Historic;
 import com.opentrader.market.feeds.Quote;
-import com.opentrader.market.feeds.Symbol;
-import com.opentrader.market.feeds.Trade;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.logging.Logger;
 
 /**
@@ -65,90 +58,5 @@ public class YQuote implements Quote {
 
     private static final long serialVersionUID = 982573213003336859L;
     private static final Logger LOG = Logger.getLogger("yahooprovider");
-
-    private YSymbol symbol;
-    private HashMap<YTag, String> values = new HashMap<YTag, String>(10);
-
-    private ArrayList<YTrade> dayTrades = new ArrayList<YTrade>(10);
     
-    private ArrayList<YHistoric> historics = new ArrayList<YHistoric>(10);
-    private String csvDayTrade;
-    private String csvHistoric;
-    private boolean valid = false;
-
-    public ArrayList<Historic> getHistorics() {
-        return new ArrayList<Historic>(this.historics);
-    }
-
-    protected void setHistorics(ArrayList<YHistoric> historics) {
-        this.historics = historics;
-    }
-
-    public ArrayList<Trade> getDayTrades() {
-        return new ArrayList<Trade>(this.dayTrades);
-    }
-
-    protected void setDayTrades(ArrayList<YTrade> dayTrades) {
-        this.dayTrades = dayTrades;
-    }
-
-    public String getCsvHistoric() {
-        return this.csvHistoric;
-    }
-
-    protected void setCsvHistoric(String csvHistoric) {
-        this.csvHistoric = csvHistoric;
-    }
-
-    public String getCsvDayTrade() {
-        return this.csvDayTrade;
-    }
-
-    protected void setCsvDayTrade(String csvDayTrade) {
-        this.csvDayTrade = csvDayTrade;
-    }
-
-    protected YQuote(YSymbol symbol) {
-        this.symbol = symbol;
-    }
-
-    public boolean isValid() {
-        return this.valid;
-    }
-
-    protected void setValid(boolean valid) {
-        this.valid = valid;
-    }
-
-    public Symbol getSymbol() {
-        return (Symbol) this.symbol;
-    }
-
-    public String getValue(String key) {
-        YTag tag = new YTag(key);
-        
-        return this.values.get(tag);
-    }
-
-    protected void setValue(YTag tag, String value) {
-        this.values.put(tag, value);
-    }
-
-    @Override
-    public int hashCode() {
-        return this.symbol.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        YQuote quote;
-
-        if ((o instanceof YQuote)) {
-            quote = (YQuote) o;
-        } else {
-            return false;
-        }
-
-        return this.symbol.equals(quote.getSymbol());
-    }
 }

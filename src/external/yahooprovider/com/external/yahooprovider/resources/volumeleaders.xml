@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE yahooprovider [
+    <!ELEMENT yahooprovider ( stockexchange* ) >
+    <!ELEMENT stockexchange ( symbol* ) >
+        <!ATTLIST stockexchange name CDATA #REQUIRED>
+    <!ELEMENT symbol (#PCDATA) >
+        <!ATTLIST symbol code CDATA #REQUIRED>
+        <!ATTLIST symbol description CDATA #IMPLIED>
+]>
+
+<!--
+    Document   : volumeleaders.xml
+    Created on : 24 December 2010, 18:33
+    Author     : Andrey Pudov
+    Description:
+        Yahoo! Volume Leaders
+        http://finance.yahoo.com/actives?e=us
+-->
+
+<!--
+<yahooprovider>
+    <stockexchange> : name
+        <symbol> : code, description
+-->
+
+<yahooprovider>
+    <stockexchange name="US">
+        <symbol code="C" description="Citigroup, Inc. Common Stock"/>
+        <symbol code="BAC" description="Bank of America Corporation Com"/>
+        <symbol code="SIRI" description="Sirius XM Radio Inc."/>
+        <symbol code="SPY" description="SPDR S&amp;P 500"/>
+        <symbol code="CSCO" description="Cisco Systems, Inc."/>
+        <symbol code="MI" description="New M&amp;I Corporation Common Stoc"/>
+        <symbol code="AIB" description="Allied Irish Banks, p.l.c. Comm"/>
+        <symbol code="S" description="Sprint Nextel Corporation Comm"/>
+        <symbol code="MU" description="Micron Technology, Inc."/>
+        <symbol code="XOMA" description="XOMA Ltd."/>
+        <symbol code="Q" description="Qwest Communications Internatio"/>
+        <symbol code="GE" description="General Electric Company Common"/>
+        <symbol code="AA" description="Alcoa Inc. Common Stock"/>
+        <symbol code="XLF" description="SPDR Select Sector Fund - Finan"/>
+        <symbol code="HBAN" description="Huntington Bancshares Incorpora"/>
+        <symbol code="INTC" description="Intel Corporation"/>
+        <symbol code="EEM" description="iShares MSCI Emerging Index Fun"/>
+        <symbol code="F" description="Ford Motor Company Common Stock"/>
+        <symbol code="IRE" description="Governor and Company of the Ban"/>
+        <symbol code="IWM" description="iShares Russell 2000"/>
+        <symbol code="MSFT" description="Microsoft Corporation"/>
+        <symbol code="MOT" description="Motorola, Inc. Common Stock"/>
+        <symbol code="PFE" description="Pfizer, Inc. Common Stock"/>
+        <symbol code="QQQQ" description="PowerShares Exchange-Traded Fun"/>
+        <symbol code="LVS" description="Las Vegas Sands Corp. Common St"/>
+    </stockexchange>
+    <stockexchange name="NASDAQ">
+        <symbol code="SIRI" description="Sirius XM Radio Inc."/>
+        <symbol code="CSCO" description="Cisco Systems, Inc."/>
+        <symbol code="MU" description="Micron Technology, Inc"/>
+        <symbol code="XOMA" description="XOMA Ltd."/>
+        <symbol code="HBAN" description="Huntington Bancshares Incorpora"/>
+        <symbol code="INTC" description="Intel Corporation"/>
+        <symbol code="MSFT" description="Microsoft Corporation"/>
+        <symbol code="QQQQ" description="PowerShares Exchange-Traded Fun"/>
+        <symbol code="SNIC" description="Sonic Solutions"/>
+        <symbol code="VRGY" description="Verigy Ltd."/>
+        <symbol code="TEVA" description="Teva Pharmaceutical Industries"/>
+        <symbol code="BPOP" description="Popular, Inc."/>
+        <symbol code="ORCL" description="Oracle Corporation"/>
+        <symbol code="ARNA" description="Arena Pharmaceuticals, Inc."/>
+        <symbol code="CMCSA" description="Comcast Corporation"/>
+        <symbol code="YHOO" description="Yahoo! Inc."/>
+        <symbol code="GILD" description="Gilead Sciences, Inc."/>
+        <symbol code="ACAD" description="ACADIA Pharmaceuticals Inc."/>
+        <symbol code="QCOM" description="QUALCOMM Incorporated"/>
+        <symbol code="AAPL" description="Apple Inc."/>
+        <symbol code="BBBY" description="Bed Bath &amp; Beyond Inc."/>
+        <symbol code="DELL" description="Dell Inc."/>
+        <symbol code="RPRX" description="Repros Therapeutics Inc."/>
+        <symbol code="EBAY" description="eBay Inc."/>
+        <symbol code="NVDA" description="NVIDIA Corporation"/>
+    </stockexchange>
+    <stockexchange name="AMEX">
+        <symbol code="SPY" description="SPDR S&amp;P 500"/>
+        <symbol code="XLF" description="SPDR Select Sector Fund - Finan"/>
+        <symbol code="EEM" description="iShares MSCI Emerging Index Fun"/>
+        <symbol code="IWM" description="iShares Russell 2000"/>
+        <symbol code="SLV" description="iShares Silver Trust"/>
+        <symbol code="EFA" description="iShares MSCI EAFE Index Fund"/>
+        <symbol code="VWO" description="Vanguard Emerging Markets ETF"/>
+        <symbol code="EWJ" description="iShares MSCI Japan Index Fund"/>
+        <symbol code="EWT" description="iShares MSCI Taiwan Index Fund"/>
+        <symbol code="GDX" description="Market Vectors Gold Miners ETF"/>
+        <symbol code="EWZ" description="iShares MSCI Brazil Index Fund"/>
+        <symbol code="TLT" description="iShares Barclays 20 Year Treasu"/>
+        <symbol code="XRT" description="SPDR S&amp;P Retail ETF"/>
+        <symbol code="IYR" description="iShares Dow Jones U.S. Real Est"/>
+        <symbol code="KOG" description="Kodiak Oil &amp; Gas Corp Common St"/>
+        <symbol code="YMI" description="YM BioSciences, Inc. Ordinary S"/>
+        <symbol code="XLE" description="SPDR Select Sector Fund - Energ"/>
+        <symbol code="XLI" description="SPDR Select Sector Fund - Indus"/>
+        <symbol code="XLB" description="Materials Select Sector SPDR"/>
+        <symbol code="HDY" description="HyperDynamics Corporation Commo"/>
+        <symbol code="DIA" description="SPDR Dow Jones Industrial Avera"/>
+        <symbol code="XLK" description="SPDR Select Sector Fund - Techn"/>
+        <symbol code="KBE" description="SPDR KBW Bank ETF"/>
+        <symbol code="GSS" description="Golden Star Resources, Ltd Comm"/>
+        <symbol code="URG" description="Ur Energy Inc Common Shares (Ca"/>
+    </stockexchange>
+    <stockexchange name="NYSE">
+        <symbol code="C" description="Citigroup, Inc. Common Stock"/>
+        <symbol code="BAC" description="Bank of America Corporation Com"/>
+        <symbol code="MI" description="New M&amp;I Corporation Common Stoc"/>
+        <symbol code="AIB" description="Allied Irish Banks, p.l.c. Comm"/>
+        <symbol code="S" description="Sprint Nextel Corporation Comm"/>
+        <symbol code="Q" description="Qwest Communications Internatio"/>
+        <symbol code="GE" description="General Electric Company Common"/>
+        <symbol code="AA" description="Alcoa Inc. Common Stock"/>
+        <symbol code="F" description="Ford Motor Company Common Stock"/>
+        <symbol code="IRE" description="Governor and Company of the Ban"/>
+        <symbol code="MOT" description="Motorola, Inc. Common Stock"/>
+        <symbol code="PFE" description="Pfizer, Inc. Common Stock"/>
+        <symbol code="LVS" description="Las Vegas Sands Corp. Common St"/>
+        <symbol code="GM" description="General Motors Company Common S"/>
+        <symbol code="UNG" description="United States Natural Gas Fund"/>
+        <symbol code="MGM" description="MGM Resorts International Commo"/>
+        <symbol code="JPM" description="JP Morgan Chase &amp; Co. Common St"/>
+        <symbol code="WFC" description="Wells Fargo &amp; Company Common St"/>
+        <symbol code="FAS" description="Direxion Financial Bull 3X Shar"/>
+        <symbol code="SNV" description="Synovus Financial Corporation C"/>
+        <symbol code="FAZ" description="Direxion Financial Bear 3X Shar"/>
+        <symbol code="NLY" description="Annaly Capital Management Inc C"/>
+        <symbol code="RF" description="Regions Financial Corporation C"/>
+        <symbol code="FXI" description="iShares FTSE China 25 Index Fun"/>
+        <symbol code="T" description="AT&amp;T Inc."/>
+    </stockexchange>
+</yahooprovider>

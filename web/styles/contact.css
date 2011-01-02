@@ -1,0 +1,72 @@
+form {}
+    form div {
+        margin-bottom: 10px;
+    }
+    
+    form div label {
+        color: #C7B4AA;
+        display: block;
+        font-size: 10px;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+    }
+    
+    form fieldset {
+        border: 0;
+        float: left;
+        margin-right: 10px;
+        width: 220px;
+    }
+    
+    form div.textarea {
+        float: right;
+        width: 340px;
+    }
+    
+    form div.input.text input,
+    form div.textarea textarea {
+        background: #26221F url(../images/layout/bg-input.png) top left no-repeat;
+        border: 0;
+        color: #C7B4AA;
+        font: lighter 14px "helvetica", "arial", sans-serif;
+        padding: 6px;
+        outline: none;
+    }
+    
+        form div.input.text input:focus,
+        form div.input.textarea textarea:focus {
+            background: #26221F;
+            border: 2px solid #201D1A;
+            padding: 4px;
+            color: #FFF;
+        }
+        
+        form div.input.text input {
+            width: 212px;
+        }
+        
+        form div.textarea textarea {
+            resize: none;
+            height: 127px;
+            width: 328px;
+        }
+
+    form button {
+    	background: url(../images/contact/send-button.png) no-repeat;
+    	border: 0;
+    	cursor: pointer;
+    	clear: both;
+    	display: block;
+    	height: 37px;
+    	overflow: hidden;
+    	text-indent: -9999px;
+    	width: 171px;
+    }
+
+    	form button:hover {
+    	    background-position: center;
+    	}
+	
+    	form button:active {
+    		background-position: bottom;
+    	}

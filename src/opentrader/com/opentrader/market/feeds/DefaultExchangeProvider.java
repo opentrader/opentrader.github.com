@@ -44,6 +44,8 @@
 
 package com.opentrader.market.feeds;
 
+import java.util.List;
+
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>
  *  @version   0.00.00
@@ -53,6 +55,8 @@ package com.opentrader.market.feeds;
  */
 public interface DefaultExchangeProvider {
 
-    int a = 0;
+    void connect();
+    List<StockExchange> getStockExchanges();
+    List<Symbol> getSymbols(StockExchange stock);
 
 }

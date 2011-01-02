@@ -44,7 +44,7 @@
 package com.external.yahooprovider;
 
 import com.opentrader.market.feeds.Trade;
-import java.math.BigDecimal;
+
 import java.util.logging.Logger;
 
 /**
@@ -58,50 +58,5 @@ public class YTrade implements Trade {
 
     private static final long serialVersionUID = 3385765359479213343L;
     private static final Logger LOG = Logger.getLogger("yahooprovider");
-
-    private String date;
-    private String time;
-    private BigDecimal value;
-    private Integer volume;
-    private Integer unknown;
-
-    public String getTime() {
-        return this.time;
-    }
-
-    protected void setTime(String time) {
-        this.time = time;
-    }
-
-    public BigDecimal getValue() {
-        return this.value;
-    }
-
-    protected void setValue(BigDecimal value) {
-        this.value = value;
-    }
-
-    public Integer getVolume() {
-        return this.volume;
-    }
-
-    protected void setVolume(Integer volume) {
-        this.volume = volume;
-    }
-
-    public Integer getUnknown() {
-        return this.unknown;
-    }
-
-    protected void setUnknown(Integer unknown) {
-        this.unknown = unknown;
-    }
-
-    public String getDate() {
-        return this.date;
-    }
-
-    protected void setDate(String date) {
-        this.date = date;
-    }
+    
 }

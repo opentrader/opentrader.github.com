@@ -53,8 +53,4 @@ package com.opentrader.market.feeds;
  */
 public interface ExchangeRate {
 
-    Currency getFromCurrency();
-    Currency getToCurrency();
-    Symbol getSymbol();
-
 }

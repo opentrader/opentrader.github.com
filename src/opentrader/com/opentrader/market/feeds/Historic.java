@@ -55,11 +55,4 @@ import java.math.BigDecimal;
  */
 public interface Historic {
 
-    String getDate();
-    BigDecimal getHigh();
-    BigDecimal getLow();
-    BigDecimal getClose();
-    BigDecimal getVolume();
-    BigDecimal getAdjClose();
-
 }

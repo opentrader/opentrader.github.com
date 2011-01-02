@@ -102,8 +102,12 @@ public class OpenTrader {
                 LOG.warning(e.getMessage());
             }
 
-            OpenTraderJFrame mainForm = new OpenTraderJFrame();
-            mainForm.setVisible(true);
+            //OpenTraderJFrame mainForm = new OpenTraderJFrame();
+            //mainForm.setVisible(true);
+
+            //com.external.yahooprovider.YahooProvider provider =
+                    //new com.external.yahooprovider.YahooProvider();
+            //provider.connect();
         } catch (Exception e) {
             LOG.info("Core Initialization Failed.");
             LOG.severe(e.getMessage());

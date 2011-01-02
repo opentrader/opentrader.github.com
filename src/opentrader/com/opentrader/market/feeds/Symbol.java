@@ -54,5 +54,6 @@ package com.opentrader.market.feeds;
 public interface Symbol {
 
     String getCode();
+    String getDescription();
 
 }

@@ -44,8 +44,6 @@
 
 package com.opentrader.market.feeds;
 
-import java.util.ArrayList;
-
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>
  *  @version   0.00.00
@@ -54,13 +52,5 @@ import java.util.ArrayList;
  *  %date      7:06:37 AM, Dec 14, 2010
  */
 public interface Quote {
-
-    ArrayList<Historic> getHistorics();
-    ArrayList<Trade> getDayTrades();
-    //String getCsvHistoric();
-    //String getCsvDayTrade();
-    boolean isValid();
-    Symbol getSymbol();
-    String getValue(String key);
 
 }

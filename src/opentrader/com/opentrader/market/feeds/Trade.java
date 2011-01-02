@@ -44,8 +44,6 @@
 
 package com.opentrader.market.feeds;
 
-import java.math.BigDecimal;
-
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>
  *  @version   0.00.00
@@ -54,11 +52,5 @@ import java.math.BigDecimal;
  *  %date      7:17:09 AM, Dec 14, 2010
  */
 public interface Trade {
-
-    String getTime();
-    BigDecimal getValue();
-    Integer getVolume();
-    Integer getUnknown();
-    String getDate();
 
 }

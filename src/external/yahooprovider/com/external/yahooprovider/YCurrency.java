@@ -57,35 +57,6 @@ import java.util.logging.Logger;
 public class YCurrency implements Currency {
 
     private static final long serialVersionUID = 1063574327321635579L;
-
     private static final Logger LOG = Logger.getLogger("yahooprovider");
-
-    private String code;
-
-    public YCurrency(String code) {
-        this.code = code;
-    }
-
-    public String getCode() {
-        return this.code;
-    }
-
-    @Override
-    public int hashCode() {
-        return this.code.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        YCurrency currency;
-
-        if ((o instanceof YCurrency)) {
-            currency = (YCurrency) o;
-        } else {
-            return false;
-        }
-
-        return this.code.equals(currency.getCode());
-    }
 
 }

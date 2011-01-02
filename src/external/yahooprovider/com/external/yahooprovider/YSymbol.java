@@ -59,64 +59,105 @@ public class YSymbol implements Symbol {
     private static final Logger LOG = Logger.getLogger("yahooprovider");
 
     private String code;
+    private String description;
 
-    public static String AMEX = "";
-    public static String NASDAQ = "";
-    public static String NYSE = "";
-    public static String OB = "OB";
-    public static String PK = "PK";
-    public static String BA = "BA";
-    public static String VI = "VI";
-    public static String AX = "AX";
-    public static String SA = "SA";
-    public static String TO = "TO";
-    public static String V = "V";
-    public static String SS = "SS";
-    public static String SZ = "SZ";
-    public static String CO = "CO";
-    public static String PA = "PA";
-    public static String BE = "BE";
-    public static String DU = "DU";
-    public static String F = "F";
-    public static String HM = "HM";
-    public static String HA = "HA";
-    public static String MU = "MU";
-    public static String SG = "SG";
-    public static String DE = "DE";
-    public static String HK = "HK";
-    public static String BO = "BO";
-    public static String NS = "NS";
-    public static String JK = "JK";
-    public static String IR = "IR";
-    public static String TA = "TA";
-    public static String MI = "MI";
-    public static String KS = "KS";
-    public static String KQ = "KQ";
-    public static String MX = "MX";
-    public static String AS = "AS";
-    public static String NZ = "NZ";
-    public static String OL = "OL";
-    public static String LS = "LS";
-    public static String SI = "SI";
-    public static String BC = "BC";
-    public static String BI = "BI";
-    public static String MF = "MF";
-    public static String MC = "MC";
-    public static String MA = "MA";
-    public static String ST = "ST";
-    public static String SW = "SW";
-    public static String VX = "VX";
-    public static String TWO = "TWO";
-    public static String TW = "TW";
-    public static String BK = "BK";
-    public static String L = "L";
+    private double ask = -1;        /* Ask (a) */
+    private double avg = -1;        /* Average Daily Volume (a2) */
+    private double askSize = -1;    /* Ask Size (a5) */
+    private double bid = -1;        /* Bid (b) */
+    private double askRT = -1;      /* Ask (Real-time) (b2) */
+    private double bidRT = -1;      /* Bid (Real-time) (b3) */
+    private double bookkValue = -1; /* Book Value (b4) */
+    private double badSize = -1;    /* Bid Size (b6) */
+    private double pchange = -1;    /* Change & Percent Change (c) */
+    private double change = -1;     /* Change (c1) */
+    private double commission = -1; /* Commission (c3) */
+    private double changeRT = -1;   /* Change (Real-time) (c6) */
+    private double afterHrChg = -1; /* After Hours Change (Real-time) (c8) */
+    private double share = -1;      /* Dividend/Share (d) */
+    private double lastTrdDate = -1;/* Last Trade Date (d1) */
+    private double tradeDate = -1;  /* Trade Date (d2) */
+    private double earning = -1;    /* Earnings/Share (e) */
+    private double error = -1;      /* Error Indication (returned for symbol changed / invalid) (e1) */
+    private double EPSCurYear = -1; /* EPS Estimate Current Year (e7) */
+    private double EPSNextYear = -1;/* EPS Estimate Next Year (e8) */
+    private double EPSNextQrtr = -1;/* EPS Estimate Next Quarter (e9) */
+    private double floatShares = -1;/* Float Shares (f6) */
+    private double dayLow = -1;     /* Day’s Low (g) */
+    private double dayHigh = -1;    /* Day’s High (h) */
+    private double w52low = -1;     /* 52-week Low (j) */
+    private double w52high = -1;    /* 52-week High (k) */
+    private double holdGainP = -1;  /* Holdings Gain Percent (g1) */
+    private double annualGain = -1; /* Annualized Gain (g3) */
+    private double holdGain = -1;   /* Holdings Gain (g4) */
+    private double holdGainPRT = -1;/* Holdings Gain Percent (Real-time) (g5) */
+    private double holdGainRT = -1; /* Holdings Gain (Real-time) (g6) */
+    private double more = -1;       /* More Info (i) */
+    private double orderBookRT = -1;/* Order Book (Real-time) (i5) */
+    private double marketCap = -1;  /* Market Capitalization (j1) */
+    private double marketCapRT = -1;/* Market Cap (Real-time) (j3) */
+    private double EBITDA = -1;     /* EBITDA (j4) */
+    private double w52lowChng = -1; /* Change From 52-week Low (j5) */
+    private double prcChng52w = -1; /* Percent Change From 52-week Low (j6) */
+    private double lastTradeRT = -1;/* Last Trade (Real-time) With Time (k1) */
+    private double chngPerRT = -1;  /* Change Percent (Real-time) (k2) */
+    private double lastTrSize = -1; /* Last Trade Size (k3) */
+    private double chng52wHigh = -1;/* Change From 52-week High (k4) */
+    private double pchg52wHigh = -1;/* Percebt Change From 52-week High (k5) */
+    private double lastTradeTm = -1;/* Last Trade (With Time) (l) */
+    private double lastTrPrice = -1;/* Last Trade (Price Only) (l1) */
+    private double highLimit = -1;  /* High Limit (l2) */
+    private double lowLimit = -1;   /* Low Limit (l3) */
+    private double daysRange = -1;  /* Day’s Range (m) */
+    private double daysRangeR = -1; /* Day’s Range (Real-time) (m2) */
+    private double d50MovAvg = -1;  /* 50-day Moving Average (m3) */
+    private double d200MovAvg = -1; /* 200-day Moving Average (m4) */
+    private double cng200dMAvg = -1;/* Change From 200-day Moving Average (m5) */
+    private double pCgd200VAvg = -1;/* Percent Change From 200-day Moving Average (m6) */
+    private double cngd50MAvg = -1; /* Change From 50-day Moving Average (m7) */
+    private double pCgd50MAvg = -1; /* Percent Change From 50-day Moving Average (m8) */
+    private double name = -1;       /* Name (n) */
+    private double notes = -1;      /* Notes (n4) */
+    private double open = -1;       /* Open (o) */
+    private double prevClose = -1;  /* Previous Close (p) */
+    private double pricePaid = -1;  /* Price Paid (p1) */
+    private double chgPercent = -1; /* Change in Percent (p2) */
+    private double priceSales = -1; /* Price/Sales (p5) */
+    private double priceBook = -1;  /* Price/Book (p6) */
+    private double exDivDate = -1;  /* Ex-Dividend Date (q) */
+    private double PERation = -1;   /* P/E Ratio (r) */
+    private double divPayDate = -1; /* Dividend Pay Date (r1) */
+    private double PERatioTR = -1;  /* P/E Ratio (Real-time) (r2) */
+    private double PEGRatio = -1;   /* PEG Ratio (r5) */
+    private double EPSECrYrPrc = -1;/* Price/EPS Estimate Current Year (r6) */
+    private double EPSCrYrPrc = -1; /* Price/EPS Estimate Next Year (r7) */
+    private double symbolName = -1; /* Symbol (s) */
+    private double sharesOwn = -1;  /* Shares Owned (s1) */
+    private double shortRatio = -1; /* Short Ratio (s7) */
+    private double lastTrdTime = -1;/* Last Trade Time (t1) */
+    private double tradeLinks = -1; /* Trade Links (t6) */
+    private double tickerTrend = -1;/* Ticker Trend (t7) */
+    private double yr1Proce = -1;   /* 1 yr Target Price (t8) */
+    private double volume = -1;     /* Volume (v) */
+    private double holdvalue = -1;  /* Holdings Value (v1) */
+    private double holdvalueRT = -1;/* Holdings Value (Real-time) (v7) */
+    private double w52range = -1;   /* 52-week Range (w) */
+    private double dValChng = -1;   /* Day’s Value Change (w1) */
+    private double dValChngRT = -1; /* Day’s Value Change (Real-time) (w4) */
+    private double stock = -1;      /* Stock Exchange (x) */
+    private double dvdndYield = -1; /* Dividend Yield (y) */
 
-    public YSymbol(String code) {
+    public YSymbol(String code, String description) {
         this.code = code;
+        this.description = description;
     }
 
     public String getCode() {
         return this.code;
+    }
+
+    public String getDescription() {
+        return this.description;
     }
 
     @Override
@@ -136,4 +177,5 @@ public class YSymbol implements Symbol {
 
         return this.code.equals(symbol.getCode());
     }
+
 }
