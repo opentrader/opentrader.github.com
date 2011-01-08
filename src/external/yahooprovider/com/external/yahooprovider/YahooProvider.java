@@ -55,8 +55,12 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -83,6 +87,8 @@ public class YahooProvider implements DefaultExchangeProvider {
     private static final int READ_TIME_SECONDS = 3;
 
     private static final String provider = "http://finance.yahoo.com/d/quotes.csv";
+
+    private static enum Format {BASIC}
 
     /** Yahoo! Volume Leaders http://finance.yahoo.com/actives?e=us */
     private ArrayList<StockExchange> stocks = new ArrayList<StockExchange>(20);
@@ -125,7 +131,7 @@ public class YahooProvider implements DefaultExchangeProvider {
                         }
 
                         symbols.add(new YSymbol(code, description));
-                        selectedSymbols.add(new YSymbol(code, description));
+                        //selectedSymbols.add(new YSymbol(code, description));
                     }
                 }
 
@@ -152,7 +158,7 @@ public class YahooProvider implements DefaultExchangeProvider {
         }
     }
 
-    public void connect() {
+    public void connect() throws ParseException  {
         URL                 url;
         URLConnection       urlConn;
         BufferedReader      br = null;
@@ -185,7 +191,7 @@ public class YahooProvider implements DefaultExchangeProvider {
             }
         }
 
-        updateSymbols();
+        updateSymbols(Format.BASIC);
     }
 
     public List<StockExchange> getStockExchanges() {
@@ -193,17 +199,36 @@ public class YahooProvider implements DefaultExchangeProvider {
         return Collections.unmodifiableList(stocks);
     }
 
-    public List<Symbol> getSymbols(StockExchange stock) {
+    public List<Symbol> getSymbolsList(StockExchange stock) {
         
         return stocks.get(stocks.indexOf(stock)).getSymbols();
     }
-
+    
+    public List<Symbol> getPortfolio() {
+        
+        return Collections.unmodifiableList(selectedSymbols);
+    }
+    
+    public void setPortfolio(List<Symbol> selectedSymbols) {
+        this.selectedSymbols.addAll(selectedSymbols);
+    }
+            
     public static void main(String[] args) {
-        YahooProvider yprovider = new YahooProvider();
-        yprovider.connect();
+        ArrayList <Symbol> symbols = new ArrayList<Symbol>(10);
+        symbols.add(new YSymbol("C", ""));
+        symbols.add(new YSymbol("YHOO", ""));
+        symbols.add(new YSymbol("MSFT", ""));
+        
+        try {
+            YahooProvider yprovider = new YahooProvider();
+            yprovider.setPortfolio(symbols);
+            yprovider.connect();
+        } catch (Exception e) {
+            
+        }
     }
 
-    private void updateSymbols() {
+    private void updateSymbols(Format format) throws ParseException {
         URL                 url;
         URLConnection       urlConn;
         BufferedReader      br = null;
@@ -218,7 +243,27 @@ public class YahooProvider implements DefaultExchangeProvider {
         }
 
         String symbols = sb.toString();
-        String options = "snl1d1t1ohgdr";
+        String options = "snl1d1t1c1p2vx";
+        
+        switch (format) {
+            case BASIC:
+                /**
+                 * s    Symbol
+                 * n    Name
+                 * l1   Last Trade (Price Only)
+                 * d1   Last Trade Date
+                 * t1   Last Trade Time
+                 * c1   Change (c1 + p2 = c)
+                 * p2   Change in Percent (c1 + p2 = c)
+                 * v    Volume
+                 * x    Stock Exchange
+                 */
+                options = "snl1d1t1c1p2vx";
+                break;
+            default:
+                options = "snl1d1t1c1p2vx";
+                break;
+        }
 
         try {
             url = new URL(provider + "?s=" + symbols +  "&f=" + options);
@@ -231,10 +276,76 @@ public class YahooProvider implements DefaultExchangeProvider {
 
             br = new BufferedReader(
                     new InputStreamReader(urlConn.getInputStream()));
+            
+            YSymbol symbol;
+            
+            /**
+             * G	Era designator          AD
+            *  y	Year                    1996; 96
+            *  M	Month in year           July; Jul; 07
+            *  w	Week in year            27
+            *  W	Week in month           2
+            *  D	Day in year             189
+            *  d	Day in month            10
+            *  F	Day of week in month	2
+            *  E	Day in week             Tuesday; Tue
+            *  a	Am/pm marker            PM
+            *  H	Hour in day (0-23)	0
+            *  k	Hour in day (1-24)	24
+            *  K	Hour in am/pm (0-11)	0
+            *  h	Hour in am/pm (1-12)	12
+            *  m	Minute in hour          30
+            *  s	Second in minute	55
+            *  S	Millisecond             978
+            *  z	Time zone	Pacific Standard Time; PST; GMT-08:00
+            *  Z	Time zone               -0800
+             */
+            SimpleDateFormat sdf = 
+                    new java.text.SimpleDateFormat("MM/dd/yyyy hh:mma");
 
             String s;
             while ((s = br.readLine()) != null) {
-                 System.out.println(s);
+                 //System.out.println(s);
+                 switch (format) {
+                    case BASIC:
+                        // "C","Citigroup, Inc. C",4.9785,"1/6/2011","1:54pm",+0.0085,"+0.17%",545176448,"NYSE"
+                        String otherThanQuote = " [^\"] ";
+                        String quotedString = String.format(" \" %s* \" ", otherThanQuote);
+                        String regex = String.format("(?x) "+ // enable comments, ignore white spaces
+                                ",                         "+ // match a comma
+                                "(?=                       "+ // start positive look ahead
+                                "  (                       "+ //   start group 1
+                                "    %s*                   "+ //     match 'otherThanQuote' zero or more times
+                                "    %s                    "+ //     match 'quotedString'
+                                "  )*                      "+ //   end group 1 and repeat it zero or more times
+                                "  %s*                     "+ //   match 'otherThanQuote'
+                                "  $                       "+ // match the end of the string
+                                ")                         ", // stop positive look ahead
+                                otherThanQuote, quotedString, otherThanQuote);
+                        String[] tokens = s.split(regex);
+                        
+                        symbol = new YSymbol(
+                                tokens[0].substring(1, tokens[0].length() - 1), 
+                                tokens[1].substring(1, tokens[1].length() - 1));
+                        symbol.setLastTradePrice(Double.parseDouble(tokens[2]));
+                        symbol.setLastTradeDateAndTime(
+                            sdf.parse(
+                                tokens[3].substring(1, tokens[3].length() - 1) + 
+                                " " + 
+                                tokens[4].substring(1, tokens[4].length() - 1)));
+                        symbol.setChange(Double.parseDouble(tokens[5]));
+                        symbol.setChangeInPercent(
+                                Double.parseDouble(
+                                    tokens[6].substring(
+                                        1, 
+                                        tokens[6].length() - 2)));
+                        symbol.setVolume(Long.parseLong(tokens[7]));
+                        symbol.setStockExchange(
+                                tokens[8].substring(1, tokens[8].length() - 1));
+                        break;
+                    default:
+                        break;
+                }
             }
         } catch (java.net.MalformedURLException e) {
             LOG.warning(e.toString());

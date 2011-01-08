@@ -44,6 +44,7 @@
 package com.external.yahooprovider;
 
 import com.opentrader.market.feeds.Symbol;
+import java.util.Date;
 import java.util.logging.Logger;
 
 /**
@@ -69,13 +70,13 @@ public class YSymbol implements Symbol {
     private double bidRT = -1;      /* Bid (Real-time) (b3) */
     private double bookkValue = -1; /* Book Value (b4) */
     private double badSize = -1;    /* Bid Size (b6) */
-    private double pchange = -1;    /* Change & Percent Change (c) */
+    //private double pchange = -1;    /* Change & Percent Change (c) */ $(c1 + p2 = c)
     private double change = -1;     /* Change (c1) */
     private double commission = -1; /* Commission (c3) */
     private double changeRT = -1;   /* Change (Real-time) (c6) */
     private double afterHrChg = -1; /* After Hours Change (Real-time) (c8) */
     private double share = -1;      /* Dividend/Share (d) */
-    private double lastTrdDate = -1;/* Last Trade Date (d1) */
+    private Date   lastTrdDate = new Date();     /* Last Trade Date (d1) */
     private double tradeDate = -1;  /* Trade Date (d2) */
     private double earning = -1;    /* Earnings/Share (e) */
     private double error = -1;      /* Error Indication (returned for symbol changed / invalid) (e1) */
@@ -134,17 +135,17 @@ public class YSymbol implements Symbol {
     private double symbolName = -1; /* Symbol (s) */
     private double sharesOwn = -1;  /* Shares Owned (s1) */
     private double shortRatio = -1; /* Short Ratio (s7) */
-    private double lastTrdTime = -1;/* Last Trade Time (t1) */
+    //private double lastTrdTime = -1;/* Last Trade Time (t1) */ $(d1)
     private double tradeLinks = -1; /* Trade Links (t6) */
     private double tickerTrend = -1;/* Ticker Trend (t7) */
     private double yr1Proce = -1;   /* 1 yr Target Price (t8) */
-    private double volume = -1;     /* Volume (v) */
+    private long   volume = -1;     /* Volume (v) */
     private double holdvalue = -1;  /* Holdings Value (v1) */
     private double holdvalueRT = -1;/* Holdings Value (Real-time) (v7) */
     private double w52range = -1;   /* 52-week Range (w) */
     private double dValChng = -1;   /* Day’s Value Change (w1) */
     private double dValChngRT = -1; /* Day’s Value Change (Real-time) (w4) */
-    private double stock = -1;      /* Stock Exchange (x) */
+    private String stock = null;      /* Stock Exchange (x) */
     private double dvdndYield = -1; /* Dividend Yield (y) */
 
     public YSymbol(String code, String description) {
@@ -158,6 +159,73 @@ public class YSymbol implements Symbol {
 
     public String getDescription() {
         return this.description;
+    }
+    
+    /**
+     * s    Symbol
+     * n    Name
+     * l1   Last Trade (Price Only)
+     * d1   Last Trade Date
+     * t1   Last Trade Time
+     * c1   Change (c1 + p2 = c)
+     * p2   Change in Percent (c1 + p2 = c)
+     * v    Volume
+     * x    Stock Exchange
+     */
+    
+    /**
+     * 
+     * @param value 
+     *        l1   Last Trade (Price Only)
+     */
+    public void setLastTradePrice(double value) {
+        lastTrPrice = value;
+    }
+    
+    /**
+     * 
+     * @param value 
+     *        d1   Last Trade Date
+     *        t1   Last Trade Time
+     */
+    public void setLastTradeDateAndTime(Date value) {
+        lastTrdDate.setTime(value.getTime());
+    }
+    
+    /**
+     * 
+     * @param value 
+     *        c1   Change (c1 + p2 = c)
+     */
+    public void setChange(double value) {
+        change = value;
+    }
+    
+    /**
+     * 
+     * @param value 
+     *        p2   Change in Percent (c1 + p2 = c)
+     */
+    public void setChangeInPercent(double value) {
+        chgPercent = value;
+    }
+    
+    /**
+     * 
+     * @param value 
+     *        v    Volume
+     */
+    public void setVolume(long value) {
+        volume = value;
+    }
+    
+    /**
+     * 
+     * @param value 
+     *        x    Stock Exchange
+     */
+    public void setStockExchange(String value) {
+        stock = value;
     }
 
     @Override

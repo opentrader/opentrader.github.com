@@ -44,6 +44,7 @@
 
 package com.opentrader.market.feeds;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -55,8 +56,12 @@ import java.util.List;
  */
 public interface DefaultExchangeProvider {
 
-    void connect();
+    void connect() throws ParseException ;
+    
     List<StockExchange> getStockExchanges();
-    List<Symbol> getSymbols(StockExchange stock);
+    List<Symbol> getSymbolsList(StockExchange stock);
+    List<Symbol> getPortfolio();
+    
+    void setPortfolio(List<Symbol> selectedSymbols);
 
 }
