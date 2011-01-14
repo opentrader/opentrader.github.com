@@ -76,7 +76,7 @@ public class YSymbol implements Symbol {
     private double changeRT = -1;   /* Change (Real-time) (c6) */
     private double afterHrChg = -1; /* After Hours Change (Real-time) (c8) */
     private double share = -1;      /* Dividend/Share (d) */
-    private Date   lastTrdDate = new Date();     /* Last Trade Date (d1) */
+    private long   lastTrdDate = -1;/* Last Trade Date (d1) */
     private double tradeDate = -1;  /* Trade Date (d2) */
     private double earning = -1;    /* Earnings/Share (e) */
     private double error = -1;      /* Error Indication (returned for symbol changed / invalid) (e1) */
@@ -175,6 +175,55 @@ public class YSymbol implements Symbol {
     
     /**
      * 
+     * @return l1   Last Trade (Price Only)
+     */
+    public double getLastTradePrice() {
+        return lastTrPrice;
+    }
+    
+    /**
+     * 
+     * @return  d1   Last Trade Date
+     *          t1   Last Trade Time
+     */
+    public long getLastTradeDateAndTime() {
+        return lastTrdDate;
+    }
+    
+    /**
+     * 
+     * @return c1   Change (c1 + p2 = c)
+     */
+    public double getChange() {
+        return change;
+    }
+    
+    /**
+     * 
+     * @return p2   Change in Percent (c1 + p2 = c)
+     */
+    public double getChangeInPercent() {
+        return chgPercent;
+    }
+    
+    /**
+     * 
+     * @return x    Stock Exchange
+     */
+    public String getStockExchange() {
+        return stock;
+    }
+    
+    /**
+     * 
+     * @return v    Volume
+     */
+    public long getVolume() {
+        return volume;
+    }
+    
+    /**
+     * 
      * @param value 
      *        l1   Last Trade (Price Only)
      */
@@ -188,8 +237,8 @@ public class YSymbol implements Symbol {
      *        d1   Last Trade Date
      *        t1   Last Trade Time
      */
-    public void setLastTradeDateAndTime(Date value) {
-        lastTrdDate.setTime(value.getTime());
+    public void setLastTradeDateAndTime(long value) {
+        lastTrdDate = value;
     }
     
     /**

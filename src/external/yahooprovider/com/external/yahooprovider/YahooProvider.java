@@ -45,6 +45,7 @@
 package com.external.yahooprovider;
 
 import com.opentrader.market.feeds.DefaultExchangeProvider;
+import com.opentrader.market.feeds.Historic;
 import com.opentrader.market.feeds.StockExchange;
 import com.opentrader.market.feeds.Symbol;
 
@@ -87,6 +88,7 @@ public class YahooProvider implements DefaultExchangeProvider {
     private static final int READ_TIME_SECONDS = 3;
 
     private static final String provider = "http://finance.yahoo.com/d/quotes.csv";
+    private static final String historic = "http://ichart.yahoo.com/table.csv";
 
     private static enum Format {BASIC}
 
@@ -202,6 +204,73 @@ public class YahooProvider implements DefaultExchangeProvider {
     public List<Symbol> getSymbolsList(StockExchange stock) {
         
         return stocks.get(stocks.indexOf(stock)).getSymbols();
+    }
+    
+    /**
+     * http://ichart.finance.yahoo.com/table.csv?s=STOCK
+     * 
+     * @param symbol
+     *        STOCK is the ticker symbol
+     *        You can limit what that returns with some additional parameters:
+     *        s - Ticker symbol. This is the only parameter that isn't optional.
+     * @param start
+     *        Start date for historical prices:
+     *        a - Month number, starting with 0 for January.
+     *        b - Day number, eg, 1 for the first of the month.
+     *        c - Year.
+     * @param end
+     *        End date for historical prices (default is the most current 
+     *        available closing price):
+     *        d - Month number, starting with 0 for January.
+     *        e - Day number, eg, 1 for the first of the month.
+     *        f - Year     * 
+     * @param ival 
+     *        And finally, the frequency of historical prices:
+     *        g - Possible values are 'd' for daily (the default), 'w' for weekly, 
+     *        and 'm' for monthly.
+     * 
+     * @return 
+     *        'GOOG', "20100101", "20101201"
+     *        http://ichart.yahoo.com/table.csv?s=GOOG&d=11&e=1&f=2010&g=d&a=0&b=1&c=2010&ignore=.csv
+     * 
+     *        'GOOG', "20090131", "20101201"
+     *        http://ichart.yahoo.com/table.csv?s=GOOG&d=11&e=1&f=2010&g=d&a=0&b=31&c=2009&ignore=.csv
+     */
+    public List<Historic> getHistoricalPrices(Symbol symbol, Date start, Date end, Interval ival) {
+        ArrayList<Historic> list = new ArrayList<Historic>(20);
+        
+        URL                 url;
+        URLConnection       urlConn;
+        BufferedReader      br = null;
+        
+        try {
+            url = new URL(historic + "?s=" + symbol.getCode() +  "&f=" + options);
+
+            urlConn = url.openConnection();
+            urlConn.setConnectTimeout(CONNECT_TIME_SECONDS * 1000);
+            urlConn.setReadTimeout(READ_TIME_SECONDS * 1000);
+            urlConn.setDoInput(true);
+            urlConn.setUseCaches(false);
+
+            br = new BufferedReader(
+                    new InputStreamReader(urlConn.getInputStream()));
+            String s;
+            while ((s = br.readLine()) != null) {
+                //
+            }
+        } catch (java.net.MalformedURLException e) {
+            LOG.warning(e.toString());
+        } catch (java.io.IOException e) {
+            LOG.warning(e.toString());
+        } finally {
+            try {
+                br.close();
+            } catch(java.io.IOException e) {
+                LOG.warning(e.toString());
+            }
+        } 
+        
+        return Collections.unmodifiableList(list);
     }
     
     public List<Symbol> getPortfolio() {
@@ -332,7 +401,8 @@ public class YahooProvider implements DefaultExchangeProvider {
                             sdf.parse(
                                 tokens[3].substring(1, tokens[3].length() - 1) + 
                                 " " + 
-                                tokens[4].substring(1, tokens[4].length() - 1)));
+                                tokens[4].substring(1, tokens[4].length() - 1)
+                            ).getTime());
                         symbol.setChange(Double.parseDouble(tokens[5]));
                         symbol.setChangeInPercent(
                                 Double.parseDouble(

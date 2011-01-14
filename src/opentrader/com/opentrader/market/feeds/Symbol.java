@@ -44,8 +44,6 @@
 
 package com.opentrader.market.feeds;
 
-import java.util.Date;
-
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>
  *  @version   0.00.00
@@ -58,8 +56,15 @@ public interface Symbol {
     String getCode();
     String getDescription();
     
+    public double getLastTradePrice();
+    public long getLastTradeDateAndTime();
+    public double getChange();
+    public double getChangeInPercent();
+    public String getStockExchange();
+    public long getVolume();
+    
     public void setLastTradePrice(double value);
-    public void setLastTradeDateAndTime(Date value);
+    public void setLastTradeDateAndTime(long value);
     public void setChange(double value);
     public void setChangeInPercent(double value);
     public void setVolume(long value);

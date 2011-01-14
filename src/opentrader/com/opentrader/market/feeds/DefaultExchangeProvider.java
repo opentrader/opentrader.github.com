@@ -55,6 +55,8 @@ import java.util.List;
  *  %date      4:01:30 PM, Nov 30, 2010
  */
 public interface DefaultExchangeProvider {
+    
+    enum Interval {DAYLY, WEEKLY, MONTHLY}
 
     void connect() throws ParseException ;
     

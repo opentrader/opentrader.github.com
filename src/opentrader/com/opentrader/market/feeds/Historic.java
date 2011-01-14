@@ -44,8 +44,6 @@
 
 package com.opentrader.market.feeds;
 
-import java.math.BigDecimal;
-
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>
  *  @version   0.00.00
@@ -54,5 +52,21 @@ import java.math.BigDecimal;
  *  %date      10:24:28 AM, Dec 7, 2010
  */
 public interface Historic {
+    
+    public double getOpen();
+    public long getDate();
+    public double getHigh();
+    public double getLow();
+    public double getClose();
+    public double getVolume();
+    public double getAdjClose();
+
+    public void setOpen(double open); 
+    public void setDate(long date);    
+    public void setHigh(double high);   
+    public void setLow(double low);   
+    public void setClose(double close);
+    public void setVolume(double volume);
+    public void setAdjClose(double adjClose);
 
 }
