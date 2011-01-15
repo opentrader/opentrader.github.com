@@ -121,5 +121,18 @@ public class YHistoric implements Historic {
     public void setAdjClose(double adjClose) {
         this.adjClose = adjClose;
     }
+    
+    @Override
+    public String toString() {
+        return new StringBuilder(
+                "Date: " + new java.text.SimpleDateFormat("yyyy/MM/dd").format(new java.util.Date(date)) + 
+                ", Open: " + open + 
+                ", High: " + high +
+                ", Low: " + low +
+                ", Close: " + close +
+                ", Volume: " + volume +
+                ", Adj Close: " + adjClose
+                ).toString();
+    }
 
 }

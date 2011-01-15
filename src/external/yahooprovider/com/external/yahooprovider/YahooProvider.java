@@ -63,6 +63,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.StringTokenizer;
 import java.util.logging.Logger;
 
 import javax.xml.parsers.SAXParser;
@@ -243,8 +244,40 @@ public class YahooProvider implements DefaultExchangeProvider {
         URLConnection       urlConn;
         BufferedReader      br = null;
         
-        try {
-            url = new URL(historic + "?s=" + symbol.getCode() +  "&f=" + options);
+        try {            
+            /* a - Month number, starting with 0 for January. */
+            String a = Integer.toString(Integer.parseInt(new SimpleDateFormat("MM").format(start)) - 1);
+            /* b - Day number, eg, 1 for the first of the month. */
+            String b = Integer.toString(Integer.parseInt(new SimpleDateFormat("dd").format(start)));
+            /* c - Year. */
+            String c = Integer.toString(Integer.parseInt(new SimpleDateFormat("yyyy").format(start)));
+            
+            /* d - Month number, starting with 0 for January. */
+            String d = Integer.toString(Integer.parseInt(new SimpleDateFormat("MM").format(end)) - 1);
+            /* e - Day number, eg, 1 for the first of the month. */
+            String e = Integer.toString(Integer.parseInt(new SimpleDateFormat("dd").format(end)));
+            /* f - Year. */
+            String f = Integer.toString(Integer.parseInt(new SimpleDateFormat("yyyy").format(end)));
+            
+            /* frequency of historical prices */
+            String g;
+            if (ival == Interval.DAYLY) {
+                g = "d";
+            } else if (ival == Interval.WEEKLY) {
+                g = "w";
+            } else if (ival == Interval.MONTHLY) {
+                g = "m";
+            } else {
+                g = "d";
+            }
+            
+            url = new URL(
+                    historic + 
+                    "?s=" + symbol.getCode() +  
+                    "&d=" + d + "&e=" + e + "&f=" + f +
+                    "&g=" + g +
+                    "&a=" + a + "&b=" + b + "&c=" + c +
+                    "&ignore=.csv");
 
             urlConn = url.openConnection();
             urlConn.setConnectTimeout(CONNECT_TIME_SECONDS * 1000);
@@ -254,15 +287,35 @@ public class YahooProvider implements DefaultExchangeProvider {
 
             br = new BufferedReader(
                     new InputStreamReader(urlConn.getInputStream()));
+            YHistoric historyValue;
+            StringTokenizer st;
             String s;
+            /* read title - Date,Open,High,Low,Close,Volume,Adj Close */
+            br.readLine(); 
             while ((s = br.readLine()) != null) {
-                //
+                // 2010-12-01,563.00,571.57,562.40,564.35,7508200,564.35
+                historyValue = new YHistoric();
+                st = new StringTokenizer(s, ",");
+                
+                historyValue.setDate(
+                        new SimpleDateFormat("yyyy-MM-dd").parse(
+                            st.nextToken()).getTime());
+                historyValue.setOpen(Double.parseDouble(st.nextToken()));
+                historyValue.setHigh(Double.parseDouble(st.nextToken()));
+                historyValue.setLow(Double.parseDouble(st.nextToken()));
+                historyValue.setClose(Double.parseDouble(st.nextToken()));
+                historyValue.setVolume(Double.parseDouble(st.nextToken()));
+                historyValue.setAdjClose(Double.parseDouble(st.nextToken()));
+                
+                list.add(historyValue);
             }
         } catch (java.net.MalformedURLException e) {
             LOG.warning(e.toString());
         } catch (java.io.IOException e) {
             LOG.warning(e.toString());
-        } finally {
+        } catch (java.text.ParseException e) {
+            LOG.warning(e.toString());
+        }finally {
             try {
                 br.close();
             } catch(java.io.IOException e) {
@@ -292,6 +345,14 @@ public class YahooProvider implements DefaultExchangeProvider {
             YahooProvider yprovider = new YahooProvider();
             yprovider.setPortfolio(symbols);
             yprovider.connect();
+            
+            for (Historic hvalue : yprovider.getHistoricalPrices(
+                    new YSymbol("GOOG", ""), 
+                    new SimpleDateFormat("yyyy/MM/dd").parse("2010/01/01"), 
+                    new SimpleDateFormat("yyyy/MM/dd").parse("2010/12/01"), 
+                    Interval.MONTHLY)) {
+                        System.out.println(hvalue.toString());
+                    }
         } catch (Exception e) {
             
         }
@@ -369,8 +430,7 @@ public class YahooProvider implements DefaultExchangeProvider {
             *  z	Time zone	Pacific Standard Time; PST; GMT-08:00
             *  Z	Time zone               -0800
              */
-            SimpleDateFormat sdf = 
-                    new java.text.SimpleDateFormat("MM/dd/yyyy hh:mma");
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mma");
 
             String s;
             while ((s = br.readLine()) != null) {
