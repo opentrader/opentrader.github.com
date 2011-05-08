@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Ant build file to compile the neuroph source code
+	creates jar files for neuroph library and easyneurons GUI  
+	
+	@author Aidan Morgan
+	@author Zoran Sevarac
+-->
+
+<project name="neuroph" default="all" basedir=".">
+
+	<!-- the location of the source code to compile -->
+	<property name="src.dir" value="${basedir}/sources"/>
+
+	<!-- the location of all compiled code -->
+	<property name="build.dir" value="${basedir}/build"/>
+		
+	<!-- the location of external libraries -->	
+	<property name="lib.dir" value="${basedir}/lib"/>
+
+  <!-- classpath for external libraries-->
+  <path id="classpath">
+      <fileset dir="${lib.dir}" includes="**/*.jar"/>
+  </path>
+	
+	<!-- the name of the jar files to generate -->
+	<property name="neuroph.jar.file" value="neuroph-2.5b.jar"/>
+
+	<!-- the required libraries of the neuroph codebase -->
+	<property name="classpath" value=""/>
+
+	<!-- the name of the directory to store the javadocs in -->
+	<property name="javadoc.dir" value="${basedir}/javadoc"/>
+
+        <!--
+            Build sources
+        -->
+        <target name="build.neuroph">
+             <mkdir dir="${build.dir}/neuroph"/>
+             <javac srcdir="${src.dir}/neuroph/src" destdir="${build.dir}/neuroph" />   
+        </target>                  
+                
+
+        <!--
+            jars the compiled code
+        -->
+        <target name="jar.neuroph" depends="build.neuroph" description="Create jar">
+            <jar destfile="${neuroph.jar.file}" basedir="${build.dir}/neuroph" includes="**/*.class"/>
+        </target>       
+
+        <!--
+            delete all generated files and dirs
+        -->
+        <target name="clean">
+              <delete dir="${build.dir}" />
+              <delete dir="${javadoc.dir}"/>
+              <delete file="${neuroph.jar.file}"/>
+        </target>
+
+
+        <!--
+            generate the javadoc
+        -->
+        <target name="javadoc">
+            <javadoc sourcepath="${src.dir}/neuroph/src" destdir="${javadoc.dir}" verbose="true">
+                  <classpath>
+                    <pathelement path="${classpath}"/>
+                  </classpath>
+            </javadoc>
+        </target>
+
+
+        <!--
+            build and jar all
+        -->
+        <target name="all" depends="jar.neuroph" />
+
+           
+        <target name="help" description="Display help information on how to build">
+              <echo>Apache Ant build tool for Neuroph Library
+                  Usage:
+                  ant help
+                  ant build
+                  ant jar
+                  ant clean
+                  ant javadoc
+                  ant all
+              </echo>
+        </target>
+
+</project>

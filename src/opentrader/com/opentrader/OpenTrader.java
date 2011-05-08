@@ -2,7 +2,7 @@
  * OpenTrader Trading Platform
  * The solution for online trading, technical analysis and automated trading.
  *
- * Copyright (C) 2010  Andrey Pudov
+ * Copyright (C) 2010-2011  Andrey Pudov
  * Andrey Pudov     <syscreat@gmail.com>
  *
  * http://opentrader.github.com/OpenTrader/
@@ -44,20 +44,17 @@
 
 package com.opentrader;
 
-import com.internal.initializer.Application;
-import com.opentrader.ui.OpenTraderJFrame;
-import java.util.logging.Logger;
-
 /**
  *  @author    Andrey Pudov        <syscreat@gmail.com>
  *  @version   0.00.00
  *  %name      OpenTrader.java
- *  %pkg       atoletrader
+ *  %pkg       com.opentrader
  *  %date      5:42:29 AM, Aug 1, 2010
  */
 public class OpenTrader {
     
-    private static final Logger LOG = Logger.getLogger("opentrader");
+    private static final java.util.logging.Logger LOG 
+            = java.util.logging.Logger.getLogger("opentrader");
 
     static {
         //
@@ -75,44 +72,75 @@ public class OpenTrader {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        java.util.logging.ConsoleHandler     cHandler 
+                = new java.util.logging.ConsoleHandler();
+        com.opentrader.util.ConsoleFormatter formatter 
+                = new com.opentrader.util.ConsoleFormatter();
+        cHandler.setFormatter(formatter);
+        
+        /* Do not sent the message to parent handlers.  */
+        LOG.setUseParentHandlers(false);
+        LOG.addHandler(cHandler);
+
+        LOG.info("OpenTrader Trading Platform");
+        LOG.info("Copyright 2010 Andrey Pudov. All rights reserved.");
+        LOG.info("Use is subject to license terms.\n");
+        
         try {
-            /* Do not sent the message to parent handlers.  */
-            LOG.setUseParentHandlers(false);
-            LOG.addHandler(Application.getConsoleHandler());
-
-            LOG.info("OpenTrader Trading Platform");
-            LOG.info("Copyright 2010 Andrey Pudov. All rights reserved.");
-            LOG.info("Use is subject to license terms.\n");
-
-            if(!Application.installed()) {
-                LOG.info("Creating user configuration...");
-                Application.remove();
-                Application.install();
-            }
-
-            LOG.addHandler(Application.getFileHandler());
-
-            // Load user configuration.s
-            LOG.info("Load user configuration...");
-
-            // Set Look And Feel
-            try {
-                Application.setLookAndFeel(Application.LookAndFeel.SEAGLASS);
-            } catch (Exception e) {
-                LOG.warning(e.getMessage());
-            }
-
-            //OpenTraderJFrame mainForm = new OpenTraderJFrame();
-            //mainForm.setVisible(true);
-
-            //com.external.yahooprovider.YahooProvider provider =
-                    //new com.external.yahooprovider.YahooProvider();
-            //provider.connect();
-        } catch (Exception e) {
-            LOG.info("Core Initialization Failed.");
-            LOG.severe(e.getMessage());
-            System.exit(Integer.MIN_VALUE);
+            javax.swing.UIManager.setLookAndFeel(
+                    javax.swing.UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException
+                 | InstantiationException
+                 | IllegalAccessException 
+                 | javax.swing.UnsupportedLookAndFeelException e) {
+            LOG.warning(e.getMessage());
         }
+        
+        com.opentrader.ui.OpenTraderJFrame mainJFrame 
+                = new com.opentrader.ui.OpenTraderJFrame();
+        //mainJFrame.setVisible(true);
+        
+        
+         com.opentrader.market.ExchangeProvider provider
+                = new com.opentrader.market.ExchangeProvider();
+        
+        com.opentrader.market.Symbol symbol =
+                new com.opentrader.market.Symbol("GOOG", null);
+        
+//        java.util.List<com.opentrader.market.Historic>  historic = 
+//                provider.getHistorical(new com.opentrader.market.Symbol(
+//                        "GOOG", null),
+//                    new java.util.GregorianCalendar(
+//                            0000, java.util.Calendar.JANUARY, 01).getTime(),
+//                    //new java.util.GregorianCalendar(
+//                            //2011, java.util.Calendar.JANUARY, 01).getTime(), 
+//                    new java.util.Date(),
+//                    com.opentrader.market.Interval.MONTHLY);
+        
+                java.util.List<com.opentrader.market.Historic>  historic = 
+                provider.getHistorical(new com.opentrader.market.Symbol(
+                        "GOOG", null),
+                    new java.util.GregorianCalendar(
+                            2011, java.util.Calendar.JANUARY, 01).getTime(),
+                    new java.util.Date(),
+                    com.opentrader.market.Interval.WEEKLY);
+//        
+//        for (com.opentrader.market.Historic value : historic) {
+//            System.out.println(value);
+//        }
+//        
+        
+//        com.opentrader.market.Quote quote = provider.getQuote(symbol);
+//        System.out.println(quote.toString());
+          com.opentrader.ui.components.Chart chart 
+                  = new com.opentrader.ui.components.Chart();
+          chart.setHistoric(symbol, historic);
+          
+//          javax.swing.JFrame frame = new javax.swing.JFrame();
+//          frame.setSize(500, 500);
+//          frame.add(chart);
+//          frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+//          frame.setVisible(true);
     }
         
 }

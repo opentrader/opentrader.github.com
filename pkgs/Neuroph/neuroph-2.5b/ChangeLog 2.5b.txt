@@ -1,0 +1,38 @@
+/////////////////////////////////////////////////
+
+  NEUROPH - JAVA NEURAL NETWORK FRAMEWORK
+  http://neuroph.sourceforge.net
+
+/////////////////////////////////////////////////
+
+
+This is the 2.5 beta release for the Neuroph framework
+
+This release brings many performance improvements, algorithm improvemens and bug fixes. Although there are few new features at framework level,
+existing features are significantly improved. 
+Now it also provides integration with Encog engine http://www.heatonresearch.com/encog, which is another great neural network framework.
+Encog provides support for some advanced high performance learning rules, multi core and GPU processing.
+
+Some of the changes include:
+
+1. Using ArrayLists and plain double arrays instead Vectors everywhere (much faster)
+2. LMS 0 fixed the total network error formula - now using real MSE, so the number of iterations is reduced for all LMS based algorithms
+3. Added batch mode support for backpropagation (in fact all LMS based algorithms)
+4. Added training data buffer to weights class
+5. Changed Connection class so now it contans references to 'from' and 'to' neurons. This reduces the number of connection instances to half number 
+needed before.
+6. Fixes for Sigmoid and Tanh transfer functions to avoid NaN values 
+7. Removed learning rule constructors with NN parameter, sice it was making confusion. The way learning rule should be set to neural network is:
+ nnet.setLearningRule(new Backpropagation());
+8. Adalie network modified in order to be the same as original theoretical model: bipolar inputs, bias, ramp transfer function.
+These modifications provides more stable learning more stalbe learning.
+9. Integration with Encog engine and support for flatten networks and Resilient Backpropagation from Encog.
+It is turned off by default but it can be easily turned on with Neuroph.getInstance().flattenNetwork(true);
+10. Other various bugfixes reported at forum and bug trackers
+11. This release breaks compatibility with previous versions of Neuroph, but that was unavoidable for introducing all improvements.
+
+The new GUI for Neuroph is Neuroph Studio which is based on NetBeans Platform http://netbeans.org/features/platform/  and it provides full
+IDE for neural networks and Java. So now it is a single development environment to create neural networks and deploy them to Java applications.
+Neuroph Studio uses Neuroph 2.5b
+Although easyNeurons GUI is now legacy, and the development will stop, we will release one last version of it that supports framework 2.5b.
+ 

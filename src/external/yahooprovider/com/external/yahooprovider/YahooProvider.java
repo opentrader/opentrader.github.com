@@ -2,7 +2,7 @@
  * OpenTrader Trading Platform
  * The solution for online trading, technical analysis and automated trading.
  *
- * Copyright (C) 2010  Andrey Pudov
+ * Copyright (C) 2010-2011  Andrey Pudov
  * Andrey Pudov     <syscreat@gmail.com>
  *
  * http://opentrader.github.com/
@@ -161,7 +161,7 @@ public class YahooProvider implements DefaultExchangeProvider {
         }
     }
 
-    public void connect() throws ParseException  {
+    public void connect() {
         URL                 url;
         URLConnection       urlConn;
         BufferedReader      br = null;
@@ -193,13 +193,32 @@ public class YahooProvider implements DefaultExchangeProvider {
                 LOG.warning(e.toString());
             }
         }
-
-        updateSymbols(Format.BASIC);
+        
+        try {
+            updateSymbols(selectedSymbols, Format.BASIC);
+        } catch (java.text.ParseException e) {
+            LOG.warning(e.toString());
+        } catch (Exception e) {
+            LOG.warning(e.toString());
+        }
     }
 
     public List<StockExchange> getStockExchanges() {
 
         return Collections.unmodifiableList(stocks);
+    }
+    
+    public List<Symbol> getSelectedSymbols() {
+        
+        try {
+            updateSymbols(selectedSymbols, Format.BASIC);
+        } catch (java.text.ParseException e) {
+            LOG.warning(e.toString());
+        } catch (Exception e) {
+            LOG.warning(e.toString());
+        }
+        
+        return Collections.unmodifiableList(selectedSymbols);
     }
 
     public List<Symbol> getSymbolsList(StockExchange stock) {
@@ -358,7 +377,8 @@ public class YahooProvider implements DefaultExchangeProvider {
         }
     }
 
-    private void updateSymbols(Format format) throws ParseException {
+    private void updateSymbols(List<Symbol> selectedSymbols, Format format) 
+            throws ParseException {
         URL                 url;
         URLConnection       urlConn;
         BufferedReader      br = null;
@@ -371,6 +391,8 @@ public class YahooProvider implements DefaultExchangeProvider {
                 sb.append('+');
             }
         }
+        
+        selectedSymbols.clear();
 
         String symbols = sb.toString();
         String options = "snl1d1t1c1p2vx";
@@ -380,6 +402,8 @@ public class YahooProvider implements DefaultExchangeProvider {
                 /**
                  * s    Symbol
                  * n    Name
+                 * a    Ask //
+                 * b    Bid //
                  * l1   Last Trade (Price Only)
                  * d1   Last Trade Date
                  * t1   Last Trade Time
@@ -388,10 +412,10 @@ public class YahooProvider implements DefaultExchangeProvider {
                  * v    Volume
                  * x    Stock Exchange
                  */
-                options = "snl1d1t1c1p2vx";
+                options = "snabl1d1t1c1p2vx";
                 break;
             default:
-                options = "snl1d1t1c1p2vx";
+                options = "snabl1d1t1c1p2vx";
                 break;
         }
 
@@ -437,7 +461,12 @@ public class YahooProvider implements DefaultExchangeProvider {
                  //System.out.println(s);
                  switch (format) {
                     case BASIC:
-                        // "C","Citigroup, Inc. C",4.9785,"1/6/2011","1:54pm",+0.0085,"+0.17%",545176448,"NYSE"
+                        // ""C","Citigroup, Inc. C",N/A,N/A,4.80,"2/10/2011",
+                        // "10:30am",-0.04,"-0.83%",126972024,"NYSE""
+                        
+                        /* Replace all Yahoo! NOVALUE with standard impl. */
+                        s = s.replaceAll("N/A", "-1");
+                        
                         String otherThanQuote = " [^\"] ";
                         String quotedString = String.format(" \" %s* \" ", otherThanQuote);
                         String regex = String.format("(?x) "+ // enable comments, ignore white spaces
@@ -456,22 +485,27 @@ public class YahooProvider implements DefaultExchangeProvider {
                         symbol = new YSymbol(
                                 tokens[0].substring(1, tokens[0].length() - 1), 
                                 tokens[1].substring(1, tokens[1].length() - 1));
-                        symbol.setLastTradePrice(Double.parseDouble(tokens[2]));
+                        symbol.setAsk(Double.parseDouble(tokens[2]));
+                        symbol.setBid(Double.parseDouble(tokens[3]));
+                        symbol.setLastTradePrice(Double.parseDouble(tokens[4]));
                         symbol.setLastTradeDateAndTime(
                             sdf.parse(
-                                tokens[3].substring(1, tokens[3].length() - 1) + 
+                                tokens[5].substring(1, tokens[5].length() - 1) + 
                                 " " + 
-                                tokens[4].substring(1, tokens[4].length() - 1)
+                                tokens[6].substring(1, tokens[6].length() - 1)
                             ).getTime());
-                        symbol.setChange(Double.parseDouble(tokens[5]));
+                        symbol.setChange(Double.parseDouble(tokens[7]));
                         symbol.setChangeInPercent(
                                 Double.parseDouble(
-                                    tokens[6].substring(
+                                    tokens[8].substring(
                                         1, 
-                                        tokens[6].length() - 2)));
-                        symbol.setVolume(Long.parseLong(tokens[7]));
+                                        tokens[8].length() - 2)));
+                        symbol.setVolume(Long.parseLong(tokens[9]));
                         symbol.setStockExchange(
-                                tokens[8].substring(1, tokens[8].length() - 1));
+                                tokens[10].substring(
+                                    1, tokens[10].length() - 1));
+                        
+                        selectedSymbols.add(symbol);
                         break;
                     default:
                         break;
@@ -483,7 +517,7 @@ public class YahooProvider implements DefaultExchangeProvider {
             LOG.warning(e.toString());
         } finally {
             try {
-                br.close();
+                    br.close();
             } catch(java.io.IOException e) {
                 LOG.warning(e.toString());
             }

@@ -1,0 +1,23 @@
+This release package of Neuroph contains the following:
+
+/doc			    Documentation
+/doc/javadoc	Javadoc API documentation
+/doc/NeurophFrameworkDiagram.jpg	Overview diagram of the framework components/packages
+/doc/BasicConcepts.jpg  Basic concepts/core components of the framework
+/doc/BasicClassDiagram.jpg  Basic class diagram
+
+
+/src              Java source files
+/lib        			external libraries required by neuroph (encog and jocl)
+
+neuroph-2.5b.jar	Neuroph Framework library
+
+build.xml       ANT build file
+
+API_CHANGES.txt List of important API changes (from version 2.4)
+CHANGELOG.txt   List of changes in this release.
+FILELIST.txt		List of files in this release
+HISTORY.txt     Release history
+LICENSE.txt		  Apache 2 licence file
+README.txt		  Some notes about this release and the Neuroph project
+VERSION.txt     Version of this release

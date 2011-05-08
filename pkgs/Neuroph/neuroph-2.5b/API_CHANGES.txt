@@ -1,0 +1,28 @@
+
+=====================================================
+
+              IMPORTANT API CHANGES
+
+=====================================================
+
+There are lot of changes in API of Neuroph 2.5b but all of them are easy to apply to any existing code, 
+that used previous versions of Neuroph.
+
+1. Using doule arrays instead Vector. In order to improve performance all Vectors are replaced with arrays and ArrayList.
+Also removed boxing everywhere, so wherever Double was used, now there is double.
+This applies to NeuralNetwork class and also TrainingSet.
+
+2. Removed learning rule constructors with NeuralNetwork parameter, sice it was making confusion. 
+The way some learning rule should be set to neural network is:
+ nnet.setLearningRule(new Backpropagation());
+ 
+3. TrainingSet class now supports interface used by Encog Engine
+
+4. There is a switch to turn on or off Encog Engine support
+org.neuroph.nnet.Neuroph.getInstance().setFlattenNetworks();
+
+5. In SupervisedLearning the method updateTotalNetworkError(double[] patternError) is now deprecated. Instead that method we are now using
+two methods:
+      abstract protected void updatePatternError(double[] patternErrorVector);
+      abstract protected void updateTotalNetworkError();
+

@@ -164,6 +164,8 @@ public class YSymbol implements Symbol {
     /**
      * s    Symbol
      * n    Name
+     * a    Ask //
+     * b    Bid //
      * l1   Last Trade (Price Only)
      * d1   Last Trade Date
      * t1   Last Trade Time
@@ -172,6 +174,22 @@ public class YSymbol implements Symbol {
      * v    Volume
      * x    Stock Exchange
      */
+    
+    /**
+     * 
+     * @return a    Ask
+     */
+    public double getAsk() {
+        return ask;
+    }   
+    
+    /**
+     * 
+     * @return b    Bid
+     */
+    public double getBid() {
+        return bid;
+    } 
     
     /**
      * 
@@ -220,6 +238,22 @@ public class YSymbol implements Symbol {
      */
     public long getVolume() {
         return volume;
+    }
+    
+    /**
+     * 
+     * @param a     Ask
+     */
+    public void setAsk(double value) {
+        ask = value;
+    }
+    
+    /**
+     * 
+     * @param b     Bid
+     */
+    public void setBid(double value) {
+        bid = value;
     }
     
     /**
